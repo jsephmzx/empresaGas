@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="460f40de-56ec-4a9c-a0af-4d88e3fde5a3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="192" y="0" width="219" height="79" uuid="e51bc0fa-c231-490f-9898-c370f1958590"/>
+				<imageExpression><![CDATA["F:\\Proyectoempresa\\web\\iconos\\logo empresa.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="116" y="0" width="243" height="20" uuid="4355d450-9621-4c8b-bfa5-f2d0b7f6323e"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Informe de Inspección a las Instalaciones de Gas ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="359" y="0" width="100" height="20" uuid="cc6e151f-32d0-4fef-97fe-69f4f9d75626"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[fechaaaaa]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="82" y="20" width="100" height="20" uuid="fc6c2cb0-827b-4acd-8de0-2fe667c2b64c"/>
+				<text><![CDATA[Departamento N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="0" width="100" height="20" uuid="d4dd29f1-bfc9-4149-9efb-f7f5d60b38a0"/>
+				<textFieldExpression><![CDATA[nom edificio]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="334" y="20" width="100" height="20" uuid="a8f81cfc-cd37-431f-b077-c6fc064eefba"/>
+				<text><![CDATA[Total ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="196" y="20" width="100" height="20" uuid="c03bb9ae-3997-4f0b-9743-3e82e6498f06"/>
+				<textFieldExpression><![CDATA[Num_depto]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="439" y="20" width="100" height="20" uuid="e8f51176-c1a4-4242-bbbe-151ec55fcaa7"/>
+				<textFieldExpression><![CDATA[Total]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="83" y="41" width="100" height="20" uuid="af4b2dc5-2bab-4d34-b50e-603dd919106c"/>
+				<textFieldExpression><![CDATA[Color_sello]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="118" splitType="Stretch">
+			<staticText>
+				<reportElement x="83" y="9" width="456" height="42" uuid="dd6c6112-52bc-4ca5-94f1-d20aee210efc"/>
+				<text><![CDATA[Señor residente:	
+El resultado de la inspección a las instalaciones de gas que se efectuaron en la comunidad en la que usted habita su departamento arrojo el siguiente resultado: 
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="83" y="51" width="456" height="1" uuid="79e4b5db-00dd-4aa8-9ecf-258ebdbeba66"/>
+			</line>
+			<line>
+				<reportElement x="82" y="117" width="456" height="1" uuid="3e61d9e5-cd54-4539-b256-9ae4c7eae1a5"/>
+			</line>
+			<staticText>
+				<reportElement x="82" y="62" width="455" height="20" uuid="4f320f0b-bdc4-4074-be00-a7b6756f4f78"/>
+				<text><![CDATA[Observaciones encontradas y deben ser reparadas por usuario antes de la próxima visita:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="82" width="100" height="20" uuid="928f08cf-191e-45f4-80da-04ee9a468b4d"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="149" splitType="Stretch">
+			<staticText>
+				<reportElement x="83" y="0" width="454" height="68" uuid="6b52be2c-1c6a-4e41-8b5c-b0e1d68d0b83"/>
+				<text><![CDATA[Según Resolución Exenta Nº 1250 del 10/07/2009 de la Superintendencia de Electricidad y Combustible (SEC). “Establece procedimiento para la autorización y control de las entidades de Certificación, Inspección y Verificación de la conversión de instalaciones interiores de gas”. Regularizar las instalaciones realizando las reparaciones necesarias a través de instaladores de gas autorizados y registrados en la Superintendencia de Electricidad y Combustibles.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="71" width="455" height="38" uuid="51f0d541-2b7b-4de6-9d35-616938187fac"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[“Sr. Usuario por su seguridad y según normativa vigente de la Superintendencia de Eléctricidad y Combustibles está prohibido almacenar material combustible, detergentes, ropa, papel, madera, diluyente, etc. En donde se encuentra ubicado artefacto calefón”.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="126" width="100" height="20" uuid="e21608e7-973e-4bdf-9c51-e9d73e02d3ec"/>
+				<textFieldExpression><![CDATA[ASDSAS]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="54" width="572" height="31" uuid="fb18c14c-6dbf-4af4-a9b4-0e1cbbe9ec13"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ingeniería RS Limitada
+Calle montaña 754 block A depto. 37   /    ingenieria.sr@gmail.com  -  Fonos 032-2697175  /  92564059
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="83" y="0" width="103" height="54" uuid="2a2a0b48-bcab-41ad-b21a-8fdd311fb888"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[Rodrigo O. Solar Mardonez
+     Inspector de Gas
+  Ingeniero U.T.F.S.M.
+]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

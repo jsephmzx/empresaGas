@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2edf38d-da5b-4020-9e38-a15478e87ce8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="181"/>
+	<subDataset name="Table Dataset 1" uuid="faecf52f-34b5-466d-b5b0-287d0348f736"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="307" y="0" width="219" height="79" uuid="a8a2e7d8-1899-42f9-ac3f-9288662e5619"/>
+				<imageExpression><![CDATA["F:\\Proyectoempresa\\web\\iconos\\logo empresa.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="68" y="-1" width="424" height="1" uuid="dc99543c-1165-4e2b-b127-220adc897d03"/>
+			</line>
+			<line>
+				<reportElement x="68" y="-1" width="1" height="79" uuid="3dd20081-aa52-4deb-ab99-5d4c40c3ab9e"/>
+			</line>
+			<line>
+				<reportElement x="492" y="-1" width="1" height="79" uuid="6661d801-5b0e-40a4-9564-67a2764fb872"/>
+			</line>
+			<line>
+				<reportElement x="306" y="0" width="1" height="78" uuid="9536cae2-0533-4ae0-92e0-fcd3ee406244"/>
+			</line>
+			<line>
+				<reportElement x="152" y="-1" width="1" height="79" uuid="582748d6-6ef2-492c-89a8-93e50fe8cb1b"/>
+			</line>
+			<staticText>
+				<reportElement x="182" y="17" width="100" height="61" uuid="782ab5df-ddc8-4a9d-bd25-a6ebecb8fd00"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PLANILLA CIIG-e
+
+INSPECCIÓN PERIODICA
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch">
+			<line>
+				<reportElement x="68" y="0" width="424" height="1" uuid="0e2ed035-75d4-4932-b917-3841c408afaf"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="510" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="219" width="572" height="20" uuid="00bea811-53b0-4d4f-a509-470106906fb6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="56" width="572" height="20" uuid="2d3aac8a-ec10-4567-9487-2a92bbaa4fed"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="120" width="572" height="20" uuid="55ef4f14-6b56-47cb-92f3-96b1d54f0873"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="179" width="572" height="20" uuid="9eae3e12-fcba-437b-bdbe-8d99c5f17053"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="378" width="572" height="20" uuid="6ecce09f-c038-464e-b05d-7fb6e1d0d564"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="101" width="572" height="20" uuid="ab0fcfb5-8212-455f-90fd-44d8a19b46b6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="159" width="572" height="20" uuid="55636e44-892f-4eac-b5b6-ae95c5b0f038"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="81" width="572" height="20" uuid="27e0b79a-53f9-4a23-ae94-0f679c4286a2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="199" width="572" height="20" uuid="0e4de9bc-2c69-4bd4-9b59-a2a2b5cc6836"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="358" width="572" height="20" uuid="4cdb4418-85d5-4355-907f-0c3a113e32e1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="259" width="572" height="20" uuid="77ee03a8-d514-4531-8488-a0c5c70c9b83"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="318" width="572" height="20" uuid="8d994df0-0ffa-45a7-9779-ed5c00ed6502"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="398" width="572" height="20" uuid="cf64dfe7-eab0-4545-82e4-a779f593c58f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="438" width="572" height="20" uuid="d8437938-9f40-4221-810b-624b8e772701"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="61" width="572" height="20" uuid="230c55b6-a332-436c-b135-dbedba8586ab"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="139" width="572" height="20" uuid="4f57e0bc-3c41-4d5d-8416-b9de28f86b1c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="418" width="572" height="20" uuid="f72be8bc-dc9d-4aab-84e3-55bf91284989"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="278" width="572" height="20" uuid="31f68a7a-a3e0-4d4e-bc48-4af516526c93"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="338" width="572" height="20" uuid="8f3a5f6a-7716-4bef-a51f-745fca38a932"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="298" width="572" height="20" uuid="e60e0fe1-7339-4eec-b196-4549bdd32e44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="239" width="572" height="20" uuid="45134f60-6b2a-474f-beb7-f07e4eb8bc9b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="41" width="572" height="20" uuid="5c0109ec-f6bd-4a0c-a296-91ebc3c02944"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="458" width="572" height="20" uuid="ff97c247-5886-4f3a-ae94-87323b1cc9ef"/>
+			</rectangle>
+			<line>
+				<reportElement x="324" y="41" width="1" height="437" uuid="c7a0f003-d1bb-4977-9604-a86c589d66cc"/>
+			</line>
+			<staticText>
+				<reportElement x="14" y="41" width="310" height="20" uuid="f960b004-bd67-474e-8493-716285aef280"/>
+				<text><![CDATA[VENDEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="61" width="310" height="20" uuid="0f214510-648e-4f4f-acd2-7c7c4249aea3"/>
+				<text><![CDATA[AÑO DEL EDIFICIO Y NORMA A APLICAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="81" width="310" height="20" uuid="90b62976-b0b0-46b7-b3d1-c7207f14d736"/>
+				<text><![CDATA[UBICACIÓN MEDIDORES: EN LOS PISOS, FUERA DEL EDIFICO ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="101" width="310" height="20" uuid="2c456822-58cb-4bef-ae54-55564f9f7efd"/>
+				<text><![CDATA[NRO CIIGE DE LA INSPECCION ANTERIOR (VER PAGINA SEC)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="121" width="310" height="20" uuid="f266c05d-ab28-4f8f-adae-0d9fa44de245"/>
+				<text><![CDATA[T DE PRUEBAS, DESPICHE – OTRO (COCINA)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="139" width="310" height="20" uuid="9f57a41f-5284-4d5d-bbe7-53abc2e211c1"/>
+				<text><![CDATA[NOMBRE: EDIFICIO, CONDOMINIO, PROPIETARIO, ETC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="159" width="310" height="20" uuid="d0c407c2-ca5f-46f9-b7e6-dbe197abadf4"/>
+				<text><![CDATA[CORREO ELECTRONICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="179" width="310" height="20" uuid="cfff2c2f-a481-41d8-8919-e8031c26db0c"/>
+				<text><![CDATA[FONO ADMINISTRADOR /FONO EDIFICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="199" width="310" height="20" uuid="91d29336-e1d4-440d-81bb-c6588f6ab396"/>
+				<text><![CDATA[R.U.T EDIFICIO, CONDOMINIO, PROPIETARIOS, ETC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="219" width="310" height="20" uuid="0cf16f19-8db8-4c54-917f-09862123ed72"/>
+				<text><![CDATA[DIRECCIÓN  DEL EDIFICO ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="239" width="310" height="20" uuid="f781d6bd-feb3-405b-9da3-ecf3bb90486d"/>
+				<text><![CDATA[NOMBRE ADMINISTRADOR, PROPIETARIO, ETC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="259" width="310" height="20" uuid="cdfae452-0205-40fc-8868-aefb9187d578"/>
+				<text><![CDATA[RUT: ADMINISTRADOR, PROPIETARIO, ETC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="279" width="310" height="20" uuid="6c9c9de3-58c1-48f0-b876-e2fbe4ab6f72"/>
+				<text><![CDATA[CANTIDAD DE: DEPTOS, CASAS, LOCALES, ETC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="299" width="310" height="20" uuid="42a04a6b-01f8-4892-956a-14d6257d07c6"/>
+				<text><![CDATA[CANTIDAD DE PISOS INMUEBLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="319" width="310" height="20" uuid="5bc578a3-f497-43fd-b0cc-166dd25524f3"/>
+				<text><![CDATA[EMPRESA DISTRIBUIDORA DE GAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="339" width="310" height="20" uuid="7512a33c-86e5-4115-9ca2-048a0db02228"/>
+				<text><![CDATA[CANTIDAD DE INSTALACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="359" width="310" height="20" uuid="5718fdad-8715-4df1-8ed7-19b3e13597fd"/>
+				<text><![CDATA[TIPO DE ARTEFACTOS INSTALADOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="379" width="310" height="20" uuid="bbd73229-e4b2-4084-8b89-99cb8b8ba02d"/>
+				<text><![CDATA[POTENCIA TOTAL INSTALADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="399" width="310" height="20" uuid="640c48b0-e0b8-440f-a381-dbfcf7670b56"/>
+				<text><![CDATA[CANTIDAD DE CONDUCTOS COLECTIVOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="419" width="310" height="20" uuid="cbe59bcd-65cf-4dc9-a59f-1c26ac5245f2"/>
+				<text><![CDATA[CANTIDAD DE CALDERAS CENTRALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="439" width="310" height="20" uuid="4f577df3-bd62-4f09-b612-a64838f630ae"/>
+				<text><![CDATA[HORARIO DE INGRESO AL EDIFICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="458" width="310" height="20" uuid="ebc6677c-d033-4e80-bd34-6c7730942efd"/>
+				<text><![CDATA[HORARIO DE SALIDA DEL EDIFICIO ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="23" width="572" height="31" uuid="744e7b5b-830b-4abd-83f5-19f03b30262e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Ingeniería RS Limitada
+Calle montaña 754 block A depto. 37   /    ingenieria.sr@gmail.com  -  Fonos 032-2697175  /  92564059
+]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

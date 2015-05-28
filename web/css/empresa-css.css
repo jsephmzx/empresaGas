@@ -1,0 +1,220 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01-11-2014, 04:59:21 PM
+    Author     : Natalia
+*/
+.btn-deptos{
+    background-color: #33ADFF;
+    color: white !important;
+    width: 35px !important;
+    height: 35px !important;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 0px !important;
+}
+
+.padding-radio{
+    padding-left: 25px;
+}
+
+.btn-ductos{
+    margin-top: 38px;
+}
+.color-blanco{
+    background-color: #ffffff !important;
+}
+.color-negro{
+    color: #000!important; 
+}
+.sello-verde{
+    background-color: green;
+    height: 30px;
+    width: 30px;
+}
+
+.sello-rojo{
+    background-color: red;
+    height: 30px;
+    width: 30px;
+}
+
+.sello-amarillo{
+    background-color: yellow;
+    height: 30px;
+    width: 30px;
+}
+
+.contenedor-login{
+    margin-top: 150px;
+    background-color: white;
+    border-color: gainsboro;
+    border-radius: 6px;
+}
+.letra-minimizar{
+    font-size: small!important;
+    height: auto!important;
+    margin-bottom: 0px!important;
+}
+.img-login{
+    width: 350px;    
+}
+
+.img-logo{
+
+    margin-left: 30%;
+}
+.centrar{
+    border-right: 10px;
+}
+.centrar2{
+    margin-left: 5%;
+}
+.margen-dere{
+    margin-left: 90%!important;
+}
+.ancho-col1{
+    width: 195px!important;
+}
+.ancho-col2{
+    width: 265px!important;
+}
+.largo{
+    height: 100px!important;
+}
+
+.agregar-admin-vendedor{
+    background-color: #9D61FD;
+    border-radius: 6px;
+}
+.modificar-admin-vendedor{
+    background-color: #9D61FD;
+    border-radius: 6px;
+}
+.porte{
+    display: block;
+    width: 100%;
+    height:   25px !important;
+    font-size: 12px;
+}
+.agregar-edificio{
+    background-color: #DFE3EF;
+    border-radius: 6px;
+    padding-top: 20px;
+}
+
+.opciones-agregar{
+    background-color: #DFE3EF;
+    border-radius: 6px;
+    padding-top: 15px;
+}
+.opciones-modificar{
+    background-color: #DFE3EF;
+    border-radius: 6px;
+    padding-top: 15px;
+}
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 30px !important;
+    font-size: 12px;
+}
+.form-control-fecha{
+    display: block;
+    width: 70% !important;
+    height: 30px !important;
+    font-size: 12px;
+}
+.form-control-textos{
+    display: block;
+    width: 60%;
+    height: 30px !important;
+    font-size: 12px; 
+}
+
+.left-boton{
+    margin-left: 0px;
+}
+.font-normal-display{
+    font: small-caps serif !important;
+    font-weight: normal !important;
+}
+
+.encabezado-listado{
+    background: gray !important;
+}
+
+.div-conductos{
+    padding-top: 20px !important;
+    
+}
+/*pisar css*/
+li-conductos{
+    margin-right: 2px !important;
+    line-height: 1.42857 !important;
+    border: 1px solid !important;
+    border-radius: 0px !important;
+    color : white !important;
+}
+@media screen and (max-width: 387px){
+    .img-login{
+        width: 250px;    
+    }  
+}
+@media screen and (max-width: 1199px){
+    .img-login{
+        width: 250px;    
+    }  
+}
+@media screen and (max-width: 767px){
+    .img-logo{
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .left-boton{
+        margin-left: 250px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .left-boton{
+        margin-left: 330px;
+    }
+}
+@media screen and (max-width: 5px){
+    .img-edificio{
+        margin-left: 5px;
+    }
+}
+@media screen and (max-width: 1199px){
+    .img-usuario{
+        alignment-adjust: central ;
+    }
+    @media screen and (max-width: 1300px){
+        .img-login-2{
+
+            image-resolution: snap from-image ;
+        }  
+
+    }
+}
