@@ -18,7 +18,7 @@ function Pager(tableName, itemsPerPage) {
     
     this.showPage = function(pageNumber) {
     	if (! this.inited) {
-    		alert("Error 1 !");
+    		alert("not inited");
     		return;
     	}
 
@@ -54,15 +54,15 @@ function Pager(tableName, itemsPerPage) {
 
     this.showPageNav = function(pagerName, positionId) {
     	if (! this.inited) {
-    		alert("Error 2 !");
+    		alert("not inited");
     		return;
     	}
     	var element = document.getElementById(positionId);
     	
-    	var pagerHtml = '<span onclick="' + pagerName + '.prev();" class="pg-normal" style="size:12px;" onmouseover="this.style.cursor=\'pointer\'"> &#171 Anterior </span> | ';
+    	var pagerHtml = '<span onclick="' + pagerName + '.prev();" class="pg-normal"> &#171 Prev </span> | ';
         for (var page = 1; page <= this.pages; page++) 
-            pagerHtml += '<span id="pg' + page + '" class="pg-normal" onclick="' + pagerName + '.showPage(' + page + ');"  style="size:12px;" onmouseover="this.style.cursor=\'pointer\'">' + page + '</span> | ';
-        pagerHtml += '<span onclick="'+pagerName+'.next();" class="pg-normal" style="size:12px;" onmouseover="this.style.cursor=\'pointer\'"> Siguiente &#187;</span>';            
+            pagerHtml += '<span id="pg' + page + '" class="pg-normal" onclick="' + pagerName + '.showPage(' + page + ');">' + page + '</span> | ';
+        pagerHtml += '<span onclick="'+pagerName+'.next();" class="pg-normal"> Next &#187;</span>';            
         
         element.innerHTML = pagerHtml;
     }

@@ -27,7 +27,8 @@
         <script type='text/javascript' src='js/jquery.dcdrilldown.1.2.min.js'></script>
         <script type="text/javascript">
         </script>
-        <script src='js/paging.js'></script>
+        
+        <script type="text/javascript" src="paging.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
                 jQuery('#drilldown').dcDrilldown();
@@ -110,7 +111,7 @@
                                             </c:forEach>
                                     </ul>
                                 </div>
-                                <table class="table" id="resultados">
+                                <table class="table" id="results">
                                     <tr>
                                         <td><label>N°</label></td>
                                         <td><label>N° Depto</label></td>
@@ -144,6 +145,7 @@
                                             </tr> 
                                         <c:set var="sumDepto" value="${sumDepto + 1}" />
                                         <div style="display:none; border: 0px;" class="pagination" id="NavPosicion"></div>
+                                        <div id="pageNavPosition"></div>
                                     </c:forEach>
 
                                     <!-- -->
@@ -181,5 +183,11 @@
                 $("#wrapper").toggleClass("active");
             });
         </script> 
+        <script type="text/javascript"><!--
+        var pager = new Pager('results', 3); 
+        pager.init(); 
+        pager.showPageNav('pager', 'pageNavPosition'); 
+        pager.showPage(1);
+    //--></script>
     </body>
 </html>
