@@ -27,7 +27,7 @@
         <script type='text/javascript' src='js/jquery.dcdrilldown.1.2.min.js'></script>
         <script type="text/javascript">
         </script>
-        
+
         <script type="text/javascript" src="paging.js"></script>
         <script type="text/javascript">
             jQuery(document).ready(function($) {
@@ -111,7 +111,7 @@
                                             </c:forEach>
                                     </ul>
                                 </div>
-                                <table class="table" id="results">
+                                <table class="table table-condensed table-responsive" id="results">
                                     <tr>
                                         <td><label>N°</label></td>
                                         <td><label>N° Depto</label></td>
@@ -139,21 +139,33 @@
                                             </c:if>
                                             <c:if test="${listDepto.info != 0}">
                                             <button class="btn btn-primary btn-success" name="btnAdd" type="button" onclick="location.href = 'diagnosticoGetAddServlet?id=<c:out value="${listDepto.idDepartamento}"></c:out>';"><font size="1"><strong>AGREGAR DIAGNOSTICO</strong></font></button></td>   
-                                            </c:if>  -->  
+                                            </c:if>  -->
+
                                             <td><button class="btn btn-primary btn-warning" name="btnAdd" type="button"  onclick="location.href = 'informacionGetUpdateServlet?id=<c:out value="${listDepto.idDepartamento}"></c:out>';"><font size="1"><strong>MODIFICAR</strong></font></button></td>    
                                             <td><button class="btn btn-primary btn-danger" name="btnAdd" type="button"  onclick="location.href = 'departamentoDeleteServlet?idDepto=<c:out value="${listDepto.idDepartamento}"></c:out>';"><font size="1"><strong>ELIMINAR</strong></font></button></td>      
                                             </tr> 
+
                                         <c:set var="sumDepto" value="${sumDepto + 1}" />
                                         <div style="display:none; border: 0px;" class="pagination" id="NavPosicion"></div>
-                                        <div id="pageNavPosition"></div>
+
+
                                     </c:forEach>
 
                                     <!-- -->
 
                                 </table>
+                                <c:if test="${listDepto != null}">
+                                    <div class="row">
+                                        <div class="col-md-offset-5">
+                                            <div id="pageNavPosition"></div>
+                                        </div>
+                                    </div>
+                                </c:if>
                                 <c:if test="${idConducto !=null}">
-                                    <button class="btn btn-primary" name="btnAdd" type="button" onclick="location.href = 'departamentoGetAddServlet?id=<c:out value="${idConducto}"></c:out>';"><font size="1"><strong>AGREGAR DEPARTAMENTO</strong></font></button>
-                                    <button class="btn btn-warning" name="btnmodcon"  onclick="location.href = 'conductoGetServlet?id=<c:out value="${idConducto}"></c:out>';"><font size="1"><strong>Condiciones</strong></font></button>
+                                        <br/>
+                                        <button class="btn btn-primary" name="btnAdd" type="button" onclick="location.href = 'departamentoGetAddServlet?id=<c:out value="${idConducto}"></c:out>';"><font size="1"><strong>AGREGAR DEPARTAMENTO</strong></font></button>
+                                        <button class="btn btn-warning" name="btnmodcon"  onclick="location.href = 'conductoGetServlet?id=<c:out value="${idConducto}"></c:out>';"><font size="1"><strong>Condiciones</strong></font></button>
+                                    
                                 </c:if>  
                             </div>
                             <div class="col-lg-5">
@@ -172,10 +184,10 @@
         <script src="js/jquery-1.10.2.js"></script>
         <script src="js/bootstrap.js"></script> 
         <script type=”text/javascript”>
-                                        var pager = new Pager(‘resultados’, 5);
-                                                pager.init();
-                                                pager.showPageNav(‘pager’, ‘NavPosicion‘);
-                                                pager.showPage(1);
+                                            var pager = new Pager(‘resultados’, 5);
+                                                    pager.init();
+                                                    pager.showPageNav(‘pager’, ‘NavPosicion‘);
+                                                    pager.showPage(1);
         </script>
         <script>
             $("#menu-toggle").click(function(e) {
@@ -184,10 +196,10 @@
             });
         </script> 
         <script type="text/javascript"><!--
-        var pager = new Pager('results', 3); 
-        pager.init(); 
-        pager.showPageNav('pager', 'pageNavPosition'); 
-        pager.showPage(1);
-    //--></script>
+        var pager = new Pager('results', 6);
+            pager.init();
+            pager.showPageNav('pager', 'pageNavPosition');
+            pager.showPage(1);
+//--></script>
     </body>
 </html>

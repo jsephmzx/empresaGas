@@ -7,6 +7,32 @@ and open the template in the editor.
     Created on : 01-11-2014, 04:59:21 PM
     Author     : Natalia
 */
+.pg-normal {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+
+}
+.pg-selected {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    border: 1px solid #ddd;
+
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #428bca;
+    border-color: #428bca;
+}
 .btn-deptos{
     background-color: #33ADFF;
     color: white !important;
@@ -164,7 +190,7 @@ and open the template in the editor.
 
 .div-conductos{
     padding-top: 20px !important;
-    
+
 }
 /*pisar css*/
 li-conductos{
