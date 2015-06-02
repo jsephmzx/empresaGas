@@ -63,59 +63,71 @@ public class conductoMainServlet extends HttpServlet {
             //////////////////////////////////////////
             //    crear comprobar sesion            //
             //////////////////////////////////////////
-
-            /*obtener lista de conductos*/
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            System.out.println("Tipo de usuario que ingreso al sistema :" + userSession);
             try {
-                /*obtener id del conducto*/
-                String id = "";
-                id = request.getParameter("id");
-                request.setAttribute("idConducto", id);
-                if (id != null) {
-                    int idNum = Integer.parseInt(id);
-                    Collection<departamento> listDepto = new ArrayList<departamento>();
-                    listDepto = deptoDAO.getAllById(idNum);
-                    System.out.println("Obtuvo la lista de departamentos");
-                    request.setAttribute("listDepto", listDepto);
-                }
-                /*fin obtener id del conducto*/
+                /*obtener lista de conductos*/
+                if (userSession.equals("admin")) {
+                    try {
+                        /*obtener id del conducto*/
+                        String id = "";
+                        id = request.getParameter("id");
+                        request.setAttribute("idConducto", id);
+                        if (id != null) {
+                            int idNum = Integer.parseInt(id);
+                            Collection<departamento> listDepto = new ArrayList<departamento>();
+                            listDepto = deptoDAO.getAllById(idNum);
+                            System.out.println("Obtuvo la lista de departamentos");
+                            request.setAttribute("listDepto", listDepto);
+                        }
+                        /*fin obtener id del conducto*/
 
-                String idEdif = request.getParameter("id_edificio");
-                System.out.println("id edificio :" + idEdif);
-                int cantConductos = 0;
-                int idEdifSession = 0;
-                Collection<conducto> list = null;
-                if (idEdif == null) {
-                    System.out.println("entro a if de idEdif == null");
-                    idEdifSession = (Integer) session.getAttribute("idEdificio");
-                    System.out.println("id edificio en if :" + idEdifSession);
-                }
-                if (idEdifSession != 0) {
-                    list = conDAO.getAllById(idEdifSession);
-                    cantConductos = conDAO.cantidadConductos(idEdifSession);
-                    session.setAttribute("idEdificio", idEdifSession);
-                    edificio edif = new edificio();
-                    edif = ediDAO.findbyIdEdificio(idEdifSession);
-                    request.setAttribute("edifName", edif.getNombreEdificio());
+                        String idEdif = request.getParameter("id_edificio");
+                        System.out.println("id edificio :" + idEdif);
+                        int cantConductos = 0;
+                        int idEdifSession = 0;
+                        Collection<conducto> list = null;
+                        if (idEdif == null) {
+                            System.out.println("entro a if de idEdif == null");
+                            idEdifSession = (Integer) session.getAttribute("idEdificio");
+                            System.out.println("id edificio en if :" + idEdifSession);
+                        }
+                        if (idEdifSession != 0) {
+                            list = conDAO.getAllById(idEdifSession);
+                            cantConductos = conDAO.cantidadConductos(idEdifSession);
+                            session.setAttribute("idEdificio", idEdifSession);
+                            edificio edif = new edificio();
+                            edif = ediDAO.findbyIdEdificio(idEdifSession);
+                            request.setAttribute("edifName", edif.getNombreEdificio());
+                        } else {
+                            int idEdificio = Integer.parseInt(idEdif); //mientras para realizar pruebas directamente sin obtener el id del edificio
+                            list = conDAO.getAllById(idEdificio);
+                            cantConductos = conDAO.cantidadConductos(idEdificio);
+                            session.setAttribute("idEdificio", idEdificio);
+                            edificio edif = new edificio();
+                            edif = ediDAO.findbyIdEdificio(idEdificio);
+                            request.setAttribute("edifName", edif.getNombreEdificio());
+                        }
+
+                        if (list.size() > 0) {
+                            request.setAttribute("cantConductos", cantConductos);
+                            request.setAttribute("list", list);
+                        }
+                        request.getRequestDispatcher("/ductos.jsp").forward(request, response);
+                    } catch (Exception ex) {
+
+                    }
                 } else {
-                    int idEdificio = Integer.parseInt(idEdif); //mientras para realizar pruebas directamente sin obtener el id del edificio
-                    list = conDAO.getAllById(idEdificio);
-                    cantConductos = conDAO.cantidadConductos(idEdificio);
-                    session.setAttribute("idEdificio", idEdificio);
-                    edificio edif = new edificio();
-                    edif = ediDAO.findbyIdEdificio(idEdificio);
-                    request.setAttribute("edifName", edif.getNombreEdificio());
+                    request.getRequestDispatcher("/finServlet").forward(request, response);
                 }
 
-                if (list.size() > 0) {
-                    request.setAttribute("cantConductos", cantConductos);
-                    request.setAttribute("list", list);
-                }
-
-            } catch (Exception ex) {
-
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-
-            request.getRequestDispatcher("/ductos.jsp").forward(request, response);
+            
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
         } finally {
