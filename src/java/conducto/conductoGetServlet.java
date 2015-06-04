@@ -40,37 +40,47 @@ public class conductoGetServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         Connection conexion = null;
-        
-        
-        try{
+
+        try {
             System.out.println("En conductoGetServlet");
             conexion = ds.getConnection();
-            
+
             conductoDAO conDAO = new conductoDAO();
             conDAO.setConexion(conexion);
-            
-            /*obtener id conducto*/
-            String id = request.getParameter("id");
-            int idConducto = 0;
-            try{
-                idConducto = Integer.parseInt(id);
-            }catch(Exception ex){
-                request.setAttribute("errorIntegridadID", "Error de integridad, id de conducto contiene caracteres alfanumericos");
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin")) {
+                    /*obtener id conducto*/
+                    String id = request.getParameter("id");
+                    int idConducto = 0;
+                    try {
+                        idConducto = Integer.parseInt(id);
+                    } catch (Exception ex) {
+                        request.setAttribute("errorIntegridadID", "Error de integridad, id de conducto contiene caracteres alfanumericos");
+                    }
+
+                    conducto conducto = new conducto();
+                    conducto = conDAO.findById(idConducto);
+                    System.out.println("conducto sombrete :" + conducto.getCondSombrete());
+                    request.setAttribute("conducto", conducto);
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-            
-            conducto conducto = new conducto();
-            conducto = conDAO.findById(idConducto);
-            System.out.println("conducto sombrete :"+conducto.getCondSombrete());
-            request.setAttribute("conducto", conducto);
-        }catch(Exception connectionException){
+        } catch (Exception connectionException) {
             connectionException.printStackTrace();
-        }finally {
+        } finally {
             /* cerrar conexion */
             try {
                 conexion.close();
             } catch (Exception noGestionar) {
             }
-          request.getRequestDispatcher("/condicionesConducto.jsp").forward(request, response);  
+            request.getRequestDispatcher("/condicionesConducto.jsp").forward(request, response);
         }
     }
 

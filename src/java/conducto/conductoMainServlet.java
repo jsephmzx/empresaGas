@@ -118,7 +118,7 @@ public class conductoMainServlet extends HttpServlet {
 
                     }
                 } else {
-                    request.getRequestDispatcher("/finServlet").forward(request, response);
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
                 }
 
             } catch (Exception sessionException) {

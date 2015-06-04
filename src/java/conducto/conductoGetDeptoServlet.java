@@ -48,10 +48,17 @@ public class conductoGetDeptoServlet extends HttpServlet {
             //////////////////////////////////
             // realizar comprobar sesion    //
             //////////////////////////////////
-            
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
             /*obtener id del conducto*/
             String id = request.getParameter("id");
             System.out.println("ID de conducto :"+id);
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
         } finally {

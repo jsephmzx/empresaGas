@@ -45,35 +45,47 @@ public class conductoUpdateServlet extends HttpServlet {
 
             conductoDAO conDAO = new conductoDAO();
             conDAO.setConexion(conexion);
-            /*obtener datos*/
-            String id = request.getParameter("id");
-            int idConducto = Integer.parseInt(id);
-            String condSombrete = request.getParameter("cond_sombrete");
-            String secciones = request.getParameter("secciones");
-            String conInterior = request.getParameter("con_interior");
-            String relacionLados = request.getParameter("relacion_lados");
-            String pruebaTiro = request.getParameter("prueba_tiro");
-            String tomaAire = request.getParameter("toma_aire");
-            String materialidad = request.getParameter("materialidad");
-            String observaciones = request.getParameter("observaciones");
-            String sello = request.getParameter("sello");
-            
-            conducto conductoMod = new conducto();
-            conductoMod.setCondSombrete(condSombrete);
-            conductoMod.setSecciones(secciones);
-            conductoMod.setConInterior(conInterior);
-            conductoMod.setRelacionLados(relacionLados);
-            conductoMod.setPruebaTiro(pruebaTiro);
-            conductoMod.setTomaAire(tomaAire);
-            conductoMod.setMaterialidad(materialidad);
-            conductoMod.setObservaciones(observaciones);
-            conductoMod.setSello(sello);
-            conductoMod.setIdConducto(idConducto);
-            
-            conDAO.updateCondiciones(conductoMod);
-            
-            request.setAttribute("conducto", conductoMod);
-            request.setAttribute("msgOk", "Se realizaron las modificaciones Exitosamente.");
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin")) {
+                    /*obtener datos*/
+                    String id = request.getParameter("id");
+                    int idConducto = Integer.parseInt(id);
+                    String condSombrete = request.getParameter("cond_sombrete");
+                    String secciones = request.getParameter("secciones");
+                    String conInterior = request.getParameter("con_interior");
+                    String relacionLados = request.getParameter("relacion_lados");
+                    String pruebaTiro = request.getParameter("prueba_tiro");
+                    String tomaAire = request.getParameter("toma_aire");
+                    String materialidad = request.getParameter("materialidad");
+                    String observaciones = request.getParameter("observaciones");
+                    String sello = request.getParameter("sello");
+
+                    conducto conductoMod = new conducto();
+                    conductoMod.setCondSombrete(condSombrete);
+                    conductoMod.setSecciones(secciones);
+                    conductoMod.setConInterior(conInterior);
+                    conductoMod.setRelacionLados(relacionLados);
+                    conductoMod.setPruebaTiro(pruebaTiro);
+                    conductoMod.setTomaAire(tomaAire);
+                    conductoMod.setMaterialidad(materialidad);
+                    conductoMod.setObservaciones(observaciones);
+                    conductoMod.setSello(sello);
+                    conductoMod.setIdConducto(idConducto);
+
+                    conDAO.updateCondiciones(conductoMod);
+
+                    request.setAttribute("conducto", conductoMod);
+                    request.setAttribute("msgOk", "Se realizaron las modificaciones Exitosamente.");
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
         } finally {

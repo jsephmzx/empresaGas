@@ -46,7 +46,7 @@ public class conductoAddServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         try {
             conexion = ds.getConnection();
-            
+
             System.out.println("entro a conductoAddServlet");
             int idEdificio = 0;
             idEdificio = (Integer) session.getAttribute("idEdificio");
@@ -56,54 +56,66 @@ public class conductoAddServlet extends HttpServlet {
             /////////////////////////////////////////
             // RECIBIR PARAMETROS
             ////////////////////////////////////////
+            String userSession = (String) request.getSession().getAttribute("tipo");
             try {
-                String cantDepto = request.getParameter("cant_depto");
-                //String sello = request.getParameter("sello");
-                int cantdept = 0;
-                int error = 0;
-                if (cantDepto.equals("")) {
-                    error++;
-                    request.setAttribute("ErrorCantDepto", "Error, el campo Cantidad de Departementos esta vacio.");
-                }
-                /*if (sello.equals("")) {
-                    error++;
-                    request.setAttribute("ErrorSello", "Error, el campo Sello esta vacio.");}*/
-                
-                try {
-                    cantdept = Integer.parseInt(cantDepto);
-                } catch (Exception e) {
-                    request.setAttribute("ErrorCantDepto", "El numero ingresado en Cantidad de departamentos contiene caracteres alfabéticos.");
-                    error++;
-                }
+                if (userSession.equals("admin")) {
+                    try {
+                        String cantDepto = request.getParameter("cant_depto");
+                        //String sello = request.getParameter("sello");
+                        int cantdept = 0;
+                        int error = 0;
+                        if (cantDepto.equals("")) {
+                            error++;
+                            request.setAttribute("ErrorCantDepto", "Error, el campo Cantidad de Departementos esta vacio.");
+                        }
+                        /*if (sello.equals("")) {
+                         error++;
+                         request.setAttribute("ErrorSello", "Error, el campo Sello esta vacio.");}*/
 
-                if (error == 0) {
-                    conducto cond = new conducto();
-                    cond.setCantDeptoConducto(cantdept);
-                  //  cond.setSelloConducto(sello);
-                    cond.setIdEdificio(idEdificio);
+                        try {
+                            cantdept = Integer.parseInt(cantDepto);
+                        } catch (Exception e) {
+                            request.setAttribute("ErrorCantDepto", "El numero ingresado en Cantidad de departamentos contiene caracteres alfabéticos.");
+                            error++;
+                        }
 
-                    conDAO.insert(cond);
-                    request.setAttribute("msgOk", "Se a ingresado un nuevo conducto Exitosamente!");
-                    //Crear la cantidad de departamentos ingresados en la base de datos
-                    departamentoDAO deptoDAO = new departamentoDAO();
-                    deptoDAO.setConexion(conexion);
-                    int idConducto = conDAO.getLastId();
-                    System.out.println("id conducto :" + idConducto);
-                    departamento depto = new departamento();
-                    depto.setIdConductos(idConducto);
-                    depto.setCantConductos(0);
-                    depto.setDescripcion("Ingrese descripción");
-                    depto.setSelloDepartamento("1");
-                    depto.setNumDepartamento(0);
-                    for (int cont = 1; cont <= cantdept; cont++) {
-                        deptoDAO.insert(depto);
-                        System.out.println("cont :" + cont);
+                        if (error == 0) {
+                            conducto cond = new conducto();
+                            cond.setCantDeptoConducto(cantdept);
+                            //  cond.setSelloConducto(sello);
+                            cond.setIdEdificio(idEdificio);
+
+                            conDAO.insert(cond);
+                            request.setAttribute("msgOk", "Se a ingresado un nuevo conducto Exitosamente!");
+                            //Crear la cantidad de departamentos ingresados en la base de datos
+                            departamentoDAO deptoDAO = new departamentoDAO();
+                            deptoDAO.setConexion(conexion);
+                            int idConducto = conDAO.getLastId();
+                            System.out.println("id conducto :" + idConducto);
+                            departamento depto = new departamento();
+                            depto.setIdConductos(idConducto);
+                            depto.setCantConductos(0);
+                            depto.setDescripcion("Ingrese descripción");
+                            depto.setSelloDepartamento("1");
+                            depto.setNumDepartamento(0);
+                            for (int cont = 1; cont <= cantdept; cont++) {
+                                deptoDAO.insert(depto);
+                                System.out.println("cont :" + cont);
+                            }
+                            //Fin de la creación de departamentos
+                        }
+                    } catch (Exception parameterException) {
+                    } finally {
+                        request.getRequestDispatcher("/agregarConducto.jsp").forward(request, response);
                     }
-                    //Fin de la creación de departamentos
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
                 }
-            } catch (Exception parameterException) {
-            } finally {
-                request.getRequestDispatcher("/agregarConducto.jsp").forward(request, response);
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
