@@ -42,44 +42,56 @@ public class departamentoUpdateServlet extends HttpServlet {
         Connection conexion = null;
         try {
             conexion = ds.getConnection();
-            String id = request.getParameter("id");
-            String descripcion = request.getParameter("descripcion");
-            String num = request.getParameter("numero");
-            int idDepto = Integer.parseInt(id);
-            int numDepto = 0;
-            boolean error = false;
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin")) {
+                    String id = request.getParameter("id");
+                    String descripcion = request.getParameter("descripcion");
+                    String num = request.getParameter("numero");
+                    int idDepto = Integer.parseInt(id);
+                    int numDepto = 0;
+                    boolean error = false;
 
-            if (descripcion.equals("") || descripcion == null) {
-                error = true;
-                request.setAttribute("msgErrorDescripcion", "Error, la descripción no tiene valor");
-            }
+                    if (descripcion.equals("") || descripcion == null) {
+                        error = true;
+                        request.setAttribute("msgErrorDescripcion", "Error, la descripción no tiene valor");
+                    }
 
-            if (num.equals("") || num == null) {
-                error = true;
-                request.setAttribute("msgErrorNumero", "Error, el Numero de Departamento no tiene un valor valido");
-            }
+                    if (num.equals("") || num == null) {
+                        error = true;
+                        request.setAttribute("msgErrorNumero", "Error, el Numero de Departamento no tiene un valor valido");
+                    }
 
-            if (error == true) {
-                /*do nothing*/
-            } else {
-                try {
-                    numDepto = Integer.parseInt(num);
-                } catch (Exception ex) {
+                    if (error == true) {
+                        /*do nothing*/
+                    } else {
+                        try {
+                            numDepto = Integer.parseInt(num);
+                        } catch (Exception ex) {
+                        }
+
+                        departamentoDAO deptoDAO = new departamentoDAO();
+                        deptoDAO.setConexion(conexion);
+                        try {
+                            deptoDAO.updateNumberDescription(descripcion, numDepto, idDepto);
+                            request.setAttribute("msgOk", "Se han realizado las modificaciones exitosamente.");
+                            departamento depto = new departamento();
+                            depto = deptoDAO.getByIdDepto(idDepto);
+                            request.setAttribute("depto", depto);
+                        } catch (Exception ex) {
+                            request.setAttribute("msgErrorUpdate", "Se a producido un error al momento de modificar los datos.");
+                        }
+                    }
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
                 }
-
-                departamentoDAO deptoDAO = new departamentoDAO();
-                deptoDAO.setConexion(conexion);
-                try {
-                   deptoDAO.updateNumberDescription(descripcion, numDepto, idDepto);
-                   request.setAttribute("msgOk", "Se han realizado las modificaciones exitosamente.");
-                   departamento depto = new departamento();
-                   depto = deptoDAO.getByIdDepto(idDepto);
-                   request.setAttribute("depto", depto);
-                } catch (Exception ex) {
-                    request.setAttribute("msgErrorUpdate", "Se a producido un error al momento de modificar los datos.");
-                }
+                //
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
         } finally {

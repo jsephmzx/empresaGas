@@ -47,14 +47,26 @@ public class departamentoGetAddServlet extends HttpServlet {
             conductoDAO condDAO = new conductoDAO();
             condDAO.setConexion(conexion);
             /*Recivir parametros*/
+            String userSession = (String) request.getSession().getAttribute("tipo");
             try {
-                String id = request.getParameter("id");
-                int idConducto = Integer.parseInt(id);
+                if (userSession.equals("admin")) {
+                    try {
+                        String id = request.getParameter("id");
+                        int idConducto = Integer.parseInt(id);
 
-                request.setAttribute("idConducto", idConducto);
-            } catch (Exception parameterException) {
-            } finally {
-                request.getRequestDispatcher("/agregarDepto.jsp").forward(request, response);
+                        request.setAttribute("idConducto", idConducto);
+                    } catch (Exception parameterException) {
+                    } finally {
+                        request.getRequestDispatcher("/agregarDepto.jsp").forward(request, response);
+                    }
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
 
         } catch (Exception connectionException) {
