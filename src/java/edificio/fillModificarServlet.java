@@ -44,7 +44,6 @@ public class fillModificarServlet extends HttpServlet {
 
     @Resource(name = "jdbc/Proyectoempresa")
     private DataSource ds;
-    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,7 +63,7 @@ public class fillModificarServlet extends HttpServlet {
             // Conexion edificio
             edificioDAO edDAO = new edificioDAO();
             edDAO.setConexion(conexion);
-            
+
             // Conexion administrador
             administradorDAO adDAO = new administradorDAO();
             adDAO.setConexion(conexion);
@@ -72,11 +71,11 @@ public class fillModificarServlet extends HttpServlet {
             // Conexion detalle edificio
             DetalleEdificioDAO deedDAO = new DetalleEdificioDAO();
             deedDAO.setConexion(conexion);
-            
+
             // Conexion fecha
             fechaDAO feDAO = new fechaDAO();
             feDAO.setConexion(conexion);
-            
+
             edificio ed = new edificio();
             administrador ad = new administrador();
             detalleEdificio deed = new detalleEdificio();
@@ -84,24 +83,37 @@ public class fillModificarServlet extends HttpServlet {
             //variables
             int idEdConvertido = 0;
             //
-            String idEdificio = request.getParameter("id_edificio");
-            idEdConvertido = Integer.parseInt(idEdificio);
-            
-            
-            ed =edDAO.findbyIdEdificio(idEdConvertido);
-            System.out.println("nombre edificio : "+ ed.getNombreEdificio());
-            request.setAttribute("ed",ed);
-            
-            ad = adDAO.findbyIdEdificio(idEdConvertido);
-            request.setAttribute("ad",ad);
-                       
-            deed = deedDAO.findbyIdEdificio(idEdConvertido);
-            
-            request.setAttribute("deed",deed);        
-                        
-            fe = feDAO.findbyIdEdificio(idEdConvertido);
-            request.setAttribute("fe",fe);
-            
+            //Comprovar usuario
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin")) {
+                    String idEdificio = request.getParameter("id_edificio");
+                    idEdConvertido = Integer.parseInt(idEdificio);
+
+                    ed = edDAO.findbyIdEdificio(idEdConvertido);
+                    System.out.println("nombre edificio : " + ed.getNombreEdificio());
+                    request.setAttribute("ed", ed);
+
+                    ad = adDAO.findbyIdEdificio(idEdConvertido);
+                    request.setAttribute("ad", ad);
+
+                    deed = deedDAO.findbyIdEdificio(idEdConvertido);
+
+                    request.setAttribute("deed", deed);
+
+                    fe = feDAO.findbyIdEdificio(idEdConvertido);
+                    request.setAttribute("fe", fe);
+                    request.getRequestDispatcher("/modificar-edificio.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
+            //
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
             JOptionPane.showMessageDialog(null, connectionException.getMessage());
@@ -113,7 +125,7 @@ public class fillModificarServlet extends HttpServlet {
             } catch (Exception noGestionar) {
             }
         }
-        request.getRequestDispatcher("/modificar-edificio.jsp").forward(request, response);
+        
     }
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 

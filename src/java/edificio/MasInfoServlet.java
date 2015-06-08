@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package edificio;
 
 import administrador.administrador;
@@ -36,8 +35,10 @@ import javax.sql.DataSource;
  */
 @WebServlet(name = "MasInfoServlet", urlPatterns = {"/MasInfoServlet"})
 public class MasInfoServlet extends HttpServlet {
+
     @Resource(name = "jdbc/Proyectoempresa")
     private DataSource ds;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -49,12 +50,12 @@ public class MasInfoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         Connection conexion = null;
-        int tipoInst=0;
-        int tipo=0;
-        int idEmp=0;
-        int tipoEmp=0;
+        int tipoInst = 0;
+        int tipo = 0;
+        int idEmp = 0;
+        int tipoEmp = 0;
         /*
          *Establecer conexion
          */
@@ -81,46 +82,60 @@ public class MasInfoServlet extends HttpServlet {
             feDAO.setConexion(conexion);
             fecha fe = new fecha();
             //Conexion empresagas
-             empresagasDAO emDAO = new empresagasDAO();
-             emDAO.setConexion(conexion);
-             empresagas em = new empresagas();
-             //Conexion
-             instalacionDAO instDAO = new instalacionDAO();
-             instDAO.setConexion(conexion);
-             instalacion inst = new instalacion();
-            //variables
-            int idEdConvertido = 0;
-            //
-            String idEdificio = request.getParameter("id_edificio");
-            idEdConvertido = Integer.parseInt(idEdificio);
-            ed =edDAO.findbyIdEdificio(idEdConvertido);
-            
-            request.setAttribute("ed",ed);
-            ad = adDAO.findbyIdEdificio(idEdConvertido);
-            request.setAttribute("ad",ad);
-            fe = feDAO.findbyIdEdificio(idEdConvertido);
-            System.out.println("nose "+ fe.fechaInspeccion);
-            request.setAttribute("fe",fe);
-            deed = deedDAO.findbyIdEdificio(idEdConvertido);
-            request.setAttribute("deed",deed); 
-            
-            tipo =ed.getIdGas();
-            gas = gasDAO.findbyIdGas(tipo);
-            
-            request.setAttribute("gas",gas);
-            
-            idEmp = ed.getIdEmpresa();
-            em = emDAO.findbyIdEmpresagas(idEmp);
-            
-            request.setAttribute("em",em);                 
-            
-            
-            tipoInst = deed.getTipoInstalacion();
-            inst = instDAO.findbyTipoInst(tipoInst);
-            request.setAttribute("inst",inst);
+            empresagasDAO emDAO = new empresagasDAO();
+            emDAO.setConexion(conexion);
+            empresagas em = new empresagas();
+            //Conexion
+            instalacionDAO instDAO = new instalacionDAO();
+            instDAO.setConexion(conexion);
+            instalacion inst = new instalacion();
+
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            System.out.println("tipo de usuario : "+userSession);
+            try {
+                if (userSession.equals("admin") || userSession.equals("vende")) {
+                    //variables
+                    int idEdConvertido = 0;
+                    //
+                    String idEdificio = request.getParameter("id_edificio");
+                    idEdConvertido = Integer.parseInt(idEdificio);
+                    ed = edDAO.findbyIdEdificio(idEdConvertido);
+
+                    request.setAttribute("ed", ed);
+                    ad = adDAO.findbyIdEdificio(idEdConvertido);
+                    request.setAttribute("ad", ad);
+                    fe = feDAO.findbyIdEdificio(idEdConvertido);
+                    System.out.println("nose " + fe.fechaInspeccion);
+                    request.setAttribute("fe", fe);
+                    deed = deedDAO.findbyIdEdificio(idEdConvertido);
+                    request.setAttribute("deed", deed);
+
+                    tipo = ed.getIdGas();
+                    gas = gasDAO.findbyIdGas(tipo);
+
+                    request.setAttribute("gas", gas);
+
+                    idEmp = ed.getIdEmpresa();
+                    em = emDAO.findbyIdEmpresagas(idEmp);
+
+                    request.setAttribute("em", em);
+
+                    tipoInst = deed.getTipoInstalacion();
+                    inst = instDAO.findbyTipoInst(tipoInst);
+                    request.setAttribute("inst", inst);
+                    request.getRequestDispatcher("/mas-info.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
+            //fin catch de session
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
-            
 
         } finally {
 
@@ -129,7 +144,7 @@ public class MasInfoServlet extends HttpServlet {
             } catch (Exception noGestionar) {
             }
         }
-        request.getRequestDispatcher("/mas-info.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

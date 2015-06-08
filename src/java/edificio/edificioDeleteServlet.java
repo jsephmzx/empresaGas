@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package edificio;
 
 import administrador.administradorDAO;
@@ -28,8 +27,10 @@ import javax.swing.JOptionPane;
  */
 @WebServlet(name = "edificioDeleteServlet", urlPatterns = {"/edificioDeleteServlet"})
 public class edificioDeleteServlet extends HttpServlet {
-@Resource(name = "jdbc/Proyectoempresa")
+
+    @Resource(name = "jdbc/Proyectoempresa")
     private DataSource ds;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -65,17 +66,29 @@ public class edificioDeleteServlet extends HttpServlet {
             // Conexion fecha
             fechaDAO feDAO = new fechaDAO();
             feDAO.setConexion(conexion);
+            //Comprovar usuario
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin")) {
+                    // Recepcion de parametros
+                    int idEdificio = Integer.parseInt(request.getParameter("id_edificio"));
 
-            // Recepcion de parametros
-            int idEdificio = Integer.parseInt(request.getParameter("id_edificio"));
+                    if (JOptionPane.showConfirmDialog(null, "¿Seguro que Desea Eliminar?", "Precaucion", 0) == 0) {
 
-            if (JOptionPane.showConfirmDialog(null, "¿Seguro que Desea Eliminar?", "Precaucion", 0) == 0) {
-
-                //eliminacion edificio
-                edDAO.delete(idEdificio);
-                JOptionPane.showMessageDialog(null, "Edificio Eliminado");
+                        //eliminacion edificio
+                        edDAO.delete(idEdificio);
+                        JOptionPane.showMessageDialog(null, "Edificio Eliminado");
+                    }
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-
+            //
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
             JOptionPane.showMessageDialog(null, connectionException.getMessage());
