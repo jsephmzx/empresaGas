@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package usuario;
 
 import java.io.IOException;
@@ -24,8 +23,10 @@ import javax.sql.DataSource;
  */
 @WebServlet(name = "usuarioListaServlet", urlPatterns = {"/usuarioListaServlet"})
 public class usuarioListaServlet extends HttpServlet {
+
     @Resource(name = "jdbc/Proyectoempresa")
     private DataSource ds;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,19 +48,32 @@ public class usuarioListaServlet extends HttpServlet {
             // Conexion edificio
             usuarioDAO usDAO = new usuarioDAO();
             usDAO.setConexion(conexion);
-            ArrayList<usuario> listaUsuario = new ArrayList<usuario>();
-            String listarUsuarios = request.getParameter("listarUsuarios");
-            request.setAttribute("listarUsuarios", listarUsuarios);
-            System.out.println("filtrado :"+listarUsuarios);
-            if (listarUsuarios.equals("TODOS")) {
-                System.out.println("entra en if");
-                listaUsuario = (ArrayList<usuario>) usDAO.getAll();
-            }//else{listaEdificio = edDAO.findBySello(request.getParameter(""));}
-            request.setAttribute("lista", listaUsuario);
-            
+            //comprobar sesion
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin")) {
+                    ArrayList<usuario> listaUsuario = new ArrayList<usuario>();
+                    String listarUsuarios = request.getParameter("listarUsuarios");
+                    request.setAttribute("listarUsuarios", listarUsuarios);
+                    System.out.println("filtrado :" + listarUsuarios);
+                    if (listarUsuarios.equals("TODOS")) {
+                        System.out.println("entra en if");
+                        listaUsuario = (ArrayList<usuario>) usDAO.getAll();
+                    }//else{listaEdificio = edDAO.findBySello(request.getParameter(""));}
+                    request.setAttribute("lista", listaUsuario);
+                    request.getRequestDispatcher("/listarUsuarios.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
+            //fin catch sesion
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
-            
 
         } finally {
 
@@ -68,7 +82,7 @@ public class usuarioListaServlet extends HttpServlet {
             } catch (Exception noGestionar) {
             }
         }
-        request.getRequestDispatcher("/listarUsuarios.jsp").forward(request, response);
+        
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

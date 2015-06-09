@@ -48,37 +48,51 @@ public class adminChangeServlet extends HttpServlet {
             usuario hi = new usuario();
             //variables
             boolean error = false;
-            /*
-             *Recibir parametros
-             */
-            String idUsuario = request.getParameter("id_usuario");
-            String nombreUsuario = request.getParameter("nombre_usuario");
-            String contrasena = request.getParameter("contrasena");
-            String emailUsuario = request.getParameter("email_usuario");
-            String tipoUsuario = request.getParameter("tipo_usuario");
-            String listarUsuarios = request.getParameter("listarUsuarios");            
-            request.setAttribute("listarUsuarios", listarUsuarios);
-            
-            int idUser = Integer.parseInt(idUsuario);
-            if (tipoUsuario == null) {
-                request.setAttribute("agregar5", 5);
-                error = true;
+            //Comprovar sesion
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin")) {
+                    /*
+                     *Recibir parametros
+                     */
+                    String idUsuario = request.getParameter("id_usuario");
+                    String nombreUsuario = request.getParameter("nombre_usuario");
+                    String contrasena = request.getParameter("contrasena");
+                    String emailUsuario = request.getParameter("email_usuario");
+                    String tipoUsuario = request.getParameter("tipo_usuario");
+                    String listarUsuarios = request.getParameter("listarUsuarios");
+                    request.setAttribute("listarUsuarios", listarUsuarios);
+
+                    int idUser = Integer.parseInt(idUsuario);
+                    if (tipoUsuario == null) {
+                        request.setAttribute("agregar5", 5);
+                        error = true;
+                    }
+                    System.out.println("waaa");
+                    if (!error) {
+                        request.setAttribute("error", error);
+                        usuario us = new usuario();
+                        us.setIdUsuario(idUser);
+                        us.setNombreUsuario(nombreUsuario);
+                        us.setContrasena(contrasena);
+                        us.setEmailUsuario(emailUsuario);
+                        us.setTipoUsuario(tipoUsuario);
+                        usDAO.update(us);
+                        //mensaje exito
+                        exito = 1;
+                        request.setAttribute("modificar", 1);
+
+                    }
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-            System.out.println("waaa");
-            if (!error) {
-                request.setAttribute("error", error);
-                usuario us = new usuario();
-                us.setIdUsuario(idUser);
-                us.setNombreUsuario(nombreUsuario);
-                us.setContrasena(contrasena);
-                us.setEmailUsuario(emailUsuario);
-                us.setTipoUsuario(tipoUsuario);
-                usDAO.update(us);
-                //mensaje exito
-                exito = 1;
-                request.setAttribute("modificar", 1);  
-                
-            }
+            //termino del catch
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
             System.out.println("Conexion Fallida");

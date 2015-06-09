@@ -40,28 +40,31 @@ public class fillModificarUserServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         Connection conexion = null;
-        
+
         try {
-             conexion = ds.getConnection();
+            conexion = ds.getConnection();
             // Conexion edificio
             usuarioDAO usDAO = new usuarioDAO();
             usDAO.setConexion(conexion);
-            
-            usuario us = new usuario();
-            String nombreUs = request.getParameter("nombre_sesion");
-            System.out.println("nombre usuario sesion " + nombreUs);
-            us = usDAO.findbyIdUsuario(nombreUs);
-            request.setAttribute("us", us);
-            
-            //
-           // request.getSession().setAttribute("idUsuario",idUsuario);
-           // request.getSession().setAttribute("nombreUsuario",nombreUsuario);
-            //request.getSession().setAttribute("tipoUsuario",tipoUsuario);
-            //request.getSession().setAttribute("emailUsuario",emailUsuario);
-            //request.getSession().setAttribute("contrasena",contrasena);
-       //     System.out.println("nombre edificio : "+ us.getNombreEdificio());
-
-            /*  ¨*/
+            //comprovar sesion
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin") || userSession.equals("vende")) {
+                    usuario us = new usuario();
+                    String nombreUs = request.getParameter("nombre_sesion");
+                    System.out.println("nombre usuario sesion " + nombreUs);
+                    us = usDAO.findbyIdUsuario(nombreUs);
+                    request.setAttribute("us", us);
+                    request.getRequestDispatcher("/modificarUsuario.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
             JOptionPane.showMessageDialog(null, connectionException.getMessage());
@@ -73,7 +76,7 @@ public class fillModificarUserServlet extends HttpServlet {
             } catch (Exception noGestionar) {
             }
         }
-        request.getRequestDispatcher("/modificarUsuario.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

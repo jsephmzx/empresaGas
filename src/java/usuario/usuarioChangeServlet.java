@@ -39,61 +39,74 @@ public class usuarioChangeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         Connection conexion = null;
-        int exito=0;
+        int exito = 0;
         try {
             conexion = ds.getConnection();
 
             // Conexion usuario
             usuarioDAO usDAO = new usuarioDAO();
             usDAO.setConexion(conexion);
+            //comprobar sesion
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin") || userSession.equals("vende")) {
+                    //variables
+                    validarEmail mail = new validarEmail();
+                    usuario us = new usuario();
+                    boolean emailCorrecto = false;
+                    boolean error = false;
+                    /*
+                     *Recibir parametros
+                     */
+                    String idUsuario = request.getParameter("id_usuario");
+                    String nombreUsuario = request.getParameter("nombre_usuario");
+                    String contrasena = request.getParameter("contrasena");
+                    String emailUsuario = request.getParameter("email_usuario");
+                    String tipoUsuario = request.getParameter("tipo_usuario");
+                    int idUser = Integer.parseInt(idUsuario);
+                    us.setIdUsuario(idUser);
+                    System.out.println("id user :" + us.getIdUsuario());
 
-            //variables
-            validarEmail mail = new validarEmail();
-            usuario us = new usuario();
-            boolean emailCorrecto = false;
-            boolean error = false;
-            /*
-             *Recibir parametros
-             */
-            String idUsuario = request.getParameter("id_usuario");
-            String nombreUsuario = request.getParameter("nombre_usuario");
-            String contrasena = request.getParameter("contrasena");
-            String emailUsuario = request.getParameter("email_usuario");
-            String tipoUsuario = request.getParameter("tipo_usuario");
-            int idUser = Integer.parseInt(idUsuario);
-            us.setIdUsuario(idUser);
-            System.out.println("id user :"+us.getIdUsuario());
-            
-            us.setNombreUsuario(nombreUsuario);
-            us.setContrasena(contrasena);
-            us.setEmailUsuario(emailUsuario);
-            us.setTipoUsuario(tipoUsuario);
-            request.setAttribute("us", us);
-            // validar mail administrador
-            emailCorrecto = validarEmail.validateEmail(emailUsuario);
-            //valida mail
-            if (emailCorrecto == false) {
-                request.setAttribute("agregar4", 4);
-                emailCorrecto = true;
-                error = true;
+                    us.setNombreUsuario(nombreUsuario);
+                    us.setContrasena(contrasena);
+                    us.setEmailUsuario(emailUsuario);
+                    us.setTipoUsuario(tipoUsuario);
+                    request.setAttribute("us", us);
+                    // validar mail administrador
+                    emailCorrecto = validarEmail.validateEmail(emailUsuario);
+                    //valida mail
+                    if (emailCorrecto == false) {
+                        request.setAttribute("agregar4", 4);
+                        emailCorrecto = true;
+                        error = true;
+                    }
+
+                    if (!error) {
+                        usuario user = new usuario();
+                        user.setIdUsuario(idUser);
+                        user.setNombreUsuario(nombreUsuario);
+                        user.setContrasena(contrasena);
+                        user.setEmailUsuario(emailUsuario);
+                        user.setTipoUsuario(tipoUsuario);
+                        usDAO.update(user);
+                        //mensaje exito
+                        exito = 1;
+                        request.setAttribute("email", 1);
+                        emailUsuario = null;
+                        us.setEmailUsuario(emailUsuario);
+                    }
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-            
-            if (!error) {
-                usuario user = new usuario();
-                user.setIdUsuario(idUser);
-                user.setNombreUsuario(nombreUsuario);
-                user.setContrasena(contrasena);
-                user.setEmailUsuario(emailUsuario);
-                user.setTipoUsuario(tipoUsuario);
-                usDAO.update(user);
-                //mensaje exito
-                exito = 1;
-                request.setAttribute("email", 1);
-                emailUsuario =null;
-                us.setEmailUsuario(emailUsuario);
-            }
+            //termino de catch
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
             System.out.println("Conexion Fallida");
@@ -103,13 +116,12 @@ request.setCharacterEncoding("UTF-8");
             } catch (Exception noGestionar) {
             }
         }
-        if(exito==1){
-        request.getRequestDispatcher("/modificarUsuario.jsp").forward(request, response);
-        }
-        else{
+        if (exito == 1) {
+            request.getRequestDispatcher("/modificarUsuario.jsp").forward(request, response);
+        } else {
             request.getRequestDispatcher("/modificarUsuario.jsp").forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -48,63 +48,76 @@ public class contrasenaChangeServlet extends HttpServlet {
             // Conexion usuario
             usuarioDAO usDAO = new usuarioDAO();
             usDAO.setConexion(conexion);
+            //Comprobar sesion
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin") || userSession.equals("vende")) {
+                    //variables
 
-            //variables
-            //  boolean emailCorrecto = false;
-            boolean error = false;
-            usuario us = new usuario();
-            /*
-             *Recibir parametros
-             */
+                    boolean error = false;
+                    usuario us = new usuario();
+                    /*
+                     *Recibir parametros
+                     */
 
-            String idUsuario = request.getParameter("id_usuario");
-            String nombreUsuario = request.getParameter("nombre_usuario");
-            String contrasenaBD = request.getParameter("contrasenaBD");
-            String contrasena = request.getParameter("contrasena");//nueva
-            String contrasenaV = request.getParameter("contrasenaV");//repetir nueva
-            String contrasenaA = request.getParameter("contrasenaA");//ingreso antigua para validar
-            String emailUsuario = request.getParameter("email_usuario");
-            String tipoUsuario = request.getParameter("tipo_usuario");
-            int idUser = Integer.parseInt(idUsuario);
-            us.setIdUsuario(idUser);
-            us.setNombreUsuario(nombreUsuario);
-            us.setContrasena(contrasena);
-            us.setEmailUsuario(emailUsuario);
-            us.setTipoUsuario(tipoUsuario);
-            request.setAttribute("us", us);
-            // validar si contraseña antigua es igual a la anterior
-            System.out.println("nombreUsuario" + nombreUsuario);
-            if (!contrasenaBD.equals(contrasenaA)) {
-                request.setAttribute("agregar5", 5);
-                error = true;
+                    String idUsuario = request.getParameter("id_usuario");
+                    String nombreUsuario = request.getParameter("nombre_usuario");
+                    String contrasenaBD = request.getParameter("contrasenaBD");
+                    String contrasena = request.getParameter("contrasena");//nueva
+                    String contrasenaV = request.getParameter("contrasenaV");//repetir nueva
+                    String contrasenaA = request.getParameter("contrasenaA");//ingreso antigua para validar
+                    String emailUsuario = request.getParameter("email_usuario");
+                    String tipoUsuario = request.getParameter("tipo_usuario");
+                    int idUser = Integer.parseInt(idUsuario);
+                    us.setIdUsuario(idUser);
+                    us.setNombreUsuario(nombreUsuario);
+                    us.setContrasena(contrasena);
+                    us.setEmailUsuario(emailUsuario);
+                    us.setTipoUsuario(tipoUsuario);
+                    request.setAttribute("us", us);
+                    // validar si contraseña antigua es igual a la anterior
+                    System.out.println("nombreUsuario" + nombreUsuario);
+                    if (!contrasenaBD.equals(contrasenaA)) {
+                        request.setAttribute("agregar5", 5);
+                        error = true;
+                    }
+                    //valida si contraseñas son iguales
+                    if (!contrasena.equals(contrasenaV)) {
+                        request.setAttribute("agregar2", 2);
+
+                        error = true;
+                    }
+
+                    if (!error) {
+
+                        //   usuario user = new usuario();
+                        usuario user = new usuario();
+                        user.setNombreUsuario(nombreUsuario);
+                        user.setContrasena(contrasena);
+                        user.setEmailUsuario(emailUsuario);
+                        user.setTipoUsuario(tipoUsuario);
+                        user.setIdUsuario(idUser);
+                        System.out.println("id " + idUser);
+                        System.out.println("name " + nombreUsuario);
+                        System.out.println("mail " + emailUsuario);
+                        System.out.println("tipo " + tipoUsuario);
+                        System.out.println("pass " + contrasena);
+                        System.out.println("contraseña getContraseña :" + user.getContrasena());
+                        usDAO.update(user);
+                        //mensaje exito
+                        exito = 1;
+                        request.setAttribute("password", 1);
+                    }
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-            //valida si contraseñas son iguales
-            if (!contrasena.equals(contrasenaV)) {
-                request.setAttribute("agregar2", 2);
-
-                error = true;
-            }
-
-            if (!error) {
-                
-             //   usuario user = new usuario();
-                usuario user = new usuario();                               
-                user.setNombreUsuario(nombreUsuario);
-                user.setContrasena(contrasena);
-                user.setEmailUsuario(emailUsuario);
-                user.setTipoUsuario(tipoUsuario);
-                user.setIdUsuario(idUser);
-                System.out.println("id "+idUser);
-                System.out.println("name "+nombreUsuario);
-                System.out.println("mail "+emailUsuario);
-                System.out.println("tipo "+tipoUsuario);
-                System.out.println("pass "+contrasena);
-                System.out.println("contraseña getContraseña :"+user.getContrasena());
-                usDAO.update(user);
-                //mensaje exito
-                exito = 1;
-                request.setAttribute("password", 1);
-            }
+            //termino catch session
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
             System.out.println("Conexion Fallida");

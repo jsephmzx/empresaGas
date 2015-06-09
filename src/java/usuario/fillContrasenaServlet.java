@@ -45,21 +45,26 @@ public class fillContrasenaServlet extends HttpServlet {
             // Conexion edificio
             usuarioDAO usDAO = new usuarioDAO();
             usDAO.setConexion(conexion);
-            
-            usuario us = new usuario();
-            String nombreUs = request.getParameter("nombre_sesion");
-            System.out.println("nombre usuario sesion " + nombreUs);
-            us = usDAO.findbyIdUsuario(nombreUs);
-            request.setAttribute("us", us);
-            
-            //String idUser = request.getParameter("id_usuario");
-            //int idUsuario = Integer.parseInt(idUser);
-            //us = usDAO.findbyIdUsuarios(idUsuario);
-            //request.setAttribute("us", us);
-            //request.getSession().setAttribute("idUsuario", idUsuario);
-            //     System.out.println("nombre edificio : "+ us.getNombreEdificio());
-
-            /*  ¨*/
+            //comprobar sesion
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin") || userSession.equals("vende")) {
+                    usuario us = new usuario();
+                    String nombreUs = request.getParameter("nombre_sesion");
+                    System.out.println("nombre usuario sesion " + nombreUs);
+                    us = usDAO.findbyIdUsuario(nombreUs);
+                    request.setAttribute("us", us);
+                    request.getRequestDispatcher("/modificarContrasena.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
+            //termino catch sesion
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
             JOptionPane.showMessageDialog(null, connectionException.getMessage());
@@ -71,7 +76,7 @@ public class fillContrasenaServlet extends HttpServlet {
             } catch (Exception noGestionar) {
             }
         }
-        request.getRequestDispatcher("/modificarContrasena.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package usuario;
 
 import java.io.IOException;
@@ -24,8 +23,10 @@ import javax.swing.JOptionPane;
  */
 @WebServlet(name = "usuarioDeleteServlet", urlPatterns = {"/usuarioDeleteServlet"})
 public class usuarioDeleteServlet extends HttpServlet {
-@Resource(name = "jdbc/Proyectoempresa")
+
+    @Resource(name = "jdbc/Proyectoempresa")
     private DataSource ds;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -48,19 +49,30 @@ public class usuarioDeleteServlet extends HttpServlet {
             // Conexion edificio
             usuarioDAO usDAO = new usuarioDAO();
             usDAO.setConexion(conexion);
-            // Conexion administrador
+            //Comprobar sesion
+            String userSession = (String) request.getSession().getAttribute("tipo");
+            try {
+                if (userSession.equals("admin")) {
+                    // Recepcion de parametros
+                    int idUsuario = Integer.parseInt(request.getParameter("id_usuario"));
 
+                    if (JOptionPane.showConfirmDialog(null, "¿Seguro que Desea Eliminar?", "Precaucion", 0) == 0) {
 
-            // Recepcion de parametros
-            int idUsuario = Integer.parseInt(request.getParameter("id_usuario"));
-
-            if (JOptionPane.showConfirmDialog(null, "¿Seguro que Desea Eliminar?", "Precaucion", 0) == 0) {
-
-                //eliminacion edificio
-                usDAO.delete(idUsuario);
-                JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+                        //eliminacion edificio
+                        usDAO.delete(idUsuario);
+                        JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+                        request.getRequestDispatcher("/usuarioListaServlet?listarUsuarios=TODOS").forward(request, response);
+                    }
+                } else {
+                    request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
+                }
+            } catch (Exception sessionException) {
+                /* enviar a la vista de login */
+                System.out.println("no ha iniciado session");
+                /*enviar al login*/
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
-
+            //fin catch sesion
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
             JOptionPane.showMessageDialog(null, connectionException.getMessage());
@@ -72,7 +84,7 @@ public class usuarioDeleteServlet extends HttpServlet {
             } catch (Exception noGestionar) {
             }
         }
-        request.getRequestDispatcher("/usuarioListaServlet?listarUsuarios=TODOS").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
