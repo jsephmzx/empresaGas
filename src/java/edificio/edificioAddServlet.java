@@ -87,7 +87,10 @@ public class edificioAddServlet extends HttpServlet {
             // Conexion fecha
             fechaDAO feDAO = new fechaDAO();
             feDAO.setConexion(conexion);
-
+            
+            //Conexion conducto
+            conductoDAO condDAO = new conductoDAO();
+            condDAO.setConexion(conexion);
             //Comprovar usuario
             String userSession = (String) request.getSession().getAttribute("tipo");
             try {
@@ -707,6 +710,27 @@ public class edificioAddServlet extends HttpServlet {
 
                         int idEdificio = edDAO.getLastId();
                         System.out.println("id edificio :" + idEdificio);
+
+                        /*Creación de los conductos automaticamente*/
+                        
+                        for (int cont = 0; cont < conducto; cont++) {
+                            conducto conduc = new conducto();
+                            conduc.setCantDeptoConducto(0);
+                            conduc.setCondSombrete("n");
+                            conduc.setSecciones("n");
+                            conduc.setConInterior("n");
+                            conduc.setRelacionLados("n");
+                            conduc.setPruebaTiro("n");
+                            conduc.setTomaAire("n");
+                            conduc.setMaterialidad("n");
+                            conduc.setObservaciones("");
+                            conduc.setSello("1");
+                            conduc.setSelloConducto("1");
+                            conduc.setIdEdificio(idEdificio);
+                            condDAO.insert(conduc);
+                            System.out.println("ingresando conductos ");
+                        }
+                        /*Fin de la creacion de los conductos*/
                         /*Insertar id en los campos necesarios*/
 
                         fe.setIdEdificio(idEdificio);
@@ -779,6 +803,11 @@ public class edificioAddServlet extends HttpServlet {
                         request.setAttribute("despiche", despiche);
                         request.setAttribute("potenciaReal", potenciaReal);
 
+                        if (exito == 1) {
+                            request.getRequestDispatcher("/index.jsp").forward(request, response);
+                        } else {
+                            request.getRequestDispatcher("/index.jsp").forward(request, response);
+                        }
                     }
                 } else {
                     request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
@@ -797,11 +826,6 @@ public class edificioAddServlet extends HttpServlet {
                 conexion.close();
             } catch (Exception noGestionar) {
             }
-        }
-        if (exito == 1) {
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
 
     }
