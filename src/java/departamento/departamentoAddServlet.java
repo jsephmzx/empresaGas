@@ -58,7 +58,8 @@ public class departamentoAddServlet extends HttpServlet {
                     String idConducto = request.getParameter("idConducto");
                     System.out.println("ID del conducto : " + idConducto);
                     //String cantDuctos = request.getParameter("cantDuctos");
-                    String descripcion = request.getParameter("descripcion");
+                    String observacion = request.getParameter("observacion");
+                    String propietario = request.getParameter("propietario");
                     String sello = request.getParameter("sello");
                     String numero = request.getParameter("numero");
 
@@ -159,8 +160,10 @@ public class departamentoAddServlet extends HttpServlet {
                         if (error == 0) {
                             depto.setIdConductos(id);
                             //depto.setCantConductos(cantidadDuctos);
-                            depto.setDescripcion(descripcion);
+                            depto.setDescripcion("");
+                            depto.setObservacion(observacion);
                             depto.setSelloDepartamento(sello);
+                            depto.setPropietario(propietario);
                             depto.setNumDepartamento(numeroDepto);
                             depto.setInfo(0);
                             deptDAO.insert(depto);

@@ -20,6 +20,8 @@ public class departamento implements Serializable{
     public String selloDepartamento;
     public int numDepartamento;
     public int info;
+    public String observacion;
+    public String Propietario;
 
     
 
@@ -82,4 +84,22 @@ public class departamento implements Serializable{
     public void setInfo(int info) {
         this.info = info;
     }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    public String getPropietario() {
+        return Propietario;
+    }
+
+    public void setPropietario(String Propietario) {
+        this.Propietario = Propietario;
+    }
+    
+    
 }

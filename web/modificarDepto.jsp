@@ -102,20 +102,34 @@
                                         <c:out value="${msgErrorNumero}"></c:out>
                                         </div>
                                 </c:if>
+                                <c:if test="${msgErrorPropietario != null}">
+                                    <div class="alert alert-danger">
+                                        <c:out value="${msgErrorPropietario}"></c:out>
+                                        </div>
+                                </c:if>
                                 <form method="post" role="form" action="departamentoUpdateServlet">
                                     <div class="form-group">
-
                                         <input type="hidden" name="id" size="7" class="form-control" value="<c:out value="${depto.idDepartamento}"></c:out>" hidden>  
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
-                                            <input type="text" name="descripcion" size="45" class="form-control" value="${depto.descripcion}"/>
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="numero">Numero Depto</label>
-                                        <input type="text" name="numero" size="45" class="form-control" value="${depto.numDepartamento}"/>
+                                            <label for="numero">Numero Depto</label>
+                                            <input type="text" name="numero" size="45" class="form-control" value="${depto.numDepartamento}"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sello</label>
+                                        <select name="sello" class="form-control-textos">
+                                                <option value=1 <c:if test="${depto.selloDepartamento == 1}">selected</c:if>> VERDE</option>
+                                                <option value=2 <c:if test="${depto.selloDepartamento == 2}">selected</c:if>> ROJO</option>  
+                                                <option value=3 <c:if test="${depto.selloDepartamento == 3}">selected</c:if>> AMARILLO</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Observación</label>
+                                        <textarea name="observacion" rows="7" cols="50" ><c:out value="${depto.observacion}"></c:out></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Propietario</label>
+                                        <input type="text" name="propietario" class="form-control" value="<c:out value="${depto.propietario}"></c:out>"/>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary"><font size="1"><strong>MODIFICAR DEPTO</strong></font></button>

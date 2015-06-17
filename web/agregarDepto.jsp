@@ -112,10 +112,7 @@
                                             <input type="text" name="cantDuctos" size="4" class="form-control"/>
                                             
                                         </div>-->
-                                        <div class="form-group">
-                                            <label for="descripcion">Descripcion</label>
-                                            <input type="text" name="descripcion" size="45" class="form-control"/>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="sello"> Sello Conducto : </label>
                                             <select name="sello" class="form-control-textos">
@@ -164,6 +161,15 @@
                                                     </tr>--%>
                                         </table>  
                                     </div>
+                                        
+                                    <div class="form-group">
+                                        <label>Observación</label>
+                                        <textarea name="observacion" rows="7" cols="50" ></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Propietario</label>
+                                        <input type="text" name="propietario" class="form-control"/>
+                                    </div>    
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary"><font size="1"><strong>AGREGAR DEPTO</strong></font></button>
                                         <button class="btn btn-primary btn-warning" name="btnAdd" type="button" onclick="location.href = 'conductoMainServlet';"><font size="1"><strong>Volver</strong></font></button>

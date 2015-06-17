@@ -43,7 +43,7 @@ public class departamentoDAO implements Serializable {
         PreparedStatement sentence = null;
 
         try {
-            String sql = "insert into departamento (id_conducto,cant_conductos,descripcion,sello_departamento,num_departamento,info) values (?,?,?,?,?,?)";
+            String sql = "insert into departamento (id_conducto,cant_conductos,descripcion,sello_departamento,num_departamento,info,observacion,propietario) values (?,?,?,?,?,?,?,?)";
             sentence = conexion.prepareStatement(sql);
             sentence.setInt(1, reg.getIdConductos());
             sentence.setInt(2, reg.getCantConductos());
@@ -51,6 +51,8 @@ public class departamentoDAO implements Serializable {
             sentence.setString(4, reg.getSelloDepartamento());
             sentence.setInt(5, reg.getNumDepartamento());
             sentence.setInt(6, reg.getInfo());
+            sentence.setString(7, reg.getObservacion());
+            sentence.setString(8, reg.getPropietario());
 
             sentence.executeUpdate();
 
@@ -96,6 +98,8 @@ public class departamentoDAO implements Serializable {
                 reg.setSelloDepartamento(result.getString("sello_departamento"));
                 reg.setNumDepartamento(result.getInt("num_departamento"));
                 reg.setInfo(result.getInt("info"));
+                reg.setObservacion(result.getString("observacion"));
+                reg.setPropietario(result.getString("propietario"));
 
                 list.add(reg);
             }
@@ -141,6 +145,8 @@ public class departamentoDAO implements Serializable {
                 reg.setSelloDepartamento(result.getString("sello_departamento"));
                 reg.setNumDepartamento(result.getInt("num_departamento"));
                 reg.setInfo(result.getInt("info"));
+                reg.setObservacion(result.getString("observacion"));
+                reg.setPropietario(result.getString("propietario"));
                 list.add(reg);
             }
         } catch (MySQLSyntaxErrorException ex) {
@@ -203,7 +209,7 @@ public class departamentoDAO implements Serializable {
         PreparedStatement sentence = null;
 
         try {
-            String sql = "update departamento set id_edificio=?,cant_conductos=?,id_conductos=?,descripcion=?,sello_departamento=?,num_departamento=? where id_departamento=?";
+            String sql = "update departamento set id_edificio=?,cant_conductos=?,id_conductos=?,descripcion=?,sello_departamento=?,num_departamento=?,observacion=?, propietario=? where id_departamento=?";
 
             sentence = conexion.prepareStatement(sql);
 
@@ -212,7 +218,9 @@ public class departamentoDAO implements Serializable {
             sentence.setString(3, departamento.getDescripcion());
             sentence.setString(4, departamento.getSelloDepartamento());
             sentence.setInt(5, departamento.getNumDepartamento());
-            sentence.setInt(6, departamento.getIdDepartamento());
+            sentence.setString(6, departamento.getObservacion());
+            sentence.setString(7, departamento.getPropietario());
+            sentence.setInt(8, departamento.getIdDepartamento());
             sentence.executeUpdate();
 
         } catch (MySQLSyntaxErrorException ex) {
@@ -285,15 +293,17 @@ public class departamentoDAO implements Serializable {
         }
     }
 
-    public void updateNumberDescription(String description, int number, int idDepto) {
+    public void updateNumberDescription(String sello, int number, String observacion, String propietario, int idDepto) {
         PreparedStatement sentence = null;
         try {
-            String sql = "update departamento set descripcion = ?, num_departamento= ? where id_departamento = ?";
+            String sql = "update departamento set sello_departamento=?, num_departamento= ?, observacion = ?, propietario=? where id_departamento = ?";
             sentence = conexion.prepareStatement(sql);
 
-            sentence.setString(1, description);
+            sentence.setString(1, sello);
             sentence.setInt(2, number);
-            sentence.setInt(3, idDepto);
+            sentence.setString(3, observacion);
+            sentence.setString(4, propietario);
+            sentence.setInt(5, idDepto);
             sentence.executeUpdate();
         } catch (MySQLSyntaxErrorException ex) {
             System.out.println("Error de sintaxis en departamentoDAO, updateNumberDescription() : " + ex);
@@ -330,7 +340,8 @@ public class departamentoDAO implements Serializable {
                 depto.setSelloDepartamento(result.getString("sello_departamento"));
                 depto.setNumDepartamento(result.getInt("num_departamento"));
                 depto.setInfo(result.getInt("info"));
-
+                depto.setObservacion(result.getString("observacion"));
+                depto.setPropietario(result.getString("propietario"));
             }
         } catch (MySQLSyntaxErrorException ex) {
             System.out.println("Error de sintaxis en departamentoDAO, getByIdDepto() : " + ex);

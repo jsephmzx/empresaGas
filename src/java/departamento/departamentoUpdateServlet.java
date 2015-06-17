@@ -42,21 +42,29 @@ public class departamentoUpdateServlet extends HttpServlet {
         Connection conexion = null;
         try {
             conexion = ds.getConnection();
+            departamentoDAO deptoDAO = new departamentoDAO();
+            deptoDAO.setConexion(conexion);
             String userSession = (String) request.getSession().getAttribute("tipo");
             try {
                 if (userSession.equals("admin")) {
                     String id = request.getParameter("id");
-                    String descripcion = request.getParameter("descripcion");
                     String num = request.getParameter("numero");
+                    String sello = request.getParameter("sello");
+                    String observacion = request.getParameter("observacion");
+                    String propietario = request.getParameter("propietario");
                     int idDepto = Integer.parseInt(id);
                     int numDepto = 0;
                     boolean error = false;
 
-                    if (descripcion.equals("") || descripcion == null) {
+                    if (observacion.equals("") || observacion == null) {
                         error = true;
                         request.setAttribute("msgErrorDescripcion", "Error, la descripción no tiene valor");
                     }
 
+                    if (propietario.equals("") || propietario == null) {
+                        error = true;
+                        request.setAttribute("msgErrorPropietario", "Error, No se ha ingresado el nombre del propietario.");
+                    }
                     if (num.equals("") || num == null) {
                         error = true;
                         request.setAttribute("msgErrorNumero", "Error, el Numero de Departamento no tiene un valor valido");
@@ -64,16 +72,17 @@ public class departamentoUpdateServlet extends HttpServlet {
 
                     if (error == true) {
                         /*do nothing*/
+                        departamento depto = new departamento();
+                        depto = deptoDAO.getByIdDepto(idDepto);
+                        request.setAttribute("depto", depto);
                     } else {
                         try {
                             numDepto = Integer.parseInt(num);
                         } catch (Exception ex) {
                         }
 
-                        departamentoDAO deptoDAO = new departamentoDAO();
-                        deptoDAO.setConexion(conexion);
                         try {
-                            deptoDAO.updateNumberDescription(descripcion, numDepto, idDepto);
+                            deptoDAO.updateNumberDescription(sello, numDepto, observacion, propietario, idDepto);
                             request.setAttribute("msgOk", "Se han realizado las modificaciones exitosamente.");
                             departamento depto = new departamento();
                             depto = deptoDAO.getByIdDepto(idDepto);
