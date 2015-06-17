@@ -39,7 +39,7 @@ public class usuarioDAO implements Serializable {
 
         try {
 
-            String sql = "insert into usuario (id_usuario,nombre_usuario,contrasena,tipo_usuario,email_usuario) values (?,?,?,?,?)";
+            String sql = "insert into usuario (id_usuario,nombre_usuario,contrasena,tipo_usuario,email_usuario,rut_usuario,nombre,apellido) values (?,?,?,?,?,?,?,?)";
 
             sentence = conexion.prepareStatement(sql);
 
@@ -48,6 +48,9 @@ public class usuarioDAO implements Serializable {
             sentence.setString(3, reg.getContrasena());
             sentence.setString(4, reg.getTipoUsuario());
             sentence.setString(5, reg.getEmailUsuario());
+            sentence.setString(6, reg.getRutUsuario());
+            sentence.setString(7, reg.getNombre());
+            sentence.setString(8, reg.getApellido());
 
             sentence.executeUpdate();
 
@@ -131,7 +134,10 @@ public class usuarioDAO implements Serializable {
                 reg.setContrasena(result.getString("contrasena"));
                 reg.setTipoUsuario(result.getString("tipo_usuario"));
                 reg.setEmailUsuario(result.getString("email_usuario"));
-
+                reg.setRutUsuario(result.getString("rut_usuario"));
+                reg.setNombre(result.getString("nombre"));
+                reg.setApellido(result.getString("apellido"));
+                
                 list.add(reg);
             }
 
@@ -182,6 +188,9 @@ public class usuarioDAO implements Serializable {
                 reg.setContrasena(result.getString("contrasena"));
                 reg.setTipoUsuario(result.getString("tipo_usuario"));
                 reg.setEmailUsuario(result.getString("email_usuario"));
+                reg.setRutUsuario(result.getString("rut_usuario"));
+                reg.setNombre(result.getString("nombre"));
+                reg.setApellido(result.getString("apellido"));
 
             }
 
@@ -232,6 +241,9 @@ public class usuarioDAO implements Serializable {
                 reg.setContrasena(result.getString("contrasena"));
                 reg.setEmailUsuario(result.getString("email_usuario"));
                 reg.setTipoUsuario(result.getString("tipo_usuario"));
+                reg.setRutUsuario(result.getString("rut_usuario"));
+                reg.setNombre(result.getString("nombre"));
+                reg.setApellido(result.getString("apellido"));
             }
 
         } catch (MySQLSyntaxErrorException ex) {

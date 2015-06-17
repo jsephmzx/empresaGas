@@ -18,7 +18,9 @@ public class usuario implements Serializable{
  public String contrasena;
  public String tipoUsuario;
  public String emailUsuario;
-
+ public String rutUsuario;
+ public String nombre;
+ public String apellido;
     public usuario() {
     }
 
@@ -61,5 +63,30 @@ public class usuario implements Serializable{
     public void setEmailUsuario(String emailUsuario) {
         this.emailUsuario = emailUsuario;
     }
- 
+
+    public String getRutUsuario() {
+        return rutUsuario;
+    }
+
+    public void setRutUsuario(String rutUsuario) {
+        this.rutUsuario = rutUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
+    
 }
