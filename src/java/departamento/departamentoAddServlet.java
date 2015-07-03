@@ -7,6 +7,8 @@ package departamento;
 
 import artefacto.artefacto;
 import artefacto.artefactoDAO;
+import defectoDepto.defectoDepto;
+import defectoDepto.defectoDeptoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -50,6 +52,10 @@ public class departamentoAddServlet extends HttpServlet {
 
             departamentoDAO deptDAO = new departamentoDAO();
             deptDAO.setConexion(conexion);
+
+            defectoDeptoDAO defectoDAO = new defectoDeptoDAO();
+            defectoDAO.setConexion(conexion);
+
             String userSession = (String) request.getSession().getAttribute("tipo");
             try {
                 if (userSession.equals("admin")) {
@@ -65,6 +71,8 @@ public class departamentoAddServlet extends HttpServlet {
 
                     String tipoArtefacto = request.getParameter("tipo_artefacto");
                     String[] Artefactos = request.getParameterValues("tipo_artefacto");
+                    String[] defectos = request.getParameterValues("defectos");
+
                     /*obtener potencias de los artefactos*/
                     String TextCalefont = request.getParameter("TextCalefont");
                     String TextCocina = request.getParameter("TextCocina");
@@ -170,8 +178,10 @@ public class departamentoAddServlet extends HttpServlet {
 
                             int idDepto = 0;
                             idDepto = deptDAO.getLastId();
+                            
+
                             /*Insertar en base de datos los artefactos con sus respectivas potencias*/
-                            for (int x = 0; x < Artefactos.length; x++) {
+                            for(int x = 0; x < Artefactos.length; x++) {
                                 System.out.println("Entra al proceso para comenzar a agregar artefactos");
                                 artefacto reg = new artefacto();
                                 if (Artefactos[x].equals("calefont")) {
@@ -215,9 +225,20 @@ public class departamentoAddServlet extends HttpServlet {
                                     reg.setPotenciaArtefacto(poderCentral);
                                     arteDAO.insert(reg);
                                 }
+                                
+                            }
+                            request.setAttribute("msgOk", "Se ha ingresado un nuevo Departamento exitosamente!");
+                            /*Insertar en la base de datos los defectos correspondientes*/
+                            if (defectos.length > 0) {
+                                for(int y = 0; y < defectos.length; y++) {
+                                    defectoDepto regDef = new defectoDepto ();
+                                    regDef.setIdDepto(idDepto);
+                                    regDef.setDefectoDepto(defectos[y]);
+                                    defectoDAO.insert(regDef);
+                                }
                             }
 
-                            request.setAttribute("msgOk", "Se ha ingresado un nuevo Departamento exitosamente!");
+                            
                         }
                     } catch (Exception parameterException) {
                     } finally {
@@ -230,6 +251,7 @@ public class departamentoAddServlet extends HttpServlet {
             } catch (Exception sessionException) {
                 /* enviar a la vista de login */
                 System.out.println("no ha iniciado session");
+                System.out.println("Error :" + sessionException);
                 /*enviar al login*/
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
             }

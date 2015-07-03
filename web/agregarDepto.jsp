@@ -86,7 +86,7 @@
                         <div class="col-lg-12">
                             <a href="#menu-toggle" class="btn btn-default left-boton" id="menu-toggle"> Menu</a>
                             <h3>Agregar Depto</h3>
-                            <div class="col-lg-4"> 
+                            <div class="col-lg-6"> 
                                 <c:if test="${msgOk != null}">
                                     <div class="alert alert-success">
                                         <c:out value="${msgOk}"></c:out>
@@ -161,7 +161,80 @@
                                                     </tr>--%>
                                         </table>  
                                     </div>
-                                        
+                                    <div class="form-group">
+                                        <label>Posibles Defectos</label>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><input type="checkbox" id="1" name="defectos" value="1"></td>
+                                                <td>Fuga de gas en artefacto<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="2" name="defectos" value="2"> </td>
+                                                <td>Fuga de gas en red<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="3" name="defectos" value="3"> </td>
+                                                <td>Artefacto tipo B C sin conducto de evacuación de gases de la combustión instalados en recintos interiores<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="4" name="defectos" value="4"> </td>
+                                                <td>Existencia de concentración de monóxido de carbono (CO) superior a 50 ppm<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="5" name="defectos" value="5"> </td>
+                                                <td>Dormitorio con artefactos a gas tipo A<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="6" name="defectos" value="6"> </td>
+                                                <td>FLectura de tiro igual o superior a 0, en conducto individual o colectivo<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="7" name="defectos" value="7"> </td>
+                                                <td>Recinto sin ventilaciones que cuente con calefactores tipo A<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="8" name="defectos" value="8"></td>
+                                                    
+                                                <td>Conexión al abastecimiento de gas por medio de un tubo flexible no metálico (elastómero) en contacto consuperficie caliente.<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="9" name="defectos" value="9"></td>
+                                                <td>Arranque sin artefacto a gas conectado y que no se encuentra debidamente sellado.<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="10" name="defectos" value="10"> </td>
+                                                <td>Flexible de conexión visiblemente dañado.<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="11" name="defectos" value="11"> </td>
+                                                <td>Sin tapón arranque<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="12" name="defectos" value="12"> </td>
+                                                <td>Sin ventilación inferior<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="13" name="defectos" value="13"> </td>
+                                                <td>Ducto del calefont no cumple<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="14" name="defectos" value="14"> </td>
+                                                <td>Ducto del calefont no sale a los cuatro vientos<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="15" name="defectos" value="15"> </td>
+                                                <td>Artefacto no enciende<BR></td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="16" name="defectos" value="16"></td>
+                                                <td> Artefacto no enciende</td>        
+                                            </tr>
+                                            <tr>
+                                                <td><input type="checkbox" id="17" name="defectos" value="17"></td>
+                                                <td>Artefacto cocina plato Q1 se apaga en minino o no enciende o llama envolvente lo mismo para los 4 platos<br></td></td>
+                                            </tr>
+                                        </table>
+                                    </div>    
                                     <div class="form-group">
                                         <label>Observación</label>
                                         <textarea name="observacion" rows="7" cols="50" ></textarea>
