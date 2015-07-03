@@ -87,20 +87,25 @@
                         <div class="col-lg-12">
                             <c:if test="${msgOk !=null}">
                                 <div class="alert alert-success">
-                                        <c:out value="${msgOk}"></c:out>
+                                    <c:out value="${msgOk}"></c:out>
+                                    </div>
+                            </c:if>
+                            <c:if test="${msgErrorPotencia !=null}">
+                                <div class="alert alert-danger">
+                                    <c:out value="${msgErrorPotencia}"></c:out>
                                 </div>
                             </c:if>
                             <h3>Cumple las siguientes condiciones</h3>
                             <form action="conductoUpdateServlet" role="form" method="POST">
                                 <input type="hidden" name="id" value="<c:out value="${conducto.idConducto}"></c:out>"/>
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <td></td>
-                                        <td>Si</td>
-                                        <td>No</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Condición Sombrete</td>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td></td>
+                                            <td>Si</td>
+                                            <td>No</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Condición Sombrete</td>
                                         <c:if test="${conducto.condSombrete == 'n'}">
                                             <td><input type="radio" name="cond_sombrete" value="s"/></td>
                                             <td><input type="radio" name="cond_sombrete" value="n" checked/></td>
@@ -137,11 +142,11 @@
                                         <c:if test="${conducto.relacionLados == 's'}">
                                             <td><input type="radio" name="relacion_lados" value="s" checked/></td>
                                             <td><input type="radio" name="relacion_lados" value="n"/></td> 
-                                        </c:if>
-                                        <c:if test="${conducto.relacionLados == 'n'}">
+                                            </c:if>
+                                            <c:if test="${conducto.relacionLados == 'n'}">
                                             <td><input type="radio" name="relacion_lados" value="s"/></td>
                                             <td><input type="radio" name="relacion_lados" value="n" checked/></td>
-                                        </c:if>
+                                            </c:if>
 
                                     </tr>
                                     <tr>
@@ -149,56 +154,76 @@
                                         <c:if test="${conducto.pruebaTiro == 's'}">
                                             <td><input type="radio" name="prueba_tiro" value="s" checked/></td>
                                             <td><input type="radio" name="prueba_tiro" value="n"/></td>
-                                        </c:if>
-                                        <c:if test="${conducto.pruebaTiro == 'n'}">
+                                            </c:if>
+                                            <c:if test="${conducto.pruebaTiro == 'n'}">
                                             <td><input type="radio" name="prueba_tiro" value="s"/></td>
                                             <td><input type="radio" name="prueba_tiro" value="n" checked/></td>
-                                        </c:if>
-                                        
+                                            </c:if>
+
                                     </tr>
                                     <tr>
                                         <td>Toma de Aire</td>
                                         <c:if test="${conducto.tomaAire == 's'}">
                                             <td><input type="radio" name="toma_aire" value="s" checked/></td>
                                             <td><input type="radio" name="toma_aire" value="n"/></td>
-                                        </c:if>
-                                        <c:if test="${conducto.tomaAire == 'n'}">
+                                            </c:if>
+                                            <c:if test="${conducto.tomaAire == 'n'}">
                                             <td><input type="radio" name="toma_aire" value="s"/></td>
                                             <td><input type="radio" name="toma_aire" value="n" checked/></td>
-                                        </c:if>
-                                        
+                                            </c:if>
+
                                     </tr>
                                     <tr>
                                         <td>Materialidad</td>
                                         <c:if test="${conducto.materialidad == 's'}">
                                             <td><input type="radio" name="materialidad" value="s" checked/></td>
                                             <td><input type="radio" name="materialidad" value="n"/></td>
-                                        </c:if>
-                                        <c:if test="${conducto.materialidad == 'n'}">
+                                            </c:if>
+                                            <c:if test="${conducto.materialidad == 'n'}">
                                             <td><input type="radio" name="materialidad" value="s"/></td>
                                             <td><input type="radio" name="materialidad" value="n" checked/></td>
-                                        </c:if>
-                                       
+                                            </c:if>
+
                                     </tr>
                                 </table>
                                 <table class="table table-bordered">
                                     <tr>
                                         <td>Observaciones</td>
                                         <td><input type="text" name="observaciones" value="<c:out value="${conducto.observaciones}"></c:out>"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Sello</td>
-                                        <td> 
-                                            <select name="sello" class="form-control-textos">
-                                                <option value=1 <c:if test="${conducto.sello == 1}">selected</c:if>> VERDE</option>
+                                        </tr>
+                                        <tr>
+                                            <td>Sello</td>
+                                            <td> 
+                                                <select name="sello" class="form-control-textos">
+                                                    <option value=1 <c:if test="${conducto.sello == 1}">selected</c:if>> VERDE</option>
                                                 <option value=2 <c:if test="${conducto.sello == 2}">selected</c:if>> ROJO</option>  
                                                 <option value=3 <c:if test="${conducto.sello == 3}">selected</c:if>> AMARILLO</option>
-                                            </select></td>
+                                                </select></td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td></td>
+                                            <td>Caldera</td>
+                                            <td>Calefont</td>
+                                            <td>Potencia Artefacto</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Artefactos</td>
+                                        <c:if test="${conducto.artefactoConducto == 'caldera'}">
+                                            <td><input type="radio" name="artefacto" value="caldera" checked/></td>
+                                            <td><input type="radio" name="artefacto" value="calefont"/></td>
+                                            </c:if>
+                                            <c:if test="${conducto.artefactoConducto == 'calefont'}">
+                                            <td><input type="radio" name="artefacto" value="caldera" /></td>
+                                            <td><input type="radio" name="artefacto" value="calefont" checked/></td>
+                                            </c:if>
+                                            <td><input type="text" name="potencia" value="<c:out value="${conducto.potenciaArtefacto}"></c:out>"/></td>
                                     </tr>
-                                </table>
+                                </table>            
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-primary" value="Guardar Cambios"/>
-                                    <button type="button" class="btn btn-warning" onclick="location.href ='conductoMainServlet';">Volver</button>
+                                    <button type="button" class="btn btn-warning" onclick="location.href = 'conductoMainServlet';">Volver</button>
                                 </div> 
                             </form>
 

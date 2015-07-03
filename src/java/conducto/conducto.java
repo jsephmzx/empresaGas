@@ -28,6 +28,8 @@ public class conducto implements Serializable{
     public String observaciones;
     public String sello;
     
+    public String artefactoConducto;
+    public int potenciaArtefacto;
     public conducto() {
     }
 
@@ -135,6 +137,22 @@ public class conducto implements Serializable{
 
     public void setSello(String sello) {
         this.sello = sello;
+    }
+
+    public String getArtefactoConducto() {
+        return artefactoConducto;
+    }
+
+    public void setArtefactoConducto(String artefactoConducto) {
+        this.artefactoConducto = artefactoConducto;
+    }
+
+    public int getPotenciaArtefacto() {
+        return potenciaArtefacto;
+    }
+
+    public void setPotenciaArtefacto(int potenciaArtefacto) {
+        this.potenciaArtefacto = potenciaArtefacto;
     }
     
     

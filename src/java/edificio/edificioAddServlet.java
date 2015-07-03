@@ -727,6 +727,8 @@ public class edificioAddServlet extends HttpServlet {
                             conduc.setSello("1");
                             conduc.setSelloConducto("1");
                             conduc.setIdEdificio(idEdificio);
+                            conduc.setArtefactoConducto("calefont");
+                            conduc.setPotenciaArtefacto(1);
                             condDAO.insert(conduc);
                             System.out.println("ingresando conductos ");
                         }

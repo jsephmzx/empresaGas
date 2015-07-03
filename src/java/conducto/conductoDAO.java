@@ -39,7 +39,7 @@ public class conductoDAO implements Serializable {
 
         try {
 
-            String sql = "insert into conducto (id_conducto,id_edificio,cant_depto_conducto,sello_conducto,con_sombrete,secciones,con_interior,relacion_lados,prueba_tiro,toma_aire,materialidad,observaciones,sello) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into conducto (id_conducto,id_edificio,cant_depto_conducto,sello_conducto,con_sombrete,secciones,con_interior,relacion_lados,prueba_tiro,toma_aire,materialidad,observaciones,sello,artefacto_conducto,potencia_artefacto) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             sentence = conexion.prepareStatement(sql);
 
@@ -56,7 +56,8 @@ public class conductoDAO implements Serializable {
             sentence.setString(11, reg.getMaterialidad());
             sentence.setString(12, reg.getObservaciones());
             sentence.setString(13, reg.getSello());
-
+            sentence.setString(14, reg.getArtefactoConducto());
+            sentence.setInt(15, reg.getPotenciaArtefacto());
             sentence.executeUpdate();
 
         } catch (MySQLSyntaxErrorException ex) {
@@ -106,6 +107,8 @@ public class conductoDAO implements Serializable {
                 reg.setMaterialidad(result.getString("materialidad"));
                 reg.setObservaciones(result.getString("observaciones"));
                 reg.setSello(result.getString("sello"));
+                reg.setArtefactoConducto(result.getString("artefacto_conducto"));
+                reg.setPotenciaArtefacto(result.getInt("potencia_artefacto"));
                 list.add(reg);
             }
 
@@ -156,6 +159,8 @@ public class conductoDAO implements Serializable {
                 reg.setMaterialidad(result.getString("materialidad"));
                 reg.setObservaciones(result.getString("observaciones"));
                 reg.setSello(result.getString("sello"));
+                reg.setArtefactoConducto(result.getString("artefacto_conducto"));
+                reg.setPotenciaArtefacto(result.getInt("potencia_artefacto"));
                 list.add(reg);
             }
         } catch (MySQLSyntaxErrorException ex) {
@@ -280,6 +285,8 @@ public class conductoDAO implements Serializable {
                 reg.setMaterialidad(result.getString("materialidad"));
                 reg.setObservaciones(result.getString("observaciones"));
                 reg.setSello(result.getString("sello"));
+                reg.setArtefactoConducto(result.getString("artefacto_conducto"));
+                reg.setPotenciaArtefacto(result.getInt("potencia_artefacto"));
             }
         } catch (MySQLSyntaxErrorException ex) {
             System.out.println("Error de sintaxis en conductoDAO, update() : " + ex);
@@ -366,7 +373,7 @@ public class conductoDAO implements Serializable {
         PreparedStatement sentence = null;
 
         try {
-            String sql = "update conducto set con_sombrete=?, secciones=?, con_interior=?, relacion_lados=?, prueba_tiro=?, toma_aire=?, materialidad=?, observaciones=?, sello=? where id_conducto=?";
+            String sql = "update conducto set con_sombrete=?, secciones=?, con_interior=?, relacion_lados=?, prueba_tiro=?, toma_aire=?, materialidad=?, observaciones=?, sello=?, artefacto_conducto=?, potencia_artefacto =? where id_conducto=?";
 
             sentence = conexion.prepareStatement(sql);
 
@@ -379,8 +386,10 @@ public class conductoDAO implements Serializable {
             sentence.setString(7, conducto.getMaterialidad());
             sentence.setString(8, conducto.getObservaciones());
             sentence.setString(9, conducto.getSello());
+            sentence.setString(10,conducto.getArtefactoConducto());
+            sentence.setInt(11, conducto.getPotenciaArtefacto());
             
-            sentence.setInt(10, conducto.getIdConducto());
+            sentence.setInt(12, conducto.getIdConducto());
 
             sentence.executeUpdate();
 

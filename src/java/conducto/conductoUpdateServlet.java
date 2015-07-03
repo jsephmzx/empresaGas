@@ -60,23 +60,39 @@ public class conductoUpdateServlet extends HttpServlet {
                     String materialidad = request.getParameter("materialidad");
                     String observaciones = request.getParameter("observaciones");
                     String sello = request.getParameter("sello");
+                    String artefactoConducto = request.getParameter("artefacto");
+                    String potenciaArtefacto = request.getParameter("potencia");
+                    int potencia = 0;
+                    boolean error = false;
+                    try {
+                        potencia = Integer.parseInt(potenciaArtefacto);
+                    } catch (Exception ex) {
+                        request.setAttribute("msgErrorPotencia", "Error, La potencia ingresada posee caracteres alfabeticos.");
+                        error = true;
+                    }
 
-                    conducto conductoMod = new conducto();
-                    conductoMod.setCondSombrete(condSombrete);
-                    conductoMod.setSecciones(secciones);
-                    conductoMod.setConInterior(conInterior);
-                    conductoMod.setRelacionLados(relacionLados);
-                    conductoMod.setPruebaTiro(pruebaTiro);
-                    conductoMod.setTomaAire(tomaAire);
-                    conductoMod.setMaterialidad(materialidad);
-                    conductoMod.setObservaciones(observaciones);
-                    conductoMod.setSello(sello);
-                    conductoMod.setIdConducto(idConducto);
-
-                    conDAO.updateCondiciones(conductoMod);
-
-                    request.setAttribute("conducto", conductoMod);
-                    request.setAttribute("msgOk", "Se realizaron las modificaciones Exitosamente.");
+                    if (error == false) {
+                        conducto conductoMod = new conducto();
+                        conductoMod.setCondSombrete(condSombrete);
+                        conductoMod.setSecciones(secciones);
+                        conductoMod.setConInterior(conInterior);
+                        conductoMod.setRelacionLados(relacionLados);
+                        conductoMod.setPruebaTiro(pruebaTiro);
+                        conductoMod.setTomaAire(tomaAire);
+                        conductoMod.setMaterialidad(materialidad);
+                        conductoMod.setObservaciones(observaciones);
+                        conductoMod.setSello(sello);
+                        conductoMod.setArtefactoConducto(artefactoConducto);
+                        conductoMod.setPotenciaArtefacto(potencia);
+                        conductoMod.setIdConducto(idConducto);
+                        request.setAttribute("conducto", conductoMod);
+                        conDAO.updateCondiciones(conductoMod);
+                        request.setAttribute("msgOk", "Se realizaron las modificaciones Exitosamente.");
+                    }else{
+                       conducto conductoBD = new conducto();
+                       conductoBD = conDAO.findById(idConducto);
+                       request.setAttribute("conducto", conductoBD);
+                    }
                 } else {
                     request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
                 }
