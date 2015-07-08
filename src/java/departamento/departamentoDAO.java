@@ -43,7 +43,7 @@ public class departamentoDAO implements Serializable {
         PreparedStatement sentence = null;
 
         try {
-            String sql = "insert into departamento (id_conducto,cant_conductos,descripcion,sello_departamento,num_departamento,info,observacion,propietario) values (?,?,?,?,?,?,?,?)";
+            String sql = "insert into departamento (id_conducto,cant_conductos,descripcion,sello_departamento,num_departamento,info,observacion,propietario,id_edificio) values (?,?,?,?,?,?,?,?,?)";
             sentence = conexion.prepareStatement(sql);
             sentence.setInt(1, reg.getIdConductos());
             sentence.setInt(2, reg.getCantConductos());
@@ -53,7 +53,7 @@ public class departamentoDAO implements Serializable {
             sentence.setInt(6, reg.getInfo());
             sentence.setString(7, reg.getObservacion());
             sentence.setString(8, reg.getPropietario());
-
+            sentence.setInt(9, reg.getIdEdificio());
             sentence.executeUpdate();
 
         } catch (MySQLSyntaxErrorException ex) {
@@ -92,6 +92,7 @@ public class departamentoDAO implements Serializable {
             while (result.next()) {
                 departamento reg = new departamento();
                 reg.setIdDepartamento(result.getInt("id_departamento"));
+                reg.setIdEdificio(result.getInt("id_edificio"));
                 reg.setCantConductos(result.getInt("cant_conductos"));
                 reg.setIdConductos(result.getInt("id_conducto"));
                 reg.setDescripcion(result.getString("descripcion"));
@@ -140,6 +141,7 @@ public class departamentoDAO implements Serializable {
                 departamento reg = new departamento();
                 reg.setIdDepartamento(result.getInt("id_departamento"));
                 reg.setIdConductos(result.getInt("id_conducto"));
+                reg.setIdEdificio(result.getInt("id_edificio"));
                 reg.setCantConductos(result.getInt("cant_conductos"));
                 reg.setDescripcion(result.getString("descripcion"));
                 reg.setSelloDepartamento(result.getString("sello_departamento"));
@@ -209,15 +211,15 @@ public class departamentoDAO implements Serializable {
         PreparedStatement sentence = null;
 
         try {
-            String sql = "update departamento set id_edificio=?,cant_conductos=?,id_conductos=?,descripcion=?,sello_departamento=?,num_departamento=?,observacion=?, propietario=? where id_departamento=?";
+            String sql = "update departamento set cant_conductos=?,descripcion=?,sello_departamento=?, num_departamento=? , info=?, observacion=?, propietario=? where id_departamento=?";
 
             sentence = conexion.prepareStatement(sql);
 
             sentence.setInt(1, departamento.getCantConductos());
-            sentence.setInt(2, departamento.getIdConductos());
-            sentence.setString(3, departamento.getDescripcion());
-            sentence.setString(4, departamento.getSelloDepartamento());
-            sentence.setInt(5, departamento.getNumDepartamento());
+            sentence.setString(2, departamento.getDescripcion());
+            sentence.setString(3, departamento.getSelloDepartamento());
+            sentence.setInt(4, departamento.getNumDepartamento());
+            sentence.setInt(5, departamento.getInfo());
             sentence.setString(6, departamento.getObservacion());
             sentence.setString(7, departamento.getPropietario());
             sentence.setInt(8, departamento.getIdDepartamento());

@@ -8,6 +8,8 @@ package departamento;
 
 import artefacto.artefacto;
 import artefacto.artefactoDAO;
+import defectoDepto.defectoDepto;
+import defectoDepto.defectoDeptoDAO;
 import diagnostico.diagnostico;
 import diagnostico.diagnosticoDAO;
 import informacion.informacion;
@@ -53,16 +55,19 @@ public class listInfoDiagServlet extends HttpServlet {
              informacionDAO infDAO = new informacionDAO();
              diagnosticoDAO diagDAO = new diagnosticoDAO();
              departamentoDAO deptoDAO = new departamentoDAO();
+             defectoDeptoDAO defectoDAO = new defectoDeptoDAO();
              artefactoDAO arteDAO = new artefactoDAO();
              informacion info = new informacion();
              diagnostico diag = new diagnostico();
              departamento depto = new departamento();
              Collection<artefacto> list = new ArrayList<artefacto>();
+             Collection<defectoDepto> listDefecto = new ArrayList<defectoDepto>();
              
              infDAO.setConexion(conexion);
              diagDAO.setConexion(conexion);
              deptoDAO.setConexion(conexion);
              arteDAO.setConexion(conexion);
+             defectoDAO.setConexion(conexion);
              try{
               /*obtener id departamento*/
                  String id = request.getParameter("id");

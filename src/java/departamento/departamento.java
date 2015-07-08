@@ -22,6 +22,7 @@ public class departamento implements Serializable{
     public int info;
     public String observacion;
     public String Propietario;
+    public int idEdificio;
 
     
 
@@ -99,6 +100,14 @@ public class departamento implements Serializable{
 
     public void setPropietario(String Propietario) {
         this.Propietario = Propietario;
+    }
+
+    public int getIdEdificio() {
+        return idEdificio;
+    }
+
+    public void setIdEdificio(int idEdificio) {
+        this.idEdificio = idEdificio;
     }
     
     

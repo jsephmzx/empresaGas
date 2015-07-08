@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
@@ -46,6 +47,7 @@ public class departamentoAddServlet extends HttpServlet {
         Connection conexion = null;
         try {
             conexion = ds.getConnection();
+            HttpSession session = request.getSession(true);
 
             artefactoDAO arteDAO = new artefactoDAO();
             arteDAO.setConexion(conexion);
@@ -80,6 +82,10 @@ public class departamentoAddServlet extends HttpServlet {
                     String textCalefactor = request.getParameter("textCalefactor");
                     String textTermo = request.getParameter("textTermo");
                     String textcentral = request.getParameter("textcentral");
+                    
+                    /*Obtener el id de edificio*/
+                    int idEdifSession = (Integer) session.getAttribute("idEdificio");
+                    System.out.println("id edificio en if :" + idEdifSession);
 
                     int poderCalefont = 0;
                     int poderCosina = 0;
@@ -174,6 +180,7 @@ public class departamentoAddServlet extends HttpServlet {
                             depto.setPropietario(propietario);
                             depto.setNumDepartamento(numeroDepto);
                             depto.setInfo(0);
+                            depto.setIdEdificio(idEdifSession);
                             deptDAO.insert(depto);
 
                             int idDepto = 0;
