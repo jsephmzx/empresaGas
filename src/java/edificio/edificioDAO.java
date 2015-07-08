@@ -39,7 +39,7 @@ public class edificioDAO implements Serializable {
 
         try {
 
-            String sql = "insert into edificio (id_edificio,id_gas,id_empresa,nombre_ejecutivo,rut_edificio,nombre_edificio,ano_edificio,direccion_edificio,telefono_edificio,sello_edificio,norma_aplicada,cant_departamentos,cant_casas,cant_locales,cant_areas,cant_lavanderias,cant_conductos,cant_calderas,cant_pisos,potencia_real,potencia_estimada) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into edificio (id_edificio,id_gas,id_empresa,nombre_ejecutivo,rut_edificio,nombre_edificio,ano_edificio,direccion_edificio,telefono_edificio,sello_edificio,norma_aplicada,cant_departamentos,cant_casas,cant_locales,cant_areas,cant_lavanderias,cant_conductos,cant_calderas,cant_pisos,potencia_real,potencia_estimada,id_usuario,tipo_cliente,existencia_conductos,fecha_vencimiento) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             sentence = conexion.prepareStatement(sql);
 
@@ -64,6 +64,10 @@ public class edificioDAO implements Serializable {
             sentence.setInt(19, reg.getCantPisos());
             sentence.setInt(20, reg.getPotenciaReal());
             sentence.setInt(21, reg.getPotenciaEstimada());
+            sentence.setInt(22, reg.getIdUsuario());
+            sentence.setString(23, reg.getTipoCliente());
+            sentence.setString(24, reg.getExitenciaConductos());
+            sentence.setString(25, reg.getFechaVencimiento());
 
             sentence.executeUpdate();
 
@@ -122,6 +126,10 @@ public class edificioDAO implements Serializable {
                 reg.setCantPisos(result.getInt("cant_pisos"));
                 reg.setPotenciaReal(result.getInt("potencia_real"));
                 reg.setPotenciaEstimada(result.getInt("potencia_estimada"));
+                reg.setIdEdificio(result.getInt("id_usuario"));
+                reg.setTipoCliente(result.getString("tipo_cliente"));
+                reg.setExitenciaConductos(result.getString("existencia_conductos"));
+                reg.setFechaVencimiento(result.getString("fecha_vencimiento"));
                 list.add(reg);
             }
 
@@ -186,6 +194,10 @@ public class edificioDAO implements Serializable {
                 reg.setCantPisos(result.getInt("cant_pisos"));
                 reg.setPotenciaReal(result.getInt("potencia_real"));
                 reg.setPotenciaEstimada(result.getInt("potencia_estimada"));
+                reg.setIdEdificio(result.getInt("id_usuario"));
+                reg.setTipoCliente(result.getString("tipo_cliente"));
+                reg.setExitenciaConductos(result.getString("existencia_conductos"));
+                reg.setFechaVencimiento(result.getString("fecha_vencimiento"));
             }
 
         } catch (MySQLSyntaxErrorException ex) {
@@ -246,6 +258,10 @@ public class edificioDAO implements Serializable {
                 reg.setCantPisos(result.getInt("cant_pisos"));
                 reg.setPotenciaReal(result.getInt("potencia_real"));
                 reg.setPotenciaEstimada(result.getInt("potencia_estimada"));
+                reg.setIdEdificio(result.getInt("id_usuario"));
+                reg.setTipoCliente(result.getString("tipo_cliente"));
+                reg.setExitenciaConductos(result.getString("existencia_conductos"));
+                reg.setFechaVencimiento(result.getString("fecha_vencimiento"));
 
             }
         } catch (MySQLSyntaxErrorException ex) {
@@ -421,7 +437,7 @@ public class edificioDAO implements Serializable {
         PreparedStatement sentence = null;
 
         try {
-            String sql = "update edificio set id_gas=?,id_empresa = ?,nombre_ejecutivo=?,rut_edificio=?,nombre_edificio=?,ano_edificio=?,direccion_edificio=?,telefono_edificio=?,sello_edificio=?,norma_aplicada=?,cant_departamentos=?,cant_locales=?,cant_casas=?,cant_lavanderias=?,cant_areas=?,cant_conductos=?,cant_calderas=?,cant_pisos=?,potencia_real=?,potencia_estimada=? where id_edificio=?";
+            String sql = "update edificio set id_gas=?,id_empresa = ?,nombre_ejecutivo=?,rut_edificio=?,nombre_edificio=?,ano_edificio=?,direccion_edificio=?,telefono_edificio=?,sello_edificio=?,norma_aplicada=?,cant_departamentos=?,cant_locales=?,cant_casas=?,cant_lavanderias=?,cant_areas=?,cant_conductos=?,cant_calderas=?,cant_pisos=?,potencia_real=?,potencia_estimada=?, id_usuario=?, tipo_cliente =?, existencia_conductos =?, fecha_vencimiento=? where id_edificio=?";
             System.out.println("en update edificio");
             sentence = conexion.prepareStatement(sql);
 
@@ -445,7 +461,11 @@ public class edificioDAO implements Serializable {
             sentence.setInt(18, edificio.getCantPisos());
             sentence.setInt(19, edificio.getPotenciaReal());
             sentence.setInt(20, edificio.getPotenciaEstimada());
-            sentence.setInt(21, edificio.getIdEdificio());
+            sentence.setInt(21, edificio.getIdUsuario());
+            sentence.setString(22, edificio.getTipoCliente());
+            sentence.setString(23, edificio.getExitenciaConductos());
+            sentence.setString(24, edificio.getFechaVencimiento());
+            sentence.setInt(25, edificio.getIdEdificio());
             sentence.executeUpdate();
             System.out.println("despues de ejecutar update");
         } catch (MySQLSyntaxErrorException ex) {

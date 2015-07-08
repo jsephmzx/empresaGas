@@ -34,6 +34,11 @@ public class edificio implements Serializable{
  public int cantPisos;
  public int potenciaReal;
  public int potenciaEstimada;
+ public int idUsuario;
+ public String tipoCliente;
+ public String exitenciaConductos;
+ public String fechaVencimiento;
+ 
     public edificio() {
     }
 
@@ -204,5 +209,38 @@ public class edificio implements Serializable{
     public void setPotenciaEstimada(int potenciaEstimada) {
         this.potenciaEstimada = potenciaEstimada;
     }
- 
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
+
+    public String getExitenciaConductos() {
+        return exitenciaConductos;
+    }
+
+    public void setExitenciaConductos(String exitenciaConductos) {
+        this.exitenciaConductos = exitenciaConductos;
+    }
+
+    public String getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(String fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+    
+    
 }
