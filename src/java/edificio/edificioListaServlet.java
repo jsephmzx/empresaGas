@@ -55,17 +55,17 @@ public class edificioListaServlet extends HttpServlet {
             String userSession = (String) request.getSession().getAttribute("tipo");
             try {
                 if (userSession.equals("admin") || userSession.equals("vende")) {
-                ArrayList<edificio> listaEdificio = new ArrayList<edificio>();
-                String listarEdificio = request.getParameter("listarEdificio");
-                System.out.println("filtrado :" + listarEdificio);
-                if (listarEdificio.equals("TODAS")) {
-                    System.out.println("entra en if");
-                    listaEdificio = (ArrayList<edificio>) edDAO.getAll();
-                    salir = true;
-                }
-                request.setAttribute("lista", listaEdificio);
-                request.setAttribute("salir", salir);
-                request.getRequestDispatcher("/listarEdificio.jsp").forward(request, response);
+                    ArrayList<edificio> listaEdificio = new ArrayList<edificio>();
+                    String listarEdificio = request.getParameter("listarEdificio");
+                    System.out.println("filtrado :" + listarEdificio);
+                    if (listarEdificio.equals("TODAS")) {
+                        System.out.println("entra en if");
+                        listaEdificio = (ArrayList<edificio>) edDAO.getAll();
+                        salir = true;
+                    }
+                    request.setAttribute("lista", listaEdificio);
+                    request.setAttribute("salir", salir);
+                    request.getRequestDispatcher("/listarEdificio.jsp").forward(request, response);
                 } else {
                     request.getRequestDispatcher("/accesodenegado.jsp").forward(request, response);
                 }
@@ -85,7 +85,7 @@ public class edificioListaServlet extends HttpServlet {
             } catch (Exception noGestionar) {
             }
         }
-        
+
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
