@@ -34,6 +34,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import usuario.usuario;
 import usuario.usuarioDAO;
@@ -68,7 +69,7 @@ public class edificioAddServlet extends HttpServlet {
          */
 
         try {
-
+            HttpSession session = request.getSession(true);
             conexion = ds.getConnection();
 
             // Conexion edificio
@@ -124,9 +125,14 @@ public class edificioAddServlet extends HttpServlet {
                     int tipoInst = 0;
                     int tipoGas = 0;
                     int empresaGas = 0;
+                    
                     /*
                      *Recibir parametros
                      */
+                    int idUsuOnline = (Integer) session.getAttribute("idUsuariOnline");
+                    System.out.println("id usuario online :"+idUsuOnline);
+                    
+                    
                     System.out.println("Comienzo de resivir parametros");
                     String nombreEjecutivo = request.getParameter("nombre_ejecutivo");;
                     String tipoConstruccion = request.getParameter("tipo_construccion");
