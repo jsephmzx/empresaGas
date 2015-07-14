@@ -172,7 +172,52 @@ public class departamentoDAO implements Serializable {
         }
         return list;
     }
-
+//  Obtener listado de conductos por medio del id de edificio
+    public Collection<departamento> getAllByIdEdif(int idEdificio) {
+        PreparedStatement sentence = null;
+        ResultSet result = null;
+        Collection<departamento> list = new ArrayList<departamento>();
+        try {
+            String sql = "select * from departamento where id_edificio=?";
+            sentence = conexion.prepareStatement(sql);
+            sentence.setInt(1, idEdificio);
+            result = sentence.executeQuery();
+            while (result.next()) {
+                departamento reg = new departamento();
+                reg.setIdDepartamento(result.getInt("id_departamento"));
+                reg.setIdConductos(result.getInt("id_conducto"));
+                reg.setIdEdificio(result.getInt("id_edificio"));
+                reg.setCantConductos(result.getInt("cant_conductos"));
+                reg.setDescripcion(result.getString("descripcion"));
+                reg.setSelloDepartamento(result.getString("sello_departamento"));
+                reg.setNumDepartamento(result.getInt("num_departamento"));
+                reg.setInfo(result.getInt("info"));
+                reg.setObservacion(result.getString("observacion"));
+                reg.setPropietario(result.getString("propietario"));
+                list.add(reg);
+            }
+        } catch (MySQLSyntaxErrorException ex) {
+            System.out.println("Error de sintaxis en departamentoDAO, getAllByIdEdif() : " + ex);
+            throw new RuntimeException("MySQL Syntax Exception en departamentoDAO, getAllByIdEdif() : " + ex);
+        } catch (MySQLIntegrityConstraintViolationException ex) {
+            System.out.println("MySQL Excepción de integridad en departamentoDAO, getAllByIdEdif() : " + ex);
+            throw new RuntimeException("MySQL Excepción de integridad en departamentoDAO, getAllByIdEdif() : " + ex);
+        } catch (SQLException ex) {
+            System.out.println("MySQL Excepción inesperada en departamentoDAO, getAllByIdEdif() : " + ex);
+            throw new RuntimeException("MySQL Excepción inesperada en departamentoDAO, getAllByIdEdif() : " + ex);
+        } finally {
+            try {
+                result.close();
+            } catch (Exception noGestionar) {
+            }
+            try {
+                sentence.close();
+            } catch (Exception noGestionar) {
+            }
+        }
+        return list;
+    }
+    
 //  eliminar
     public void delete(int id_departamento) {
 

@@ -62,9 +62,21 @@ public class conductoUpdateServlet extends HttpServlet {
                     String sello = request.getParameter("sello");
                     String artefactoConducto = request.getParameter("artefacto");
                     String potenciaArtefacto = request.getParameter("potencia");
+                    
+                    String seccionConducto = request.getParameter("seccion_conducto");
+                    String materialConducto = request.getParameter("material_conducto");
+                    String espesorMaterial = request.getParameter("espesor_material");
+                    String conductoNormalizado = request.getParameter("conducto_normalizado");
+                    String sombreteExpuesto = request.getParameter("sombrete_expuesto");
+                    String conductoQuiebre = request.getParameter("conducto_quiebre");
+                    String secundarioNormalizado = request.getParameter("secundario_normalizados");
                     int potencia = 0;
+                    int seccion = 0;
+                    int espesor = 0;
                     boolean error = false;
                     try {
+                        espesor = Integer.parseInt(espesorMaterial);
+                        seccion = Integer.parseInt(seccionConducto);
                         potencia = Integer.parseInt(potenciaArtefacto);
                     } catch (Exception ex) {
                         request.setAttribute("msgErrorPotencia", "Error, La potencia ingresada posee caracteres alfabeticos.");
@@ -84,6 +96,15 @@ public class conductoUpdateServlet extends HttpServlet {
                         conductoMod.setSello(sello);
                         conductoMod.setArtefactoConducto(artefactoConducto);
                         conductoMod.setPotenciaArtefacto(potencia);
+                        
+                        conductoMod.setSeccionConducto(seccion);
+                        conductoMod.setMaterialConducto(materialConducto);
+                        conductoMod.setEspesorMaterial(espesor);
+                        conductoMod.setConductoNormalizado(conductoNormalizado);
+                        conductoMod.setSombreteExpuesto(sombreteExpuesto);
+                        conductoMod.setConductoQuiebre(conductoQuiebre);
+                        conductoMod.setSecundarioNormalizados(secundarioNormalizado);
+                        
                         conductoMod.setIdConducto(idConducto);
                         request.setAttribute("conducto", conductoMod);
                         conDAO.updateCondiciones(conductoMod);

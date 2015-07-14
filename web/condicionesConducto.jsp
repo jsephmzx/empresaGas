@@ -93,7 +93,7 @@
                             <c:if test="${msgErrorPotencia !=null}">
                                 <div class="alert alert-danger">
                                     <c:out value="${msgErrorPotencia}"></c:out>
-                                </div>
+                                    </div>
                             </c:if>
                             <h3>Cumple las siguientes condiciones</h3>
                             <form action="conductoUpdateServlet" role="form" method="POST">
@@ -162,15 +162,6 @@
 
                                     </tr>
                                     <tr>
-                                        <td>Toma de Aire</td>
-                                        <c:if test="${conducto.tomaAire == 's'}">
-                                            <td><input type="radio" name="toma_aire" value="s" checked/></td>
-                                            <td><input type="radio" name="toma_aire" value="n"/></td>
-                                            </c:if>
-                                            <c:if test="${conducto.tomaAire == 'n'}">
-                                            <td><input type="radio" name="toma_aire" value="s"/></td>
-                                            <td><input type="radio" name="toma_aire" value="n" checked/></td>
-                                            </c:if>
 
                                     </tr>
                                     <tr>
@@ -184,6 +175,52 @@
                                             <td><input type="radio" name="materialidad" value="n" checked/></td>
                                             </c:if>
 
+                                    </tr>
+                        
+                                    <tr>
+                                            <td>Conducto normalizado</td>
+                                            <c:if test="${conducto.conductoNormalizado =='s'}">
+                                             <td><input type="radio" name="conducto_normalizado" value="s"checked/></td>
+                                             <td><input type="radio" name="conducto_normalizado" value="n"/></td>
+                                            </c:if>
+                                            
+                                            <c:if test="${conducto.conductoNormalizado =='n'}">
+                                            <td><input type="radio" name="conducto_normalizado" value="s"/></td>
+                                            <td><input type="radio" name="conducto_normalizado" value="n" checked/></td>
+                                            </c:if>
+                                    </tr>
+                                    <tr>
+                                            <td>Sombrete Expuesto</td>
+                                            <c:if test="${conducto.sombreteExpuesto =='s'}">
+                                            <td><input type="radio" name="sombrete_expuesto" value="s"checked/></td>
+                                            <td><input type="radio" name="sombrete_expuesto" value="n"/></td>
+                                            </c:if>
+                                            <c:if test="${conducto.sombreteExpuesto =='n'}">
+                                            <td><input type="radio" name="sombrete_expuesto" value="s"/></td>
+                                            <td><input type="radio" name="sombrete_expuesto" value="n" checked/></td>
+                                            </c:if>
+                                    </tr>
+                                    <tr>
+                                            <td>Conducto con Quiebres</td>
+                                            <c:if test="${conducto.conductoQuiebre =='s'}">
+                                            <td><input type="radio" name="conducto_quiebre" value="s"checked/></td>
+                                            <td><input type="radio" name="conducto_quiebre" value="n"/></td>
+                                            </c:if>
+                                            <c:if test="${conducto.conductoQuiebre =='n'}">
+                                            <td><input type="radio" name="conducto_quiebre" value="s"/></td>
+                                            <td><input type="radio" name="conducto_quiebre" value="n" checked/></td>
+                                            </c:if>
+                                    </tr>
+                                    <tr>
+                                            <td>Secundarios Normalizados</td>
+                                            <c:if test="${conducto.secundarioNormalizados =='s'}">
+                                            <td><input type="radio" name="secundario_normalizados" value="s"checked/></td>
+                                            <td><input type="radio" name="secundario_normalizados" value="n"/></td>
+                                            </c:if>
+                                            <c:if test="${conducto.secundarioNormalizados =='n'}">
+                                            <td><input type="radio" name="secundario_normalizados" value="s"/></td>
+                                            <td><input type="radio" name="secundario_normalizados" value="n" checked/></td>
+                                            </c:if>
                                     </tr>
                                 </table>
                                 <table class="table table-bordered">
@@ -200,6 +237,24 @@
                                                 <option value=3 <c:if test="${conducto.sello == 3}">selected</c:if>> AMARILLO</option>
                                                 </select></td>
                                         </tr>
+                                        <tr>
+                                            <td>Toma de Aire</td>
+
+                                            <td><input type="text" name="toma_aire" value="<c:out value="${conducto.tomaAire}"></c:out>"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sección Conducto Colectivo</td>
+                                            <td><input type="text" name="seccion_conducto" value="<c:out value="${conducto.seccionConducto}"></c:out>"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Material Conducto</td>
+                                            <td><input type="text" name="material_conducto" value="<c:out value="${conducto.materialConducto}"></c:out>"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Espesor material</td>
+                                            <td><input type="text" name="espesor_material" value="<c:out value="${conducto.espesorMaterial}"></c:out>"/></td>
+                                        </tr>
+                                        
                                     </table>
                                     <table class="table table-bordered">
                                         <tr>
@@ -218,7 +273,7 @@
                                             <td><input type="radio" name="artefacto" value="caldera" /></td>
                                             <td><input type="radio" name="artefacto" value="calefont" checked/></td>
                                             </c:if>
-                                            <td><input type="text" name="potencia" value="<c:out value="${conducto.potenciaArtefacto}"></c:out>"/></td>
+                                        <td><input type="text" name="potencia" value="<c:out value="${conducto.potenciaArtefacto}"></c:out>"/></td>
                                     </tr>
                                 </table>            
                                 <div class="form-group">

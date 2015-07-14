@@ -30,6 +30,15 @@ public class conducto implements Serializable{
     
     public String artefactoConducto;
     public int potenciaArtefacto;
+    
+    public int seccionConducto;
+    public String materialConducto;
+    public int espesorMaterial;
+    public String conductoNormalizado;
+    public String sombreteExpuesto;
+    public String conductoQuiebre;
+    public String secundarioNormalizados;
+    
     public conducto() {
     }
 
@@ -153,6 +162,62 @@ public class conducto implements Serializable{
 
     public void setPotenciaArtefacto(int potenciaArtefacto) {
         this.potenciaArtefacto = potenciaArtefacto;
+    }
+
+    public int getSeccionConducto() {
+        return seccionConducto;
+    }
+
+    public void setSeccionConducto(int seccionConducto) {
+        this.seccionConducto = seccionConducto;
+    }
+
+    public String getMaterialConducto() {
+        return materialConducto;
+    }
+
+    public void setMaterialConducto(String materialConducto) {
+        this.materialConducto = materialConducto;
+    }
+
+    public int getEspesorMaterial() {
+        return espesorMaterial;
+    }
+
+    public void setEspesorMaterial(int espesorMaterial) {
+        this.espesorMaterial = espesorMaterial;
+    }
+
+    public String getConductoNormalizado() {
+        return conductoNormalizado;
+    }
+
+    public void setConductoNormalizado(String conductoNormalizado) {
+        this.conductoNormalizado = conductoNormalizado;
+    }
+
+    public String getSombreteExpuesto() {
+        return sombreteExpuesto;
+    }
+
+    public void setSombreteExpuesto(String sombreteExpuesto) {
+        this.sombreteExpuesto = sombreteExpuesto;
+    }
+
+    public String getConductoQuiebre() {
+        return conductoQuiebre;
+    }
+
+    public void setConductoQuiebre(String conductoQuiebre) {
+        this.conductoQuiebre = conductoQuiebre;
+    }
+
+    public String getSecundarioNormalizados() {
+        return secundarioNormalizados;
+    }
+
+    public void setSecundarioNormalizados(String secundarioNormalizados) {
+        this.secundarioNormalizados = secundarioNormalizados;
     }
     
     

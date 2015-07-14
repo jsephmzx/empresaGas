@@ -82,10 +82,14 @@ public class departamentoAddServlet extends HttpServlet {
                     String textCalefactor = request.getParameter("textCalefactor");
                     String textTermo = request.getParameter("textTermo");
                     String textcentral = request.getParameter("textcentral");
-                    
+
                     /*Obtener el id de edificio*/
                     int idEdifSession = (Integer) session.getAttribute("idEdificio");
                     System.out.println("id edificio en if :" + idEdifSession);
+
+                    /*Obtener existenciaConductos*/
+                    String existenciaConductos = "";
+                    existenciaConductos = (String) request.getSession().getAttribute("existenciaConductos");
 
                     int poderCalefont = 0;
                     int poderCosina = 0;
@@ -172,7 +176,14 @@ public class departamentoAddServlet extends HttpServlet {
                     }
                     try {
                         if (error == 0) {
-                            depto.setIdConductos(id);
+                            if (id == idEdifSession) {
+                                depto.setIdEdificio(idEdifSession);
+                                
+                            } else {
+                                depto.setIdConductos(id);
+                                depto.setIdEdificio(idEdifSession);
+                            }
+
                             //depto.setCantConductos(cantidadDuctos);
                             depto.setDescripcion("");
                             depto.setObservacion(observacion);
@@ -180,15 +191,15 @@ public class departamentoAddServlet extends HttpServlet {
                             depto.setPropietario(propietario);
                             depto.setNumDepartamento(numeroDepto);
                             depto.setInfo(0);
-                            depto.setIdEdificio(idEdifSession);
+
                             deptDAO.insert(depto);
 
                             int idDepto = 0;
                             idDepto = deptDAO.getLastId();
-                            
+
 
                             /*Insertar en base de datos los artefactos con sus respectivas potencias*/
-                            for(int x = 0; x < Artefactos.length; x++) {
+                            for (int x = 0; x < Artefactos.length; x++) {
                                 System.out.println("Entra al proceso para comenzar a agregar artefactos");
                                 artefacto reg = new artefacto();
                                 if (Artefactos[x].equals("calefont")) {
@@ -232,20 +243,19 @@ public class departamentoAddServlet extends HttpServlet {
                                     reg.setPotenciaArtefacto(poderCentral);
                                     arteDAO.insert(reg);
                                 }
-                                
+
                             }
                             request.setAttribute("msgOk", "Se ha ingresado un nuevo Departamento exitosamente!");
                             /*Insertar en la base de datos los defectos correspondientes*/
                             if (defectos.length > 0) {
-                                for(int y = 0; y < defectos.length; y++) {
-                                    defectoDepto regDef = new defectoDepto ();
+                                for (int y = 0; y < defectos.length; y++) {
+                                    defectoDepto regDef = new defectoDepto();
                                     regDef.setIdDepto(idDepto);
                                     regDef.setDefectoDepto(defectos[y]);
                                     defectoDAO.insert(regDef);
                                 }
                             }
 
-                            
                         }
                     } catch (Exception parameterException) {
                     } finally {

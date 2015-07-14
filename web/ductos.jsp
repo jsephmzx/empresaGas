@@ -87,7 +87,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <a href="#menu-toggle" class="btn btn-default left-boton" id="menu-toggle"> Menu</a>
-                            <h3>Ductos Edificio :<c:out value="${edifName}"></c:out></h3>
+                            <h3><c:if test="${edifExistenciaConduc == 'n'}">Departamentos</c:if><c:if test="${edifExistenciaConduc != 'n'}">Conductos</c:if> Edificio :<c:out value="${edifName}"></c:out></h3>
                             <c:if test="${msgErrorExistencia != null}">
                                 <div class="alert alert-danger">
                                     <c:out value="${msgErrorExistencia}"></c:out>
@@ -167,6 +167,9 @@
                                         <button class="btn btn-warning" name="btnmodcon"  onclick="location.href = 'conductoGetServlet?id=<c:out value="${idConducto}"></c:out>';"><font size="1"><strong>Condiciones</strong></font></button>
                                     
                                 </c:if>  
+                                <c:if test="${edifExistenciaConduc == 'n'}">
+                                    <button class="btn btn-primary" name="btnAdd" type="button" onclick="location.href = 'departamentoGetAddServlet?id=<c:out value="${idEdificio}"></c:out>';"><font size="1"><strong>AGREGAR DEPARTAMENTO</strong></font></button>
+                                </c:if>        
                             </div>
                             <div class="col-lg-5">
                                 <div class="form-group">

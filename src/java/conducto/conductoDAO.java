@@ -39,7 +39,7 @@ public class conductoDAO implements Serializable {
 
         try {
 
-            String sql = "insert into conducto (id_conducto,id_edificio,cant_depto_conducto,sello_conducto,con_sombrete,secciones,con_interior,relacion_lados,prueba_tiro,toma_aire,materialidad,observaciones,sello,artefacto_conducto,potencia_artefacto) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into conducto (id_conducto,id_edificio,cant_depto_conducto,sello_conducto,con_sombrete,secciones,con_interior,relacion_lados,prueba_tiro,toma_aire,materialidad,observaciones,sello,artefacto_conducto,potencia_artefacto,seccion_conducto,material_conducto,espesor_material,conducto_normalizado,sombrete_expuesto,conducto_quiebre,secundario_normalizados) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             sentence = conexion.prepareStatement(sql);
 
@@ -58,6 +58,13 @@ public class conductoDAO implements Serializable {
             sentence.setString(13, reg.getSello());
             sentence.setString(14, reg.getArtefactoConducto());
             sentence.setInt(15, reg.getPotenciaArtefacto());
+            sentence.setInt(16, reg.getSeccionConducto());
+            sentence.setString(17, reg.getMaterialConducto());
+            sentence.setInt(18, reg.getEspesorMaterial());
+            sentence.setString(19, reg.getConductoNormalizado());
+            sentence.setString(20, reg.getSombreteExpuesto());
+            sentence.setString(21, reg.getConductoQuiebre());
+            sentence.setString(22, reg.getSecundarioNormalizados());
             sentence.executeUpdate();
 
         } catch (MySQLSyntaxErrorException ex) {
@@ -109,6 +116,13 @@ public class conductoDAO implements Serializable {
                 reg.setSello(result.getString("sello"));
                 reg.setArtefactoConducto(result.getString("artefacto_conducto"));
                 reg.setPotenciaArtefacto(result.getInt("potencia_artefacto"));
+                reg.setSeccionConducto(result.getInt("seccion_conducto"));
+                reg.setMaterialConducto(result.getString("material_conducto"));
+                reg.setEspesorMaterial(result.getInt("espesor_material"));
+                reg.setConductoNormalizado(result.getString("conducto_normalizado"));
+                reg.setSombreteExpuesto(result.getString("sombrete_expuesto"));
+                reg.setConductoQuiebre(result.getString("conducto_quiebre"));
+                reg.setSecundarioNormalizados(result.getString("secundario_normalizados"));
                 list.add(reg);
             }
 
@@ -161,6 +175,14 @@ public class conductoDAO implements Serializable {
                 reg.setSello(result.getString("sello"));
                 reg.setArtefactoConducto(result.getString("artefacto_conducto"));
                 reg.setPotenciaArtefacto(result.getInt("potencia_artefacto"));
+                
+                reg.setSeccionConducto(result.getInt("seccion_conducto"));
+                reg.setMaterialConducto(result.getString("material_conducto"));
+                reg.setEspesorMaterial(result.getInt("espesor_material"));
+                reg.setConductoNormalizado(result.getString("conducto_normalizado"));
+                reg.setSombreteExpuesto(result.getString("sombrete_expuesto"));
+                reg.setConductoQuiebre(result.getString("conducto_quiebre"));
+                reg.setSecundarioNormalizados(result.getString("secundario_normalizados"));
                 list.add(reg);
             }
         } catch (MySQLSyntaxErrorException ex) {
@@ -267,6 +289,7 @@ public class conductoDAO implements Serializable {
         ResultSet result = null;
         conducto reg = null;
         try {
+            System.out.println("en findByID conducto dao");
             String sql = "select * from conducto where id_conducto=?";
             sentence = conexion.prepareStatement(sql);
             sentence.setInt(1, idConducto);
@@ -287,6 +310,13 @@ public class conductoDAO implements Serializable {
                 reg.setSello(result.getString("sello"));
                 reg.setArtefactoConducto(result.getString("artefacto_conducto"));
                 reg.setPotenciaArtefacto(result.getInt("potencia_artefacto"));
+                reg.setSeccionConducto(result.getInt("seccion_conducto"));
+                reg.setMaterialConducto(result.getString("material_conducto"));
+                reg.setEspesorMaterial(result.getInt("espesor_material"));
+                reg.setConductoNormalizado(result.getString("conducto_normalizado"));
+                reg.setSombreteExpuesto(result.getString("sombrete_expuesto"));
+                reg.setConductoQuiebre(result.getString("conducto_quiebre"));
+                reg.setSecundarioNormalizados(result.getString("secundario_normalizados"));
             }
         } catch (MySQLSyntaxErrorException ex) {
             System.out.println("Error de sintaxis en conductoDAO, update() : " + ex);
@@ -373,7 +403,7 @@ public class conductoDAO implements Serializable {
         PreparedStatement sentence = null;
 
         try {
-            String sql = "update conducto set con_sombrete=?, secciones=?, con_interior=?, relacion_lados=?, prueba_tiro=?, toma_aire=?, materialidad=?, observaciones=?, sello=?, artefacto_conducto=?, potencia_artefacto =? where id_conducto=?";
+            String sql = "update conducto set con_sombrete=?, secciones=?, con_interior=?, relacion_lados=?, prueba_tiro=?, toma_aire=?, materialidad=?, observaciones=?, sello=?, artefacto_conducto=?, potencia_artefacto =?, seccion_conducto=?, material_conducto=?, espesor_material=?, conducto_normalizado=?, sombrete_expuesto=?, conducto_quiebre =?, secundario_normalizados=?  where id_conducto=?";
 
             sentence = conexion.prepareStatement(sql);
 
@@ -389,7 +419,16 @@ public class conductoDAO implements Serializable {
             sentence.setString(10,conducto.getArtefactoConducto());
             sentence.setInt(11, conducto.getPotenciaArtefacto());
             
-            sentence.setInt(12, conducto.getIdConducto());
+            sentence.setInt(12, conducto.getSeccionConducto());
+            sentence.setString(13, conducto.getMaterialConducto());
+            sentence.setInt(14, conducto.getEspesorMaterial());
+            sentence.setString(15, conducto.getConductoNormalizado());
+            sentence.setString(16, conducto.getSombreteExpuesto());
+            sentence.setString(17, conducto.getConductoQuiebre());
+            sentence.setString(18, conducto.getSecundarioNormalizados());
+            
+            
+            sentence.setInt(19, conducto.getIdConducto());
 
             sentence.executeUpdate();
 

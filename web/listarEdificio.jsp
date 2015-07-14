@@ -139,7 +139,12 @@
                                         <td><input type="submit" class="btn btn-danger " value="Modificar"  formaction="/Proyectoempresa/fillModificarServlet?id=<c:out value="${listas.idEdificio}"/>;"><font size="1"></td>
                                         <td><input type="submit" class="btn btn-danger btn-info" value="Mas informacion"  formaction="MasInfoServlet?id=<c:out value="${listas.idEdificio}"></c:out>;"><font size="1"></td>
                                         <c:if test="${noadmin == 0}"><td><input type="submit" class="btn btn-danger btn-md" value="Eliminar"  formaction="edificioDeleteServlet?id=<c:out value="${listas.idEdificio}"></c:out>;"><font size="1"></td></c:if>
-                                        <td><input type="submit" class="btn btn-danger btn-md" value="Conductos"  formaction="conductoMainServlet?id_edificio=<c:out value="${listas.idEdificio}"></c:out>;"><font size="1"></td>
+                                        <c:if test="${listas.exitenciaConductos == 'n'}">
+                                           <td><input type="submit" class="btn btn-danger btn-md" value=" Deptos  "  formaction="conductoMainServlet?id_edificio=<c:out value="${listas.idEdificio}"></c:out>;"><font size="1"></td>
+                                        </c:if>
+                                        <c:if test="${listas.exitenciaConductos != 'n'}">
+                                           <td><input type="submit" class="btn btn-danger btn-md" value="Conductos"  formaction="conductoMainServlet?id_edificio=<c:out value="${listas.idEdificio}"></c:out>;"><font size="1"></td>
+                                        </c:if>        
                                              
                                     </tr>
                                         </form>

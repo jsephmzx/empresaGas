@@ -131,7 +131,7 @@ public class edificioDAO implements Serializable {
                 reg.setExitenciaConductos(result.getString("existencia_conductos"));
                 reg.setFechaVencimiento(result.getString("fecha_vencimiento"));
                 list.add(reg);
-                System.out.println("id registro edificio :"+reg.getIdEdificio());
+               
             }
 
         } catch (MySQLSyntaxErrorException ex) {
