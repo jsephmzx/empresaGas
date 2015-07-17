@@ -186,7 +186,7 @@
                                             </tr>
                                             <tr>
                                                 <td><input type="checkbox" id="6" name="defectos" value="6"> </td>
-                                                <td>FLectura de tiro igual o superior a 0, en conducto individual o colectivo<BR></td>
+                                                <td>Lectura de tiro igual o superior a 0, en conducto individual o colectivo<BR></td>
                                             </tr>
                                             <tr>
                                                 <td><input type="checkbox" id="7" name="defectos" value="7"> </td>
@@ -225,10 +225,7 @@
                                                 <td><input type="checkbox" id="15" name="defectos" value="15"> </td>
                                                 <td>Artefacto no enciende<BR></td>
                                             </tr>
-                                            <tr>
-                                                <td><input type="checkbox" id="16" name="defectos" value="16"></td>
-                                                <td> Artefacto no enciende</td>        
-                                            </tr>
+                                            
                                             <tr>
                                                 <td><input type="checkbox" id="17" name="defectos" value="17"></td>
                                                 <td>Artefacto cocina plato Q1 se apaga en minino o no enciende o llama envolvente lo mismo para los 4 platos<br></td></td>

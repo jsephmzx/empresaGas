@@ -87,100 +87,138 @@
                             <a href="#menu-toggle" class="btn btn-default left-boton" id="menu-toggle"> Menu</a>
                             <h3>Información y Diagnostico del Departamento Numero : <c:out value="${depto.getNumDepartamento()}"/></h3>
                             <br/>
-                            <div class="col-lg-6 ">
 
-                                <div class="form-horizontal">
+                            <!-- pintar los datos del depto obtenido desde la bd-->
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>Numero Departamento</td>
+                                    <td><c:out value="${depto.numDepartamento}"></c:out></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sello</td>
+                                        <td>
+                                        <c:if test="${depto.selloDepartamento == 1}">
+                                            VERDE
+                                        </c:if>
+                                        <c:if test="${depto.selloDepartamento == 2}">
+                                            ROJO
+                                        </c:if>
+                                        <c:if test="${depto.selloDepartamento == 3}">
+                                            AMARILLO
+                                        </c:if>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Numero</td>
+                                    <td><c:out value="${depto.numDepartamento}"></c:out></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Propietario</td>
+                                        <td><c:out value="${depto.getPropietario()}"></c:out></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Observación</td>
+                                        <td><c:out value="${depto.getObservacion()}"></c:out></td>
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Artefacto</th>
+                                        <th>Potencia (kW)</th>
+                                    </tr>
+                                <c:forEach var="list" items="${list}">
 
-                                </div>
-                                <div class="form-group">
-                                    <label>Observación</label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="font-normal-display"><c:out value="${info.observacion}"></c:out></label>
-                                    </div>  
-                                    <div class="form-group">
-                                        <label>Artefactos</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th class="encabezado-listado">Artefacto</th>
-                                                <th class="encabezado-listado">Potencia (kW)</th>
-                                            </tr>
-                                        <c:forEach var="list" items="${list}">
+                                    <tr>
+                                        <td><c:out value="${list.tipoArtefacto}"></c:out></td>
+                                        <td><c:out value="${list.potenciaArtefacto}"></c:out></td>
+                                        </tr>
 
-                                            <tr>
-                                                <td><c:out value="${list.tipoArtefacto}"></c:out></td>
-                                                <td><c:out value="${list.potenciaArtefacto}"></c:out></td>
-                                                </tr>
-
-                                        </c:forEach>
-                                    </table>
-                                </div>
-                                <div class="form-group">
-                                    <label>Nombre Dueño</label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="font-normal-display"><c:out value="${info.nombreDueno}"></c:out></label>
-                                    </div>    
-                                </div>
-                                <div class="form-group">
-                                    <label>Detalle</label>
-                                </div>    
-                                <div class="form-group">
-                                    <label class="font-normal-display"><c:out value="${diag.detalle}"></c:out></label>
-                                </div>
-                                <div class="form-group">
-                                    <label>Observación Detalle</label> 
-                                </div>
-                                <div class="form-group">
-                                    <label class="font-normal-display"><c:out value="${diag.obsDetalle}"></c:out></label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="font-normal-display">Sello</label>
-                                </div>
-                                <div class="form-group">
-                                    <label class="font-normal-display">
-                                    <c:if test="${depto.selloDepartamento == 1}">
-                                        VERDE
-                                    </c:if>
-                                    <c:if test="${depto.selloDepartamento == 2}">
-                                        ROJO
-                                    </c:if>
-                                    <c:if test="${depto.selloDepartamento == 1}">
-                                        AMARILLO
-                                    </c:if>
-                                </label>
-                            </div>
+                                </c:forEach>
+                            </table>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td><label>Defectos</label></td>   
+                                </tr>
+                                
+                                <c:forEach var="listDefecto" items="${listDefecto}">
+                                <tr>
+                                    <td>
+                                        <c:if test="${listDefecto.defectoDepto == 1}">
+                                           Fuga de gas en artefacto
+                                        </c:if>
+                                        <c:if test="${listDefecto.defectoDepto == 2}">
+                                           Fuga de gas en red
+                                        </c:if>
+                                        <c:if test="${listDefecto.defectoDepto == 3}">
+                                           Artefacto tipo B C sin conducto de evacuación de gases de la combustión instalados en recintos interiores
+                                        </c:if>
+                                        <c:if test="${listDefecto.defectoDepto == 4}">
+                                           Existencia de concentración de monóxido de carbono (CO) superior a 50 ppm
+                                        </c:if>   
+                                        <c:if test="${listDefecto.defectoDepto == 5}">
+                                           Dormitorio con artefactos a gas tipo A
+                                        </c:if> 
+                                        <c:if test="${listDefecto.defectoDepto == 6}">
+                                           Lectura de tiro igual o superior a 0, en conducto individual o colectivo
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 7}">
+                                           Recinto sin ventilaciones que cuente con calefactores tipo A
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 8}">
+                                           Conexión al abastecimiento de gas por medio de un tubo flexible no metálico (elastómero) en contacto consuperficie caliente
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 9}">
+                                           Arranque sin artefacto a gas conectado y que no se encuentra debidamente sellado
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 10}">
+                                           Flexible de conexión visiblemente dañado
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 11}">
+                                           Sin tapón arranque
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 12}">
+                                           Sin ventilación inferior
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 13}">
+                                           Ducto del calefont no cumple
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 14}">
+                                           Ducto del calefont no sale a los cuatro vientos
+                                        </c:if>
+                                           <c:if test="${listDefecto.defectoDepto == 15}">
+                                           Artefacto no enciende
+                                        </c:if>
+                                           
+                                           <c:if test="${listDefecto.defectoDepto == 17}">
+                                           Artefacto cocina plato Q1 se apaga en minino o no enciende o llama envolvente lo mismo para los 4 platos
+                                        </c:if>
+                                    </td>
+                                </tr>
+                                </c:forEach>
+                                         
+                            </table>    
+                            <!-- -->
+                            <button class="btn btn-primary btn-warning" name="btnAdd" type="button" onclick="location.href = 'conductoMainServlet';"><font size="1"><strong>Volver</strong></font></button>
+                             
                         </div>
-                        <!-- pintar los datos del depto obtenido desde la bd-->
-
-
-                        <!-- -->
-
-
-                        <c:if test="${idConducto !=null}">
-                            <button class="btn btn-primary" name="btnAdd" type="button" onclick="location.href = 'departamentoGetAddServlet?id=<c:out value="${idConducto}"></c:out>';"><font size="1"><strong>AGREGAR DEPARTAMENTO</strong></font></button>
-                            </c:if>  
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="form-group">
-                            <br><br>
-                            <!--<img class="img-login" src="iconos/imagen.jpg">-->
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <br><br>
+                                <!--<img class="img-login" src="iconos/imagen.jpg">-->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- JavaScript -->
-        <script src="js/jquery-1.10.2.js"></script>
-        <script src="js/bootstrap.js"></script>            
-        <script>
-                            $("#menu-toggle").click(function(e) {
-                                e.preventDefault();
-                                $("#wrapper").toggleClass("active");
-                            });
-        </script>  
+            <!-- JavaScript -->
+            <script src="js/jquery-1.10.2.js"></script>
+            <script src="js/bootstrap.js"></script>            
+            <script>
+                                    $("#menu-toggle").click(function(e) {
+                                        e.preventDefault();
+                                        $("#wrapper").toggleClass("active");
+                                    });
+            </script>  
     </body>
 </html>
 

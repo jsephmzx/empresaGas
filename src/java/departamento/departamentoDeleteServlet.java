@@ -5,9 +5,13 @@
  */
 package departamento;
 
+import defectoDepto.defectoDepto;
+import defectoDepto.defectoDeptoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +47,9 @@ public class departamentoDeleteServlet extends HttpServlet {
         try {
             conexion = ds.getConnection();
             departamentoDAO deptoDAO = new departamentoDAO();
+            defectoDeptoDAO defDeptoDAO = new defectoDeptoDAO();
             deptoDAO.setConexion(conexion);
+            defDeptoDAO.setConexion(conexion);
             String userSession = (String) request.getSession().getAttribute("tipo");
             try {
                 if (userSession.equals("admin")) {
@@ -54,6 +60,11 @@ public class departamentoDeleteServlet extends HttpServlet {
                 if (JOptionPane.showConfirmDialog(null, "¿Seguro que Desea Eliminar?", "Precaucion", 0) == 0) {
 
                     //eliminacion edificio
+                    Collection<defectoDepto> listDefDepto = new ArrayList<defectoDepto>();
+                    listDefDepto = defDeptoDAO.getByidDepto(idDepartamento);
+                    for(defectoDepto reg:listDefDepto){
+                        defDeptoDAO.delete(reg.getIdDefectoDepto());
+                    }
                     deptoDAO.delete(idDepartamento);
                     JOptionPane.showMessageDialog(null, "Departamento  Eliminado");
                 }

@@ -60,6 +60,7 @@ public class listInfoDiagServlet extends HttpServlet {
              informacion info = new informacion();
              diagnostico diag = new diagnostico();
              departamento depto = new departamento();
+             defectoDepto defDepto = new defectoDepto();
              Collection<artefacto> list = new ArrayList<artefacto>();
              Collection<defectoDepto> listDefecto = new ArrayList<defectoDepto>();
              
@@ -84,12 +85,14 @@ public class listInfoDiagServlet extends HttpServlet {
                  diag = diagDAO.getByidDepto(idDepto);
                  depto = deptoDAO.getByIdDepto(idDepto);
                  list =arteDAO.getByidDepto(idDepto);
+                 listDefecto =defectoDAO.getByidDepto(idDepto);
                  
                  request.setAttribute("info", info);
                  request.setAttribute("diag", diag);
                  request.setAttribute("depto", depto);
                  request.setAttribute("idDepto", idDepto);
                  request.setAttribute("list", list);
+                 request.setAttribute("listDefecto", listDefecto);
              } catch (Exception ex) {
 
             }finally {
