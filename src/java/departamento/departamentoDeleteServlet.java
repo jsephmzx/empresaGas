@@ -5,6 +5,8 @@
  */
 package departamento;
 
+import artefacto.artefacto;
+import artefacto.artefactoDAO;
 import defectoDepto.defectoDepto;
 import defectoDepto.defectoDeptoDAO;
 import java.io.IOException;
@@ -48,8 +50,10 @@ public class departamentoDeleteServlet extends HttpServlet {
             conexion = ds.getConnection();
             departamentoDAO deptoDAO = new departamentoDAO();
             defectoDeptoDAO defDeptoDAO = new defectoDeptoDAO();
+            artefactoDAO arteDAO = new artefactoDAO();
             deptoDAO.setConexion(conexion);
             defDeptoDAO.setConexion(conexion);
+            arteDAO.setConexion(conexion);
             String userSession = (String) request.getSession().getAttribute("tipo");
             try {
                 if (userSession.equals("admin")) {
@@ -61,9 +65,16 @@ public class departamentoDeleteServlet extends HttpServlet {
 
                     //eliminacion edificio
                     Collection<defectoDepto> listDefDepto = new ArrayList<defectoDepto>();
+                    Collection<artefacto> listArtefacto = new ArrayList<artefacto>();
                     listDefDepto = defDeptoDAO.getByidDepto(idDepartamento);
+                    for(artefacto regArte:listArtefacto){
+                       arteDAO.delete(regArte.getIdArtefacto());
+                    }
                     for(defectoDepto reg:listDefDepto){
-                        defDeptoDAO.delete(reg.getIdDefectoDepto());
+                        if(reg.getIdDefectoDepto() !=0){
+                            defDeptoDAO.delete(reg.getIdDefectoDepto());
+                        }
+                        
                     }
                     deptoDAO.delete(idDepartamento);
                     JOptionPane.showMessageDialog(null, "Departamento  Eliminado");
