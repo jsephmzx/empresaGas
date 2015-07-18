@@ -206,6 +206,64 @@ public class conductoDAO implements Serializable {
         }
         return list;
     }
+    
+    public conducto getById(int idEdificio) {
+        PreparedStatement sentence = null;
+        ResultSet result = null;
+        conducto reg = new conducto();
+        try {
+            String sql = "select * from conducto where id_edificio=?";
+            sentence = conexion.prepareStatement(sql);
+            sentence.setInt(1, idEdificio);
+            result = sentence.executeQuery();
+
+            while (result.next()) {
+                
+                reg.setIdConducto(result.getInt("id_conducto"));
+                reg.setCantDeptoConducto(result.getInt("cant_depto_conducto"));
+                reg.setSelloConducto(result.getString("sello_conducto"));
+                reg.setCondSombrete(result.getString("con_sombrete"));
+                reg.setSecciones(result.getString("secciones"));
+                reg.setConInterior(result.getString("con_interior"));
+                reg.setRelacionLados(result.getString("relacion_lados"));
+                reg.setPruebaTiro(result.getString("prueba_tiro"));
+                reg.setTomaAire(result.getString("toma_aire"));
+                reg.setMaterialidad(result.getString("materialidad"));
+                reg.setObservaciones(result.getString("observaciones"));
+                reg.setSello(result.getString("sello"));
+                reg.setArtefactoConducto(result.getString("artefacto_conducto"));
+                reg.setPotenciaArtefacto(result.getInt("potencia_artefacto"));
+                
+                reg.setSeccionConducto(result.getInt("seccion_conducto"));
+                reg.setMaterialConducto(result.getString("material_conducto"));
+                reg.setEspesorMaterial(result.getInt("espesor_material"));
+                reg.setConductoNormalizado(result.getString("conducto_normalizado"));
+                reg.setSombreteExpuesto(result.getString("sombrete_expuesto"));
+                reg.setConductoQuiebre(result.getString("conducto_quiebre"));
+                reg.setSecundarioNormalizados(result.getString("secundario_normalizados"));
+                
+            }
+        } catch (MySQLSyntaxErrorException ex) {
+            System.out.println("Error de sintaxis en conductoDAO, getAll() : " + ex);
+            throw new RuntimeException("MySQL Syntax Exception en conductoDAO, getAll() : " + ex);
+        } catch (MySQLIntegrityConstraintViolationException ex) {
+            System.out.println("MySQL Excepción de integridad en conductoDAO, getAll() : " + ex);
+            throw new RuntimeException("MySQL Excepción de integridad en conductoDAO, getAll() : " + ex);
+        } catch (SQLException ex) {
+            System.out.println("MySQL Excepción inesperada en conductoDAO, getAll() : " + ex);
+            throw new RuntimeException("MySQL Excepción inesperada en conductoDAO, getAll() : " + ex);
+        } finally {
+            try {
+                result.close();
+            } catch (Exception noGestionar) {
+            }
+            try {
+                sentence.close();
+            } catch (Exception noGestionar) {
+            }
+        }
+        return reg;
+    }
 //  eliminar
 
     public void delete(int id_conducto) {

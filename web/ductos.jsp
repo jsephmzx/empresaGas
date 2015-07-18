@@ -99,6 +99,7 @@
                                 <!--<button class="btn btn-primary" name="btnAdd" type="button" onclick="location.href = 'agregarConducto.jsp';"><font size="1"><strong>AGREGAR CONDUCTO</strong></font></button>-->
                                 <div class="form-horizontal div-conductos">
                                     <ul class="nav nav-tabs">
+                                       <c:if test="${edifExistenciaConduc != 'n'}">
                                         <c:set var="sum" value="${1}" />
                                         <c:forEach var="list" items="${list}">
                                             <li class="li-conductos"><a style="margin-right: 2px !important;
@@ -109,6 +110,7 @@
                                                                         background: #1A6ECC !important" href="conductoMainServlet?id=<c:out value="${list.idConducto}" />"><c:out value="${sum}" /></a></li>
                                                 <c:set var="sum" value="${sum + 1}" />
                                             </c:forEach>
+                                       </c:if> 
                                     </ul>
                                 </div>
                                 <table class="table table-condensed table-responsive" id="results">
@@ -169,6 +171,7 @@
                                 </c:if>  
                                 <c:if test="${edifExistenciaConduc == 'n'}">
                                     <button class="btn btn-primary" name="btnAdd" type="button" onclick="location.href = 'departamentoGetAddServlet?id=<c:out value="${idEdificio}"></c:out>';"><font size="1"><strong>AGREGAR DEPARTAMENTO</strong></font></button>
+                                    <button class="btn btn-warning" name="btnmodcon"  onclick="location.href = 'edifConductoGetServlet?id=<c:out value="${idEdificio}"></c:out>';"><font size="1"><strong>Condiciones</strong></font></button>
                                 </c:if>        
                             </div>
                             <div class="col-lg-5">
