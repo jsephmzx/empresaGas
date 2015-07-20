@@ -67,7 +67,9 @@ public class departamentoDeleteServlet extends HttpServlet {
                     Collection<defectoDepto> listDefDepto = new ArrayList<defectoDepto>();
                     Collection<artefacto> listArtefacto = new ArrayList<artefacto>();
                     listDefDepto = defDeptoDAO.getByidDepto(idDepartamento);
+                    listArtefacto =arteDAO.getByidDepto(idDepartamento);
                     for(artefacto regArte:listArtefacto){
+                        System.out.println("Eliminando artefactos");
                        arteDAO.delete(regArte.getIdArtefacto());
                     }
                     for(defectoDepto reg:listDefDepto){
