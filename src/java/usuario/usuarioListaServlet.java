@@ -60,6 +60,14 @@ public class usuarioListaServlet extends HttpServlet {
                         System.out.println("entra en if");
                         listaUsuario = (ArrayList<usuario>) usDAO.getAll();
                     }//else{listaEdificio = edDAO.findBySello(request.getParameter(""));}
+                    if (listarUsuarios.equals("ADMIN")){
+                        String admin = "admin";
+                        listaUsuario = (ArrayList<usuario>) usDAO.getAllType(admin);
+                    }
+                    if(listarUsuarios.equals("VENDE")){
+                        String vende ="vende";
+                        listaUsuario = (ArrayList<usuario>) usDAO.getAllType(vende);
+                    }
                     request.setAttribute("lista", listaUsuario);
                     request.getRequestDispatcher("/listarUsuarios.jsp").forward(request, response);
                 } else {

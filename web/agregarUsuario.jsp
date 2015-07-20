@@ -44,7 +44,7 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav" >
                     <div>
-                        <h3 style="color: #ffffff !important;white-space: pre!important;"> Hola  <c:out value="${nombre}"/></h3>                   
+                        <h3 style="color: #ffffff !important;white-space: pre!important;"> Hola  <c:out value="${nombrePersona}"/> <c:out value="${apellido}"/>></h3>                   
                     </div>
                     <li class="sidebar-brand"><a href="user.jsp"><span class="glyphicon glyphicon-home" ></span> Inicio</a></li>
                     <li>
@@ -95,6 +95,21 @@
                             <div class="col-lg-12 agregar-admin-vendedor centrar2" style="background-color: #ffffff !important;">
                                 <h4><b>NUEVO USUARIO</b></h4>
                                 <div class="form-group">
+                                    <c:if test="${errorRut != null}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  El Rut Ingresado no es valido.</b></h5></label>
+                                        </div> 
+                                    </c:if>
+                                    <c:if test="${errorNombrePersona != null}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  El Nombre Ingresado no es valido.</b></h5></label>
+                                        </div> 
+                                    </c:if>
+                                    <c:if test="${errorApellidoPersona != null}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  El Apellido Ingresado no es valido.</b></h5></label>
+                                        </div> 
+                                    </c:if>
                                     <c:if test="${agregar3 == 3}">
                                         <div class="alert alert-danger">
                                             <label style="color : #e45c00 !important;"><h5><b>*  Nombre de usuario no se encuentra disponible</b></h5></label>
@@ -136,6 +151,18 @@
                                         <div class="form-group">
                                             <label>Repita Contraseña</label>
                                             <input  type="password" class="form-control" name="contrasenaV" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Rut</label>
+                                            <input type="text" class="form-control" name="rut_persona" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nombre</label>
+                                            <input type="text" class="form-control" name="nombre_persona" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Apellido</label>
+                                            <input type="text" class="form-control" name="apellido_persona" required="true"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>

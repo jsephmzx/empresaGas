@@ -5,6 +5,7 @@
  */
 package usuario;
 
+import helpers.Rut;
 import helpers.validarEmail;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -59,16 +60,26 @@ public class registrarUsuarioServlet extends HttpServlet {
                     String contrasenaV = request.getParameter("contrasenaV");
                     String emailUsuario = request.getParameter("email_usuario");
                     String tipoUsuario = request.getParameter("tipo_usuario");
+                    String rutPersona = request.getParameter("rut_persona");
+                    String nombrePersona = request.getParameter("nombre_persona");
+                    String apellidoPersona = request.getParameter("apellido_persona");
                     boolean error = false;
                     request.setAttribute("nombreUsuario", nombreUsuario);
                     request.setAttribute("emailUsuario", emailUsuario);
                     request.setAttribute("tipoUsuario", tipoUsuario);
+                    request.setAttribute("rutP", rutPersona);
+                    request.setAttribute("nombreP", nombrePersona);
+                    request.setAttribute("apellidoP", apellidoPersona);
                     ArrayList<String> listaNombres = userDAO.getNombre();
                     /*  
                      Validaciones 
                      */
                     // validar mail administrador
+                    boolean rutCorrecto = false;
+                    Rut validarRut = new Rut(); 
                     boolean emailCorrecto = mail.validateEmail(emailUsuario);
+                    
+                    
                     //valida mail
                     if (emailCorrecto == false) {
 
@@ -89,6 +100,22 @@ public class registrarUsuarioServlet extends HttpServlet {
                         request.setAttribute("agregar5", 5);
                         error = true;
                     }
+                    //validar rut
+                    rutCorrecto = validarRut.validateRut(rutPersona);
+                    if(rutCorrecto == false){
+                        request.setAttribute("errorRut", "Error, el Rut ingresado no es correcto.");
+                        error = true;
+                    }
+                    //validar nomre y apellido
+                    if(nombrePersona.equals("") || nombrePersona == null){
+                        request.setAttribute("errorNombrePersona", "Error, el Nombre de la Persona esta Vacio");
+                        error = true;
+                    }
+                    
+                    if(apellidoPersona.equals("") || apellidoPersona == null){
+                        request.setAttribute("errorApellidoPersona", "Error, el Apellido de la Persona esta Vacio");
+                        error = true;
+                    }
                     //ingreso de usuario en base de datos
                     if (!error) {
                         usuario us = new usuario();
@@ -97,6 +124,9 @@ public class registrarUsuarioServlet extends HttpServlet {
                         us.setNombreUsuario(nombreUsuario);
                         us.setEmailUsuario(emailUsuario);
                         us.setContrasena(contrasena);
+                        us.setRutUsuario(rutPersona);
+                        us.setNombre(nombrePersona);
+                        us.setApellido(apellidoPersona);
                         userDAO.insert(us);
                         //mensaje exito
                         exito = 1;

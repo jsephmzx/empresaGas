@@ -162,7 +162,65 @@ public class usuarioDAO implements Serializable {
         }
         return list;
     }
+    
+    // obtener lista de ususarios segun su tipo
+    public Collection<usuario> getAllType(String nombreUsuario) {
 
+        PreparedStatement sentence = null;
+        ResultSet result = null;
+
+        Collection<usuario> list = new ArrayList<usuario>();
+
+        try {
+            String sql = "select * from usuario where tipo_usuario = ?";
+
+            sentence = conexion.prepareStatement(sql);
+
+            sentence.setString(1, nombreUsuario);
+
+            result = sentence.executeQuery();
+            while (result.next()) {
+                /* instanciar objeto */
+               
+                usuario reg = new usuario();
+                /* obtener resultset */
+                reg.setIdUsuario(result.getInt("id_usuario"));
+                reg.setNombreUsuario(result.getString("nombre_usuario"));
+                reg.setContrasena(result.getString("contrasena"));
+                reg.setTipoUsuario(result.getString("tipo_usuario"));
+                reg.setEmailUsuario(result.getString("email_usuario"));
+                reg.setRutUsuario(result.getString("rut_usuario"));
+                reg.setNombre(result.getString("nombre"));
+                reg.setApellido(result.getString("apellido"));
+                list.add(reg);
+            }
+
+        } catch (MySQLSyntaxErrorException ex) {
+            System.out.println("Error de sintaxis en usuarioDAO, findbyIdUsuario() : " + ex);
+            throw new RuntimeException("MySQL Syntax Exception en usuarioDAO, findbyIdUsuario() : " + ex);
+        } catch (MySQLIntegrityConstraintViolationException ex) {
+            System.out.println("MySQL Excepción de integridad en usuarioDAO, findbyIdUsuario() : " + ex);
+            throw new RuntimeException("MySQL Excepción de integridad en usuarioDAO, findbyIdUsuario() : " + ex);
+        } catch (SQLException ex) {
+            System.out.println("MySQL Excepción inesperada en usuarioDAO, findbyIdCity() : " + ex);
+            throw new RuntimeException("MySQL Excepción inesperada en usuarioDAO, findbyIdUsuario() : " + ex);
+        } finally {
+            /* liberar recursos */
+            try {
+                result.close();
+            } catch (Exception noGestionar) {
+            }
+            try {
+                sentence.close();
+            } catch (Exception noGestionar) {
+            }
+        }
+        return list;
+    }
+
+    
+    
+    
     // consulta por id ingreso usuario
     public usuario findbyIdUsuario(String nombreUsuario) {
 

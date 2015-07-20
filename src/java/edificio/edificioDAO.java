@@ -155,6 +155,7 @@ public class edificioDAO implements Serializable {
         }
         return list;
     }
+    
 
     // obtener por id del edificio
     public edificio findbyIdEdificio(int idEdificio) {

@@ -81,6 +81,10 @@ public class ingresarServlet extends HttpServlet {
                 request.getSession().setAttribute("correo", usuario.getEmailUsuario());
                 request.getSession().setAttribute("tipo",usuario.getTipoUsuario());
                 request.getSession().setAttribute("idUsuariOnline", usuario.getIdUsuario());
+                request.getSession().setAttribute("rutUsuario", usuario.getRutUsuario());
+                request.getSession().setAttribute("nombrePersona", usuario.getNombre());
+                request.getSession().setAttribute("apellido", usuario.getApellido());
+                
                 request.getSession().setAttribute("noadmin", 1);
                 if (usuario.getTipoUsuario().equals("admin")) {
                     request.getSession().removeAttribute("noadmin");
