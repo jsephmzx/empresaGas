@@ -27,6 +27,7 @@ public class edificio implements Serializable{
  public int cantDepartamentos;
  public int cantCasas;
  public int cantLocales;
+ public String gasLocal;
  public int cantAreas;
  public int cantLavanderias;
  public int cantConductos;
@@ -36,7 +37,7 @@ public class edificio implements Serializable{
  public int potenciaEstimada;
  public int idUsuario;
  public String tipoCliente;
- public String exitenciaConductos;
+ public String existenciaConductos;
  public String fechaVencimiento;
  
     public edificio() {
@@ -154,6 +155,14 @@ public class edificio implements Serializable{
         this.cantLocales = cantLocales;
     }
 
+    public String getGasLocal() {
+        return gasLocal;
+    }
+
+    public void setGasLocal(String gasLocal) {
+        this.gasLocal = gasLocal;
+    }
+
     public int getCantAreas() {
         return cantAreas;
     }
@@ -226,12 +235,12 @@ public class edificio implements Serializable{
         this.tipoCliente = tipoCliente;
     }
 
-    public String getExitenciaConductos() {
-        return exitenciaConductos;
+    public String getExistenciaConductos() {
+        return existenciaConductos;
     }
 
-    public void setExitenciaConductos(String exitenciaConductos) {
-        this.exitenciaConductos = exitenciaConductos;
+    public void setExistenciaConductos(String existenciaConductos) {
+        this.existenciaConductos = existenciaConductos;
     }
 
     public String getFechaVencimiento() {

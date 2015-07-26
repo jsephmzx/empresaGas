@@ -106,7 +106,7 @@ Author     : Natalia
                 <li class="sidebar-brand"><div class="form-group sidebar-brand btn-block">
                         <input type="button" onclick="window.location.assign('/Proyectoempresa/finServlet')" style="background: #1a6ecc !important;width: 200px !important;" class="btn btn-primary btn-sm btn-block" value="Cerrar Sesion"/>
                     </div></li>
-                
+
 
             </ul>
         </div>
@@ -245,37 +245,37 @@ Author     : Natalia
                                             <label for="nombre_ejecutivo" style="height: 10px!important;">Nombre Ejecutivo(a)</label>
                                             <input type="text" name="nombre_ejecutivo"   class="form-control" required="true" value="<c:out value="${nombreEjecutivo}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                                       this.value = this.value.substring(1, this.value.length);"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="tipo_construccion" style="height: 10px!important;">Tipo construcción</label>
                                             <input type="text" name="tipo_construccion" class="form-control" required="true" value="<c:out value="${tipoConstruccion}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>                                     
+                                                                       this.value = this.value.substring(1, this.value.length);"/>                                     
                                         </div>
                                         <div class="form-group">
                                             <label for="nombre_edificio" style="height: 10px!important;">Nombre Edificio </label>
                                             <input type="text" name="nombre_edificio"  class="form-control" required="true" value="<c:out value="${nombreEdificio}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                                       this.value = this.value.substring(1, this.value.length);"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="direccion_edificio" style="height: 10px!important;">Dirección del Edificio</label>
                                             <input type="text" name="direccion_edificio"  class="form-control" required="true" value="<c:out value="${direccionEdificio}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                                       this.value = this.value.substring(1, this.value.length);"/>
                                         </div>
                                         <div>
                                             <label form="ciige_anterior" style="height: 10px!important;">CIIG-e Anterior</label>
                                             <input type="text" name="ciige_anterior" required="true" class="form-control" value="<c:out value="${ciigeAnterior}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                                       this.value = this.value.substring(1, this.value.length);"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="ano_edificio"  style="height: 10px!important;">Año construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Debe ser mayor a 1954.</i></h6></label> </label>
                                             <input type="text" name="ano_edificio"  maxlength="4" class="form-control" required="true" value="<c:out value="${anoEdificio}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                                       this.value = this.value.substring(1, this.value.length);"/>
                                         </div> 
                                         <div class="form-group" >
                                             <label for="rut_edificio"  style="height: 8px!important;" >R.U.T construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label >
@@ -286,13 +286,13 @@ Author     : Natalia
                                             <label for="nombre_admin" style="height: 10px!important;">Nombre Administrador</label>
                                             <input type="text" name="nombre_admin"  class="form-control" required="true" value="<c:out value="${nombreAdmin}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                                       this.value = this.value.substring(1, this.value.length);"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="telefono_admin" style="height: 10px!important;">Teléfono Administrador</label>
                                             <input type="text" name="telefono_admin" class="form-control"required="true" value="<c:out value="${telefonoAdmin}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>                                     
+                                                                       this.value = this.value.substring(1, this.value.length);"/>                                     
                                         </div>
                                     </div>
                                     <div class="col-lg-6">   
@@ -355,20 +355,35 @@ Author     : Natalia
                                                 <input type="text" name="rut_admin" maxlength="10"  class="form-control" required="true" value="<c:out value="${rutAdmin}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/> 
                                         </div>
+                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
+                                            <label for="fecha_vencimiento">Fecha vencimiento</label>                                                                                                   
+                                            <input type="text" name="fecha_vencimiento"  id="fecha_vencimiento"  class="form-control-fecha" value="<c:out value="${fechaVencimiento}"/>">                                              
+                                            <button id="fecha_vencimiento">...</button>                   
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
+                                            <label style="height: 10px!important;" >Sello </label>
+                                            <select name="sello_edificio" class="porte">
+                                                <option value="amarillo"  <c:if test="${idEmpresa == 'amarillo'}">selected</c:if>> AMARILLO</option>
+                                                <option value="rojo" <c:if test="${idEmpresa == 'rojo'}">selected</c:if>> ROJO</option>
+                                                <option value="verde" <c:if test="${idEmpresa == 'verde'}">selected</c:if>> VERDE</option>
+                   
+                                                </select>
+                                            </div>
 
+
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-12 agregar-edificio" id="edificio" style="display: none;"> 
-                                    <h4>EDIFICIO</h4>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label for="ubicacion_medidores">Ubicacion de los medidores</label>
-                                            <input type="text" name="ubicacion_medidores"   class="form-control" required="true" value="<c:out value="${ubicacionMedidores}"/>"
+                                    <div class="col-sm-12 agregar-edificio" id="edificio" style="display: none;"> 
+                                        <h4>EDIFICIO</h4>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="ubicacion_medidores">Ubicacion de los medidores</label>
+                                                <input type="text" name="ubicacion_medidores"   class="form-control" required="true" value="<c:out value="${ubicacionMedidores}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
                                         </div> 
                                         <div class="form-group">
-                                            <label for="potencia_real">Potencia ingreso (kW)</label>
+                                            <label for="potencia_real">Potencia (kW)</label>
                                             <input type="text" name="potencia_real" maxlength="3" class="form-control" required="true" value="<c:out value="${potenciaReal}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                        this.value = this.value.substring(1, this.value.length);"/>
@@ -467,10 +482,25 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label>N° de areas comunes </label>
-                                                    </td>
-                                                    <td style="padding-left: 30px!important;">
-                                                        <input type="text" name="cant_areas" maxlength="3" required="true" class="form-control" value="<c:out value="${cantAreas}"/>"
+                                                        <div class="form-group">
+                                                            <h6>* Solo en el caso de haber locales comerciales</h6>
+                                                            <div class="padding-radio">  
+                                                                <div class="radio">                             
+                                                                    <input  type="radio" name="gas_local" value="s" <c:if test="${despiche == 'gas_local'}">checked</c:if>>Con gas 
+                                                                        <div class="radio">
+                                                                            <input  type="radio" name="gas_local" value="n" <c:if test="${despiche == 'gas_local'}">checked</c:if>>Sin gas
+                                                                        </div>
+                                                                    </div>         
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>N° de areas comunes </label>
+                                                        </td>
+                                                        <td style="padding-left: 30px!important;">
+                                                            <input type="text" name="cant_areas" maxlength="3" required="true" class="form-control" value="<c:out value="${cantAreas}"/>"
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"/>
                                                     </td>                                            
@@ -524,35 +554,35 @@ Author     : Natalia
                                         <div class="form-group">
                                             <img class="img-login" src="iconos/edificio.jpg">
                                         </div>
-                                          
+
                                     </div>
                                 </div>
-                                
-                            <div class="col-lg-7">
-                                <div class="form-group" id="agregar" style="display: none;">
-                                            <br><br>
-                                            <button class="btn btn-primary btn-lg" type="submit" >Agregar</button>  
-                                </div>
+
+                                <div class="col-lg-7">
+                                    <div class="form-group" id="agregar" style="display: none;">
+                                        <br><br>
+                                        <button class="btn btn-primary btn-lg" type="submit" >Agregar</button>  
+                                    </div>
                             </form> 
-                                <form action="/Proyectoempresa/edificioListaServlet" role="form" method="post">
-                                    <div class="form-group">
-                                        <input type="text"  name="nombre_sesion" value="<c:out value="${nombre}"/>" hidden="true"/>
-                                        <input type="text"  name="listarEdificio" value="TODAS" hidden="true"/>                                    
-                                        <input type="submit" class="btn btn-danger btn-md" value="Volver al listado edificio"/>    
-                                    </div>
-                                </form>
-                            </div>
+                            <form action="/Proyectoempresa/edificioListaServlet" role="form" method="post">
+                                <div class="form-group">
+                                    <input type="text"  name="nombre_sesion" value="<c:out value="${nombre}"/>" hidden="true"/>
+                                    <input type="text"  name="listarEdificio" value="TODAS" hidden="true"/>                                    
+                                    <input type="submit" class="btn btn-danger btn-md" value="Volver al listado edificio"/>    
+                                </div>
+                            </form>
                         </div>
-                    </div>    
-                </div>  
-            </div>
+                    </div>
+                </div>    
+            </div>  
         </div>
     </div>
+</div>
 
-    <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>   
-    <script type="text/javascript">//<![CDATA[
+<!-- JavaScript -->
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.js"></script>   
+<script type="text/javascript">//<![CDATA[
 
                                                                            var cal = Calendar.setup({
                                                                            onSelect: function (cal) {
@@ -565,61 +595,58 @@ Author     : Natalia
                                                                            cal.manageFields("f_btn3", "f_date3", "%Y-%m-%d %I:%M %p");
                                                                            cal.manageFields("f_btn4", "f_date4", "%Y-%m-%d %I:%M %p");
                                                                            //]]></script>
-    <script>
-                $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-                $("#wrapper").toggleClass("active");
-        });</script>
-    <script type="text/javascript">
-                function showContent() {
-                        element = document.getElementById("content");
-                        edificio = document.getElementById("edificio");
-                        agregar = document.getElementById("agregar");
-                        check = document.getElementById("check");
-                         
-                        
-                        if (check.checked) {
-                             element.style.display = 'block';
-                             agregar.style.display = 'block';
-                        }
-                        else {
-                            element.style.display = 'none';
-                            agregar.style.display = 'none';
-                        }
-                }
-                function showDepto(){
-                    element = document.getElementById("content");
+<script>
+            $("#menu-toggle").click(function (e) {
+    e.preventDefault();
+            $("#wrapper").toggleClass("active");
+    });</script>
+<script type="text/javascript">
+            function showContent() {
+            element = document.getElementById("content");
                     edificio = document.getElementById("edificio");
                     agregar = document.getElementById("agregar");
-                    checkE = document.getElementById("checke");
-                    if (checkE.checked){
-                            edificio.style.display = 'block';
-                            element.style.display = 'block';
-                            agregar.style.display = 'block';
-                    }else{
-                            edificio.style.display = 'none';
-                            element.style.display = 'none';
-                            agregar.style.display = 'none';
-                    }
-                    
-                }
-                
-                function showOtros(){
-                    element = document.getElementById("content");
-                    edificio = document.getElementById("edificio");
-                    agregar = document.getElementById("agregar");
-                    checkO = document.getElementById("checko");
-                    
-                    if (checkO.checked){
-                            edificio.style.display = 'block';
-                            element.style.display = 'block';
-                            agregar.style.display = 'block';
-                        }else{
-                            edificio.style.display = 'none';
-                            element.style.display = 'none';
-                            agregar.style.display = 'none';
-                        }
-                }
-    </script>
+                    check = document.getElementById("check");
+                    if (check.checked) {
+            element.style.display = 'block';
+                    agregar.style.display = 'block';
+            }
+            else {
+            element.style.display = 'none';
+                    agregar.style.display = 'none';
+            }
+            }
+    function showDepto(){
+    element = document.getElementById("content");
+            edificio = document.getElementById("edificio");
+            agregar = document.getElementById("agregar");
+            checkE = document.getElementById("checke");
+            if (checkE.checked){
+    edificio.style.display = 'block';
+            element.style.display = 'block';
+            agregar.style.display = 'block';
+    } else{
+    edificio.style.display = 'none';
+            element.style.display = 'none';
+            agregar.style.display = 'none';
+    }
+
+    }
+
+    function showOtros(){
+    element = document.getElementById("content");
+            edificio = document.getElementById("edificio");
+            agregar = document.getElementById("agregar");
+            checkO = document.getElementById("checko");
+            if (checkO.checked){
+    edificio.style.display = 'block';
+            element.style.display = 'block';
+            agregar.style.display = 'block';
+    } else{
+    edificio.style.display = 'none';
+            element.style.display = 'none';
+            agregar.style.display = 'none';
+    }
+    }
+</script>
 </body>
 </html>

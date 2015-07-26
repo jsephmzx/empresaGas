@@ -125,6 +125,7 @@ public class edificioAddServlet extends HttpServlet {
                     int tipoInst = 0;
                     int tipoGas = 0;
                     int empresaGas = 0;
+                    String existencia = "s";
                     
                     /*
                      *Recibir parametros
@@ -164,6 +165,9 @@ public class edificioAddServlet extends HttpServlet {
                     String cantCalderas = request.getParameter("cant_calderas");
                     String despiche = request.getParameter("despiche");
                     String potenciaReal = request.getParameter("potencia_real");
+                    String gasLocal = request.getParameter("gas_local");
+                    String fechaVencimiento = request.getParameter("fecha_vencimiento");
+                    String selloEdificio =request.getParameter("sello_edificio");
                     //
                     request.setAttribute("nombreEjecutivo", nombreEjecutivo);
                     request.setAttribute("tipoConstruccion", tipoConstruccion);
@@ -195,6 +199,9 @@ public class edificioAddServlet extends HttpServlet {
                     request.setAttribute("cantConductos", cantConductos);
                     request.setAttribute("despiche", despiche);
                     request.setAttribute("potenciaReal", potenciaReal);
+                    request.setAttribute("gasLocal",gasLocal);
+                    request.setAttribute("fechaVencimiento",fechaVencimiento);
+                    request.setAttribute("selloEdificio",selloEdificio);
 
                     // parse id
                     empresaGas = Integer.parseInt(idEmpresa);
@@ -447,10 +454,12 @@ public class edificioAddServlet extends HttpServlet {
                         if (locales < 0) {
                             request.setAttribute("msgErrorCantDeptos", "Error, Porfavor Ingrese cantidad de departamentos ");
                             request.setAttribute("edificioAgregar16", 16);
+                            existencia = "n";
                             error = true;
                         }
                     } else {
                         request.setAttribute("edificioAgregar16", 16);
+                        existencia = "n";
                         error = true;
                     }
                     /**
@@ -465,7 +474,9 @@ public class edificioAddServlet extends HttpServlet {
                         if (lavanderias < 0) {
                             request.setAttribute("msgErrorCantDeptos", "Error, Porfavor Ingrese cantidad de departamentos ");
                             request.setAttribute("edificioAgregar16", 16);
+                            
                             error = true;
+                            
                         }
                     } else {
                         request.setAttribute("edificioAgregar16", 16);
@@ -691,6 +702,11 @@ public class edificioAddServlet extends HttpServlet {
                         ed.setTelefonoEdificio(telefonoEdificio);//funca
                         ad.setRutAdmin(rutAdmin);
                         ad.setEmailAdmin(emailAdmin);
+                        ed.setIdUsuario(idUsuOnline);
+                        ed.setGasLocal(gasLocal);
+                        ed.setExistenciaConductos(existencia);
+                        ed.setSelloEdificio(selloEdificio);
+                        ed.setFechaVencimiento(fechaVencimiento);
 
                         /**/
                         /**/
@@ -779,6 +795,7 @@ public class edificioAddServlet extends HttpServlet {
                         fechaCierre = null;
                         despiche = null;
                         potenciaR = 0;
+                        existencia="s";
                         depto = 0;
                         casas = 0;
                         areas = 0;
@@ -787,6 +804,8 @@ public class edificioAddServlet extends HttpServlet {
                         piso = 0;
                         conducto = 0;
                         caldera = 0;
+                        fechaVencimiento="";
+                        selloEdificio="amarillo";
                         request.setAttribute("nombreEjecutivo", nombreEjecutivo);
                         request.setAttribute("tipoConstruccion", tipoConstruccion);
                         request.setAttribute("nombreEdificio", nombreEdificio);
@@ -817,6 +836,9 @@ public class edificioAddServlet extends HttpServlet {
                         request.setAttribute("cantConductos", cantConductos);
                         request.setAttribute("despiche", despiche);
                         request.setAttribute("potenciaReal", potenciaReal);
+                        request.setAttribute("gasLocal",gasLocal);
+                        request.setAttribute("fechaVencimiento",fechaVencimiento);
+                        request.setAttribute("selloEdificio",selloEdificio);
 
                         if (exito == 1) {
                             request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -831,7 +853,7 @@ public class edificioAddServlet extends HttpServlet {
                 /* enviar a la vista de login */
                 System.out.println("no ha iniciado session");
                 /*enviar al login*/
-                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         } catch (Exception connectionException) {
             connectionException.printStackTrace();
