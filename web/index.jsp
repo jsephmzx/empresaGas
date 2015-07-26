@@ -124,24 +124,17 @@ Author     : Natalia
                             <div class="form-group">
                                 <div class="padding-radio">  
                                     <div class="radio">                             
-                                        <input  type="radio" name="check" onchange="javascript:showContent()" value="1" <c:if test="${tipoCliente == '1'}">checked</c:if>>Casa
+                                        <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="casa" <c:if test="${tipoCliente == '1'}">checked</c:if>>Casa
                                             <div class="radio">
-                                                <input  type="radio" name="checke" onchange="javascript:showContent()" value="2" <c:if test="${tipoCliente == '2'}">checked</c:if>>Edificio
+                                                <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="edificio" <c:if test="${tipoCliente == '2'}">checked</c:if>>Edificio
                                                 <div class="radio">
-                                                    <input  type="radio" name="checko" onchange="javascript:showContent()" value="3" <c:if test="${tipoCliente == '3'}">checked</c:if>>Otros  
+                                                    <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="otros" <c:if test="${tipoCliente == '3'}">checked</c:if>>Otros  
                                                 </div>
                                             </div>
                                         </div>         
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <b>Casa</b>
-                                    <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
-                                    <b>Edificio</b>
-                                    <input type="checkbox" name="checke" id="checke" value="1" onchange="javascript:showDepto()" />
-                                    <b>Otros</b>
-                                    <input type="checkbox" name="checko" id="checko" value="1" onchange="javascript:showOtros()" />
-                                </div>
+                                
                                 <div class="form-group">
                                 <c:if test="${edificioAgregar1 == 1}">
                                     <div class="alert alert-danger">
@@ -615,52 +608,29 @@ Author     : Natalia
             $("#wrapper").toggleClass("active");
     });</script>
 <script type="text/javascript">
-            function showContent() {
-            element = document.getElementById("content");
-                    edificio = document.getElementById("edificio");
-                    agregar = document.getElementById("agregar");
-                    check = document.getElementById("check");
-                    if (check.checked) {
-            element.style.display = 'block';
-                    agregar.style.display = 'block';
+            
+    function toggle(elemento) {
+          if(elemento.value=="casa") {
+              document.getElementById("content").style.display = "block";
+              document.getElementById("edificio").style.display = "none";
+              document.getElementById("agregar").style.display = "block";
+           }else{
+               if(elemento.value=="edificio"){
+                   document.getElementById("content").style.display = "block";
+                   document.getElementById("edificio").style.display = "block";
+                   document.getElementById("agregar").style.display = "block";
+               }else{
+                   if(elemento.value=="otros"){
+                        document.getElementById("content").style.display = "block";
+                        document.getElementById("edificio").style.display = "block";
+                        document.getElementById("agregar").style.display = "block";
+                    }  
+                }
             }
-            else {
-            element.style.display = 'none';
-                    agregar.style.display = 'none';
-            }
-            }
-    function showDepto(){
-    element = document.getElementById("content");
-            edificio = document.getElementById("edificio");
-            agregar = document.getElementById("agregar");
-            checkE = document.getElementById("checke");
-            if (checkE.checked){
-    edificio.style.display = 'block';
-            element.style.display = 'block';
-            agregar.style.display = 'block';
-    } else{
-    edificio.style.display = 'none';
-            element.style.display = 'none';
-            agregar.style.display = 'none';
-    }
-
-    }
-
-    function showOtros(){
-    element = document.getElementById("content");
-            edificio = document.getElementById("edificio");
-            agregar = document.getElementById("agregar");
-            checkO = document.getElementById("checko");
-            if (checkO.checked){
-    edificio.style.display = 'block';
-            element.style.display = 'block';
-            agregar.style.display = 'block';
-    } else{
-    edificio.style.display = 'none';
-            element.style.display = 'none';
-            agregar.style.display = 'none';
-    }
-    }
+}
+</script>
+<script type="text/javascript">
+        
 </script>
 </body>
 </html>
