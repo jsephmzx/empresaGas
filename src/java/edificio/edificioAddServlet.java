@@ -676,7 +676,7 @@ public class edificioAddServlet extends HttpServlet {
                             }
                         }
                     }
-                    System.out.println("rutAdminCorrecto " + rutAdminCorrecto);
+                    System.out.println("rutAdminCorrecto " + rutAdmin);
 
                     // validar mail administrador
                     emailCorrecto = validarEmail.validateEmail(emailAdmin);
