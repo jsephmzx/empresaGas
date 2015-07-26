@@ -122,14 +122,27 @@ Author     : Natalia
                         <div class="col-lg-12 agregar-admin-vendedor"  > 
                             <h4>ADMINISTRADOR</h4>
                             <div class="form-group">
-                                <b>Casa</b>
-                                <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
-                                <b>Edificio</b>
-                                <input type="checkbox" name="checke" id="checke" value="1" onchange="javascript:showDepto()" />
-                                <b>Otros</b>
-                                <input type="checkbox" name="checko" id="checko" value="1" onchange="javascript:showOtros()" />
-                            </div>
-                            <div class="form-group">
+                                <div class="padding-radio">  
+                                    <div class="radio">                             
+                                        <input  type="radio" name="check" onchange="javascript:showContent()" value="1" <c:if test="${tipoCliente == '1'}">checked</c:if>>Casa
+                                            <div class="radio">
+                                                <input  type="radio" name="checke" onchange="javascript:showContent()" value="2" <c:if test="${tipoCliente == '2'}">checked</c:if>>Edificio
+                                                <div class="radio">
+                                                    <input  type="radio" name="checko" onchange="javascript:showContent()" value="3" <c:if test="${tipoCliente == '3'}">checked</c:if>>Otros  
+                                                </div>
+                                            </div>
+                                        </div>         
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <b>Casa</b>
+                                    <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
+                                    <b>Edificio</b>
+                                    <input type="checkbox" name="checke" id="checke" value="1" onchange="javascript:showDepto()" />
+                                    <b>Otros</b>
+                                    <input type="checkbox" name="checko" id="checko" value="1" onchange="javascript:showOtros()" />
+                                </div>
+                                <div class="form-group">
                                 <c:if test="${edificioAgregar1 == 1}">
                                     <div class="alert alert-danger">
                                         <label style="color : #e45c00 !important;"><h5><b>*  Nombre ejecutivo vacio</b></h5></label>   
@@ -366,7 +379,7 @@ Author     : Natalia
                                                 <option value="amarillo"  <c:if test="${idEmpresa == 'amarillo'}">selected</c:if>> AMARILLO</option>
                                                 <option value="rojo" <c:if test="${idEmpresa == 'rojo'}">selected</c:if>> ROJO</option>
                                                 <option value="verde" <c:if test="${idEmpresa == 'verde'}">selected</c:if>> VERDE</option>
-                   
+
                                                 </select>
                                             </div>
 
