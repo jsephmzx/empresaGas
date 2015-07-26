@@ -168,6 +168,7 @@ public class edificioAddServlet extends HttpServlet {
                     String gasLocal = request.getParameter("gas_local");
                     String fechaVencimiento = request.getParameter("fecha_vencimiento");
                     String selloEdificio =request.getParameter("sello_edificio");
+                    String tipoCliente =request.getParameter("tipo_cliente");
                     //
                     request.setAttribute("nombreEjecutivo", nombreEjecutivo);
                     request.setAttribute("tipoConstruccion", tipoConstruccion);
@@ -202,11 +203,13 @@ public class edificioAddServlet extends HttpServlet {
                     request.setAttribute("gasLocal",gasLocal);
                     request.setAttribute("fechaVencimiento",fechaVencimiento);
                     request.setAttribute("selloEdificio",selloEdificio);
+                    request.setAttribute("tipoCliente",tipoCliente);
 
                     // parse id
                     empresaGas = Integer.parseInt(idEmpresa);
                     tipoGas = Integer.parseInt(idGas);
                     tipoInst = Integer.parseInt(tipoInstalacion);
+
                     //Validaciones
                     /**
                      * ********************************
@@ -605,7 +608,21 @@ public class edificioAddServlet extends HttpServlet {
                         error = true;
 
                     }
+                    /**
+                     * ************************
+                     */
+                    /*   Validar tipo cliente  */
+                    /**
+                     * ************************
+                     */
+                    System.out.println("tipo cliente contiene " + tipoCliente);
+                    if (tipoCliente == null) {
+                        request.setAttribute("OpcionNoSelecionadaTipoInst", "no se selecciono ninguna de las opciones disponibles");
+                        request.setAttribute("edificioAgregar22", 22);
+                        System.out.println("error null tipoCliente");
+                        error = true;
 
+                    }
                     /**
                      * ************************
                      */
@@ -707,6 +724,7 @@ public class edificioAddServlet extends HttpServlet {
                         ed.setExistenciaConductos(existencia);
                         ed.setSelloEdificio(selloEdificio);
                         ed.setFechaVencimiento(fechaVencimiento);
+                        
 
                         /**/
                         /**/
@@ -726,6 +744,7 @@ public class edificioAddServlet extends HttpServlet {
                         ed.setCantPisos(piso);//funca
                         ed.setCantConductos(conducto);//funca
                         ed.setCantCalderas(caldera);//funca
+                        ed.setTipoCliente(tipoCliente);
 
                         edDAO.insert(ed);
                         /*Obtener id de edificio  detalle*/

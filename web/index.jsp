@@ -117,134 +117,134 @@ Author     : Natalia
                         <a href="#menu-toggle" class="btn btn-default left-boton" id="menu-toggle"> Menu</a>
                         <h3>FORMULARIO</h3>
 
+                        <form action="edificioAddServlet" method="post" role="form">
 
-
-                        <div class="col-lg-12 agregar-admin-vendedor"  > 
-                            <h4>ADMINISTRADOR</h4>
-                            <div class="form-group">
-                                <div class="padding-radio">  
-                                    <div class="radio">                             
-                                        <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="casa" <c:if test="${tipoCliente == '1'}">checked</c:if>>Casa
-                                            <div class="radio">
-                                                <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="edificio" <c:if test="${tipoCliente == '2'}">checked</c:if>>Edificio
-                                                <div class="radio">
-                                                    <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="otros" <c:if test="${tipoCliente == '3'}">checked</c:if>>Otros  
-                                                </div>
-                                            </div>
-                                        </div>         
-                                    </div>
-                                </div>
-                                
+                            <div class="col-lg-12 agregar-admin-vendedor"  > 
+                                <h4>ADMINISTRADOR</h4>
                                 <div class="form-group">
-                                <c:if test="${edificioAgregar1 == 1}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Nombre ejecutivo vacio</b></h5></label>   
-                                    </div>              
-                                </c:if>
-                                <c:if test="${edificioAgregar2 == 2}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Tipo construccion vacia</b></h5></label>
-                                    </div>        
-                                </c:if>
-                                <c:if test="${edificioAgregar3 == 3}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Nombre edificio vacio o ya existe</b></h5></label>
-                                    </div>   
-                                </c:if>
-
-                                <c:if test="${edificioAgregar4 == 4}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  CIIGe anterior vacio</b></h5></label>
-                                    </div>       
-                                </c:if>
-                                <c:if test="${edificioAgregar5 == 5}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Direccion edificio vacia</b></h5></label>
-                                    </div>   
-                                </c:if>
-                                <c:if test="${edificioAgregar6 == 6}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Nombre administrador vacio</b></h5></label>
-                                    </div>   
-                                </c:if>
-                                <c:if test="${edificioAgregar7 == 7}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Telefono administrador vacio</b></h5></label>
-                                    </div>   
-                                </c:if>
-                                <c:if test="${edificioAgregar8 == 8}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Año edificio vacio o fuera de rango</b></h5></label>
-                                    </div>  
-                                </c:if>
-                                <c:if test="${edificioAgregar9 == 9}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Rut edificio incorrecto o vacio</b></h5></label>
-                                    </div>  
-                                </c:if>
-                                <c:if test="${edificioAgregar9 == 8}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Rut edificio ya existe</b></h5></label>
-                                    </div>  
-                                </c:if>
-                                <c:if test="${edificioAgregar10 == 10}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Telefono administrador vacio</b></h5></label>
-                                    </div>   
-                                </c:if>
-                                <c:if test="${edificioAgregar11 == 11}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Rut administrador incorrecto o vacio</b></h5></label>
-                                    </div>   
-                                </c:if>
-                                <c:if test="${edificioAgregar12 == 12}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Email administrador incorrecto o vacio</b></h5></label>
-                                    </div>  
-                                </c:if>
-                                <c:if test="${edificioAgregar13 == 13}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Ubicacion medidores vacia</b></h5></label>
-                                    </div>  
-                                </c:if>                                    
-                                <c:if test="${edificioAgregar15 == 15}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Potencia real se encuentra vacia o fuera de rango</b></h5></label>
-                                    </div>   
-                                </c:if>
-                                <c:if test="${edificioAgregar16 == 16}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Cantidad de departamentos se encuentra vacia o fuera de rango</b></h5></label>
-                                    </div>    
-                                </c:if>
-                                <c:if test="${edificioAgregar17 == 17}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Cantidad de pisos se encuentra vacia o fuera de rango</b></h5></label>
-                                    </div>   
-                                </c:if>                                
-
-                                <c:if test="${edificioAgregar18 == 18}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Cantidad de conductos se encuentra vacia o fuera de rango</b></h5></label>
-                                    </div>    
-                                </c:if>
-                                <c:if test="${edificioAgregar19 == 19}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Cantidad de calderas se encuentra vacia o fuera de rango</b></h5></label>
-                                    </div>    
-                                </c:if>
-                                <c:if test="${edificioAgregar22 == 22}">
-                                    <div class="alert alert-danger">
-                                        <label style="color : #e45c00 !important;"><h5><b>*  Seleccione t-de prueba u otra opcion</b></h5></label>
-                                    </div>    
-                                </c:if>
-                                <c:if test="${agregarEd == 1}">
-                                    <div class="alert alert-success color-negro">
-                                        <h5>Cliente Ingresado Satisfactoriamente</h5>
+                                    <div class="padding-radio">  
+                                        <div class="radio">                             
+                                            <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="casa" <c:if test="${tipoCliente == 'casa'}">checked</c:if>>Casa
+                                                <div class="radio">
+                                                    <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="edificio" <c:if test="${tipoCliente == 'edificio'}">checked</c:if>>Edificio
+                                                    <div class="radio">
+                                                        <input  type="radio" name="tipo_cliente" onclick="toggle(this)" value="otros" <c:if test="${tipoCliente == 'otros'}">checked</c:if>>Otros  
+                                                    </div>
+                                                </div>
+                                            </div>         
+                                        </div>
                                     </div>
-                                </c:if> 
-                            </div>
-                            <form action="edificioAddServlet" method="post" role="form">
+
+                                    <div class="form-group">
+                                    <c:if test="${edificioAgregar1 == 1}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Nombre ejecutivo vacio</b></h5></label>   
+                                        </div>              
+                                    </c:if>
+                                    <c:if test="${edificioAgregar2 == 2}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Tipo construccion vacia</b></h5></label>
+                                        </div>        
+                                    </c:if>
+                                    <c:if test="${edificioAgregar3 == 3}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Nombre edificio vacio o ya existe</b></h5></label>
+                                        </div>   
+                                    </c:if>
+
+                                    <c:if test="${edificioAgregar4 == 4}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  CIIGe anterior vacio</b></h5></label>
+                                        </div>       
+                                    </c:if>
+                                    <c:if test="${edificioAgregar5 == 5}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Direccion edificio vacia</b></h5></label>
+                                        </div>   
+                                    </c:if>
+                                    <c:if test="${edificioAgregar6 == 6}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Nombre administrador vacio</b></h5></label>
+                                        </div>   
+                                    </c:if>
+                                    <c:if test="${edificioAgregar7 == 7}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Telefono administrador vacio</b></h5></label>
+                                        </div>   
+                                    </c:if>
+                                    <c:if test="${edificioAgregar8 == 8}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Año edificio vacio o fuera de rango</b></h5></label>
+                                        </div>  
+                                    </c:if>
+                                    <c:if test="${edificioAgregar9 == 9}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Rut edificio incorrecto o vacio</b></h5></label>
+                                        </div>  
+                                    </c:if>
+                                    <c:if test="${edificioAgregar9 == 8}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Rut edificio ya existe</b></h5></label>
+                                        </div>  
+                                    </c:if>
+                                    <c:if test="${edificioAgregar10 == 10}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Telefono administrador vacio</b></h5></label>
+                                        </div>   
+                                    </c:if>
+                                    <c:if test="${edificioAgregar11 == 11}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Rut administrador incorrecto o vacio</b></h5></label>
+                                        </div>   
+                                    </c:if>
+                                    <c:if test="${edificioAgregar12 == 12}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Email administrador incorrecto o vacio</b></h5></label>
+                                        </div>  
+                                    </c:if>
+                                    <c:if test="${edificioAgregar13 == 13}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Ubicacion medidores vacia</b></h5></label>
+                                        </div>  
+                                    </c:if>                                    
+                                    <c:if test="${edificioAgregar15 == 15}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Potencia real se encuentra vacia o fuera de rango</b></h5></label>
+                                        </div>   
+                                    </c:if>
+                                    <c:if test="${edificioAgregar16 == 16}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Cantidad de departamentos se encuentra vacia o fuera de rango</b></h5></label>
+                                        </div>    
+                                    </c:if>
+                                    <c:if test="${edificioAgregar17 == 17}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Cantidad de pisos se encuentra vacia o fuera de rango</b></h5></label>
+                                        </div>   
+                                    </c:if>                                
+
+                                    <c:if test="${edificioAgregar18 == 18}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Cantidad de conductos se encuentra vacia o fuera de rango</b></h5></label>
+                                        </div>    
+                                    </c:if>
+                                    <c:if test="${edificioAgregar19 == 19}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Cantidad de calderas se encuentra vacia o fuera de rango</b></h5></label>
+                                        </div>    
+                                    </c:if>
+                                    <c:if test="${edificioAgregar22 == 22}">
+                                        <div class="alert alert-danger">
+                                            <label style="color : #e45c00 !important;"><h5><b>*  Seleccione t-de prueba u otra opcion</b></h5></label>
+                                        </div>    
+                                    </c:if>
+                                    <c:if test="${agregarEd == 1}">
+                                        <div class="alert alert-success color-negro">
+                                            <h5>Cliente Ingresado Satisfactoriamente</h5>
+                                        </div>
+                                    </c:if> 
+                                </div>
+
                                 <div id="content" style="display: none;">
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -569,68 +569,69 @@ Author     : Natalia
                                         <br><br>
                                         <button class="btn btn-primary btn-lg" type="submit" >Agregar</button>  
                                     </div>
-                            </form> 
-                            <form action="/Proyectoempresa/edificioListaServlet" role="form" method="post">
-                                <div class="form-group">
-                                    <input type="text"  name="nombre_sesion" value="<c:out value="${nombre}"/>" hidden="true"/>
-                                    <input type="text"  name="listarEdificio" value="TODAS" hidden="true"/>                                    
-                                    <input type="submit" class="btn btn-danger btn-md" value="Volver al listado edificio"/>    
+                                    </form> 
+                                    <form action="/Proyectoempresa/edificioListaServlet" role="form" method="post">
+                                        <div class="form-group">
+                                            <input type="text"  name="nombre_sesion" value="<c:out value="${nombre}"/>" hidden="true"/>
+                                            <input type="text"  name="listarEdificio" value="TODAS" hidden="true"/>                                    
+                                            <input type="submit" class="btn btn-danger btn-md" value="Volver al listado edificio"/>    
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>    
-            </div>  
+                            </div>
+                        </form>
+                    </div>    
+                </div>  
+            </div>
         </div>
     </div>
-</div>
 
-<!-- JavaScript -->
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/bootstrap.js"></script>   
-<script type="text/javascript">//<![CDATA[
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>   
+    <script type="text/javascript">//<![CDATA[
 
-                                                                           var cal = Calendar.setup({
-                                                                           onSelect: function (cal) {
-                                                                           cal.hide()
-                                                                           },
-                                                                                   showTime: true
-                                                                           });
-                                                                           cal.manageFields("f_btn1", "f_date1", "%Y-%m-%d %I:%M %p");
-                                                                           cal.manageFields("f_btn2", "f_date2", "%Y-%m-%d %I:%M %p");
-                                                                           cal.manageFields("f_btn3", "f_date3", "%Y-%m-%d %I:%M %p");
-                                                                           cal.manageFields("f_btn4", "f_date4", "%Y-%m-%d %I:%M %p");
-                                                                           cal.manageFields("f_btn5", "f_date5", "%Y-%m-%d %I:%M %p");
-                                                                           //]]></script>
-<script>
-            $("#menu-toggle").click(function (e) {
-    e.preventDefault();
-            $("#wrapper").toggleClass("active");
-    });</script>
-<script type="text/javascript">
-            
-    function toggle(elemento) {
-          if(elemento.value=="casa") {
-              document.getElementById("content").style.display = "block";
-              document.getElementById("edificio").style.display = "none";
-              document.getElementById("agregar").style.display = "block";
-           }else{
-               if(elemento.value=="edificio"){
-                   document.getElementById("content").style.display = "block";
-                   document.getElementById("edificio").style.display = "block";
-                   document.getElementById("agregar").style.display = "block";
-               }else{
-                   if(elemento.value=="otros"){
-                        document.getElementById("content").style.display = "block";
+                                                                               var cal = Calendar.setup({
+                                                                               onSelect: function (cal) {
+                                                                               cal.hide()
+                                                                               },
+                                                                                       showTime: true
+                                                                               });
+                                                                               cal.manageFields("f_btn1", "f_date1", "%Y-%m-%d %I:%M %p");
+                                                                               cal.manageFields("f_btn2", "f_date2", "%Y-%m-%d %I:%M %p");
+                                                                               cal.manageFields("f_btn3", "f_date3", "%Y-%m-%d %I:%M %p");
+                                                                               cal.manageFields("f_btn4", "f_date4", "%Y-%m-%d %I:%M %p");
+                                                                               cal.manageFields("f_btn5", "f_date5", "%Y-%m-%d %I:%M %p");
+                                                                               //]]></script>
+    <script>
+                $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+                $("#wrapper").toggleClass("active");
+        });</script>
+    <script type="text/javascript">
+
+                function toggle(elemento) {
+                if (elemento.value == "casa") {
+                document.getElementById("content").style.display = "block";
+                        document.getElementById("edificio").style.display = "none";
+                        document.getElementById("agregar").style.display = "block";
+                } else{
+                if (elemento.value == "edificio"){
+                document.getElementById("content").style.display = "block";
                         document.getElementById("edificio").style.display = "block";
                         document.getElementById("agregar").style.display = "block";
-                    }  
+                } else{
+                if (elemento.value == "otros"){
+                document.getElementById("content").style.display = "block";
+                        document.getElementById("edificio").style.display = "block";
+                        document.getElementById("agregar").style.display = "block";
                 }
-            }
-}
-</script>
-<script type="text/javascript">
-        
-</script>
+                }
+                }
+                }
+    </script>
+    <script type="text/javascript">
+
+    </script>
 </body>
 </html>
