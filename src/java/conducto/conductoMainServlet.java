@@ -99,13 +99,13 @@ public class conductoMainServlet extends HttpServlet {
                             edificio edif = new edificio();
                             edif = ediDAO.findbyIdEdificio(idEdifSession);
                             request.setAttribute("edifName", edif.getNombreEdificio());
-                            request.setAttribute("edifExistenciaConduc", edif.getExitenciaConductos());
-                            if (edif.getExitenciaConductos().equals("n")){
+                            request.setAttribute("edifExistenciaConduc", edif.getExistenciaConductos());
+                            if (edif.getExistenciaConductos().equals("n")){
                                 System.out.println("No existen conductos");
                                 Collection<departamento> listDeptoSinCon = new ArrayList<departamento>();
                                 listDeptoSinCon = deptoDAO.getAllByIdEdif(idEdifSession);
                                 request.setAttribute("listDepto", listDeptoSinCon);
-                                request.getSession().setAttribute("existenciaConductos", edif.getExitenciaConductos());
+                                request.getSession().setAttribute("existenciaConductos", edif.getExistenciaConductos());
                             }
                         } else {
                             int idEdificio = Integer.parseInt(idEdif); //mientras para realizar pruebas directamente sin obtener el id del edificio
@@ -115,13 +115,13 @@ public class conductoMainServlet extends HttpServlet {
                             edificio edif = new edificio();
                             edif = ediDAO.findbyIdEdificio(idEdificio);
                             request.setAttribute("edifName", edif.getNombreEdificio());
-                            request.setAttribute("edifExistenciaConduc", edif.getExitenciaConductos());
-                            if (edif.getExitenciaConductos().equals("n")){
+                            request.setAttribute("edifExistenciaConduc", edif.getExistenciaConductos());
+                            if (edif.getExistenciaConductos().equals("n")){
                                 System.out.println("No existen conductos");
                                 Collection<departamento> listDeptoSinCon = new ArrayList<departamento>();
                                 listDeptoSinCon = deptoDAO.getAllByIdEdif(idEdificio);
                                 request.setAttribute("listDepto", listDeptoSinCon);
-                                request.getSession().setAttribute("existenciaConductos", edif.getExitenciaConductos());
+                                request.getSession().setAttribute("existenciaConductos", edif.getExistenciaConductos());
                             }
                         }
 
