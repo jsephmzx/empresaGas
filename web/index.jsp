@@ -358,7 +358,7 @@ Author     : Natalia
                                         <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
                                             <label for="fecha_vencimiento">Fecha vencimiento</label>                                                                                                   
                                             <input type="text" name="fecha_vencimiento"  id="f_date5"  class="form-control-fecha" value="<c:out value="${fechaVencimiento}"/>">                                              
-                                            <button id="f_btn1">...</button>                   
+                                            <button id="f_btn5">...</button>                   
                                         </div>
                                         <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
                                             <label style="height: 10px!important;" >Sello </label>
@@ -407,7 +407,7 @@ Author     : Natalia
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="fecha_primera" id="f_date2" class="form-control-fecha"  value="<c:out value="${fechaPrimera}"/>">
                                                     </td><br><td>
-                                                    <button id="f_btn1">...</button>
+                                                    <button id="f_btn2">...</button>
                                                 </td>                                            
                                                 </tr>
                                                 <tr>
@@ -417,7 +417,7 @@ Author     : Natalia
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="fecha_segunda" id="f_date3"   class="form-control-fecha"  value="<c:out value="${fechaSegunda}"/>">
                                                     </td><br><td>
-                                                    <button id="f_btn1">...</button>
+                                                    <button id="f_btn3">...</button>
                                                 </td>                                            
                                                 </tr>
                                                 <tr>
@@ -427,7 +427,7 @@ Author     : Natalia
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="fecha_cierre"  id="f_date4"  class="form-control-fecha" value="<c:out value="${fechaCierre}"/>">                                          
                                                     </td><td>
-                                                        <button id="f_btn1">...</button>
+                                                        <button id="f_btn4">...</button>
                                                     </td>  
                                                 </tr>
                                             </table>  
@@ -594,6 +594,7 @@ Author     : Natalia
                                                                            cal.manageFields("f_btn2", "f_date2", "%Y-%m-%d %I:%M %p");
                                                                            cal.manageFields("f_btn3", "f_date3", "%Y-%m-%d %I:%M %p");
                                                                            cal.manageFields("f_btn4", "f_date4", "%Y-%m-%d %I:%M %p");
+                                                                           cal.manageFields("f_btn5", "f_date5", "%Y-%m-%d %I:%M %p");
                                                                            //]]></script>
 <script>
             $("#menu-toggle").click(function (e) {
