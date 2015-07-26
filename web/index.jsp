@@ -357,8 +357,8 @@ Author     : Natalia
                                         </div>
                                         <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
                                             <label for="fecha_vencimiento">Fecha vencimiento</label>                                                                                                   
-                                            <input type="text" name="fecha_vencimiento"  id="fecha_vencimiento"  class="form-control-fecha" value="<c:out value="${fechaVencimiento}"/>">                                              
-                                            <button id="fecha_vencimiento">...</button>                   
+                                            <input type="text" name="fecha_vencimiento"  id="f_date5"  class="form-control-fecha" value="<c:out value="${fechaVencimiento}"/>">                                              
+                                            <button id="f_btn1">...</button>                   
                                         </div>
                                         <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
                                             <label style="height: 10px!important;" >Sello </label>
