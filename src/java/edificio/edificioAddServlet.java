@@ -919,7 +919,7 @@ public class edificioAddServlet extends HttpServlet {
 
                     }
                     System.out.println("rutAdminCorrecto " + rutAdmin);
-
+                    try{
                     potenciaR = Integer.parseInt(potenciaReal);
                     depto = Integer.parseInt(cantDepartamentos);
                     casas = Integer.parseInt(cantCasas);
@@ -929,6 +929,9 @@ public class edificioAddServlet extends HttpServlet {
                     piso = Integer.parseInt(cantPisos);
                     caldera = Integer.parseInt(cantCalderas);
                     conducto = Integer.parseInt(cantConductos);
+                    }catch(Exception ex){
+                    error=true;
+                    }
 
                     if (!error) {
                         edificio ed = new edificio();
