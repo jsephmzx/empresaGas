@@ -668,7 +668,20 @@ public class edificioAddServlet extends HttpServlet {
                             error = true;
 
                         }
-
+                        try {
+                            potenciaR = Integer.parseInt(potenciaReal);
+                            depto = Integer.parseInt(cantDepartamentos);
+                            casas = Integer.parseInt(cantCasas);
+                            areas = Integer.parseInt(cantAreas);
+                            lavanderias = Integer.parseInt(cantLavanderias);
+                            locales = Integer.parseInt(cantLocales);
+                            piso = Integer.parseInt(cantPisos);
+                            caldera = Integer.parseInt(cantCalderas);
+                            conducto = Integer.parseInt(cantConductos);
+                        } catch (NumberFormatException ex) {
+                            error = true;
+                            System.out.println("Error :" + ex);
+                        }
                     } else {
                         /**
                          * ************************
@@ -919,19 +932,6 @@ public class edificioAddServlet extends HttpServlet {
 
                     }
                     System.out.println("rutAdminCorrecto " + rutAdmin);
-                    try{
-                    potenciaR = Integer.parseInt(potenciaReal);
-                    depto = Integer.parseInt(cantDepartamentos);
-                    casas = Integer.parseInt(cantCasas);
-                    areas = Integer.parseInt(cantAreas);
-                    lavanderias = Integer.parseInt(cantLavanderias);
-                    locales = Integer.parseInt(cantLocales);
-                    piso = Integer.parseInt(cantPisos);
-                    caldera = Integer.parseInt(cantCalderas);
-                    conducto = Integer.parseInt(cantConductos);
-                    }catch(Exception ex){
-                    error=true;
-                    }
 
                     if (!error) {
                         edificio ed = new edificio();
