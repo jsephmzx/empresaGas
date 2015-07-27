@@ -209,8 +209,267 @@ public class edificioAddServlet extends HttpServlet {
                     tipoGas = Integer.parseInt(idGas);
                     tipoInst = Integer.parseInt(tipoInstalacion);
 
-                    //Validaciones                                       
+                    //Validaciones      
+                    /**
+                     * ************************
+                     */
+                    /*   Validar tipo cliente  */
+                    /**
+                     * ************************
+                     */
+                    System.out.println("tipo cliente contiene " + tipoCliente);
+                    if (tipoCliente == null) {
+                        request.setAttribute("OpcionNoSelecionadaTipoInst", "no se selecciono ninguna de las opciones disponibles");
+                        request.setAttribute("edificioAgregar22", 22);
+                        System.out.println("error null tipoCliente");
+                        error = true;
+
+                    }
                     if (tipoCliente.equals("edificio") || tipoCliente.equals("otros")) {
+                                                /**
+                         * ************************
+                         */
+                        /*   Validar rut Admin     */
+                        /**
+                         * ************************
+                         */
+                        if (rutAdmin.trim().equals("") || rutAdmin == null) {
+                            request.setAttribute("msgErrorAdmin", "Error, el Rut de admin posee espacios o esta vacio");
+                            request.setAttribute("edificioAgregar11", 11);
+                            error = true;
+                            System.out.println(" error rut admin");
+                        } else {
+                            rutCorrectoA = validarRut.validateRut(rutAdmin);
+                            if (rutCorrectoA == false) {
+                                request.setAttribute("msgErrorNoValido", "Error, el rut del admin ingresado no es correcto");
+                                request.setAttribute("edificioAgregar11", 11);
+                                error = true;
+                            } else {
+                                ArrayList<String> listaRutEd = edDAO.getRutEdificio();
+                                if (listaRutEd.contains(rutEdificio)) {
+                                    request.setAttribute("edificioAgregar11", 11);
+                                    error = true;
+                                }
+                            }
+                        }
+                        /**
+                         * ************************
+                         */
+                        /* Validar nombre edificio */ /**
+                         * IMPORTANTE*
+                         */
+                        /**
+                         * ************************
+                         */
+
+                        if (nombreEdificio == null) {
+                            request.setAttribute("msgErrorNomEdificio", "Error, Porfavor Ingrese el nombre del Edificio");
+                            System.out.println(" error nombre edificio");
+                            request.setAttribute("edificioAgregar3", 3);
+                            error = true;
+                        } else {
+                            ArrayList<String> listaNombres = edDAO.getNombreEdificio();
+                            if (listaNombres.contains(nombreEdificio)) {
+                                request.setAttribute("edificioAgregar3", 3);
+                                error = true;
+                            }
+                        }
+
+                        /**
+                         * ************************
+                         */
+                        /*   Validar email admin   */ /**
+                         * IMPORTANTE*
+                         */
+                        /**
+                         * ************************
+                         */
+                        emailCorrecto = validarEmail.validateEmail(emailAdmin);
+                        if (emailCorrecto == false) {
+                            request.setAttribute("msgErrorMail", "Error, Porfavor ingrese email correcto");
+                            request.setAttribute("edificioAgregar12", 12);
+                            System.out.println("error email");
+                            error = true;
+                        }
+
+                        /**
+                         * ************************
+                         */
+                        /*Validar nombre ejecutivo */
+                        /**
+                         * ************************
+                         */
+                        if (nombreEjecutivo == null) {
+                            request.setAttribute("msgErrorNomEjecutivo", "Error, Porfavor Ingrese el nombre del ejecutivo");
+                            System.out.println(" error nombre ejecutivo");
+                            request.setAttribute("edificioAgregar1", 1);
+                            error = true;
+                        }
+
+                        /**
+                         * ************************
+                         */
+                        /* Validar nombre Admin    */
+                        /**
+                         * ************************
+                         */
+                        if (nombreAdmin == null) {
+                            request.setAttribute("msgErrorNomAdmin", "Error, Porfavor Ingrese el nombre del administrador");
+                            request.setAttribute("edificioAgregar6", 6);
+                            error = true;
+                        }
+
+                        /**
+                         * ************************
+                         */
+                        /* Validar tipo constru    */
+                        /**
+                         * ************************
+                         */
+                        if (tipoConstruccion == null) {
+                            request.setAttribute("msgErrorTipoConstruccion", "Error, Porfavor Ingrese tipo de construccion");
+                            request.setAttribute("edificioAgregar2", 2);
+                            error = true;
+                        }
+
+                        /**
+                         * ************************
+                         */
+                        /*     Validar ciige       */
+                        /**
+                         * ************************
+                         */
+                        if (ciigeAnterior == null) {
+                            request.setAttribute("msgErrorCiigeAnterior", "Error, Porfavor Ingrese el ciige anterior");
+                            request.setAttribute("edificioAgregar4", 4);
+                            error = true;
+                        }
+
+                        /**
+                         * ************************
+                         */
+                        /*   Validar direccion     */
+                        /**
+                         * ************************
+                         */
+                        if (direccionEdificio == null) {
+                            request.setAttribute("msgErrorDireccionEdificio", "Error, Porfavor Ingrese una dirección edificio");
+                            request.setAttribute("edificioAgregar5", 5);
+                            error = true;
+                        }
+
+                        /**
+                         * ************************
+                         */
+                        /*   Validar fono Admin    */
+                        /**
+                         * ************************
+                         */
+                        if (telefonoAdmin == null) {
+                            request.setAttribute("msgErrorTelefonoAdmin", "Error, Porfavor Ingrese telefono administrador ");
+                            request.setAttribute("edificioAgregar7", 7);
+                            error = true;
+                        }
+
+                        /**
+                         * ************************
+                         */
+                        /*   Validar fono Edificio */
+                        /**
+                         * ************************
+                         */
+                        if (telefonoEdificio == null) {
+                            request.setAttribute("msgErrorfonoEdificio", "Error, Porfavor Ingrese fono edificio ");
+                            request.setAttribute("edificioAgregar10", 10);
+                            error = true;
+                        }
+                        /**
+                         * ************************
+                         */
+                        /* validar tipo instalacion*/
+                        /**
+                         * ************************
+                         */
+                        try {
+                            tipoInst = Integer.parseInt(tipoInstalacion);
+                        } catch (Exception ex) {
+                            request.setAttribute("errorTipoInstalacion", "error en tipo de instalacion");
+                        }
+                        if (tipoInst < 0 || tipoInst > 21) {
+                            request.setAttribute("errorRango", " el tipo de instalacion esta fuera del rango establecido");
+                            System.out.println(" error ripo instalacion");
+                            error = true;
+                        }
+                        /**
+                         * *********************************
+                         */
+                        /*Validar rangos de años de edificio*/
+                        /**
+                         * *********************************
+                         */
+                        if (num.CadenaIsNumeric(anoEdificio)) {
+                            annioConvertido = Integer.parseInt(anoEdificio);
+                            if (annioConvertido < 1955) {
+                                System.out.println("entro a validar año");
+                                request.setAttribute("msgErrorAnnioFueraRango", "El año ingresado es menor que la primera norma existente 1955");
+                                request.setAttribute("edificioAgregar8", 8);
+                                error = true;
+                            } else {
+                                if (annioConvertido >= 1955 && annioConvertido <= 1990) {
+                                    normaAplicada = "DI3952";
+                                }
+                                if (annioConvertido >= 1991 && annioConvertido <= 1996) {
+                                    normaAplicada = "DS182";
+                                }
+                                if (annioConvertido >= 1997 && annioConvertido <= 2007) {
+                                    normaAplicada = "DS222";
+                                }
+                                if (annioConvertido > 2007) {
+                                    normaAplicada = "DS66";
+                                }
+                            }
+
+                        } else {
+                            request.setAttribute("edificioAgregar8", 8);
+                            error = true;
+                        }
+
+                        // validar mail administrador
+                        emailCorrecto = validarEmail.validateEmail(emailAdmin);
+                        //valida mail
+                        if (emailCorrecto == false) {
+                            request.setAttribute("msgErrorMail", "Error, Porfavor ingrese email correcto");
+                            request.setAttribute("edificioAgregar12", 12);
+                            System.out.println("error email");
+                            emailCorrecto = true;
+                        }
+                        /**
+                         * ************************
+                         */
+                        /*   Validar rut edificio  */
+                        /**
+                         * ************************
+                         */
+                        if (rutEdificio.trim().equals("") || rutEdificio == null) {
+                            request.setAttribute("msgErrorEdificio", "Error, el Rut de edificio posee espacios o esta vacio");
+                            request.setAttribute("edificioAgregar9", 9);
+                            error = true;
+                            System.out.println(" error rut edificio");
+                        } else {
+                            rutCorrecto = validarRut.validateRut(rutEdificio);
+                            if (rutCorrecto == false) {
+                                request.setAttribute("msgErrorNoValido", "Error, el rut del edificio ingresado no es correcto");
+                                request.setAttribute("edificioAgregar9", 9);
+                                error = true;
+                            } else {
+                                ArrayList<String> listaRutEd = edDAO.getRutEdificio();
+                                if (listaRutEd.contains(rutEdificio)) {
+                                    request.setAttribute("edificioAgregar9", 8);
+                                    error = true;
+                                }
+                            }
+                        }
+                        
 
                         /**
                          * ************************
@@ -411,6 +670,7 @@ public class edificioAddServlet extends HttpServlet {
 
                         }
 
+                    } else {
                         /**
                          * ************************
                          */
@@ -437,7 +697,6 @@ public class edificioAddServlet extends HttpServlet {
                                 }
                             }
                         }
-                    } else {
                         /**
                          * ************************
                          */
@@ -620,20 +879,14 @@ public class edificioAddServlet extends HttpServlet {
                             error = true;
                         }
 
-                        /**
-                         * ************************
-                         */
-                        /*   Validar tipo cliente  */
-                        /**
-                         * ************************
-                         */
-                        System.out.println("tipo cliente contiene " + tipoCliente);
-                        if (tipoCliente == null) {
-                            request.setAttribute("OpcionNoSelecionadaTipoInst", "no se selecciono ninguna de las opciones disponibles");
-                            request.setAttribute("edificioAgregar22", 22);
-                            System.out.println("error null tipoCliente");
-                            error = true;
-
+                        // validar mail administrador
+                        emailCorrecto = validarEmail.validateEmail(emailAdmin);
+                        //valida mail
+                        if (emailCorrecto == false) {
+                            request.setAttribute("msgErrorMail", "Error, Porfavor ingrese email correcto");
+                            request.setAttribute("edificioAgregar12", 12);
+                            System.out.println("error email");
+                            emailCorrecto = true;
                         }
                         /**
                          * ************************
@@ -661,18 +914,11 @@ public class edificioAddServlet extends HttpServlet {
                                 }
                             }
                         }
+                        
+
                     }
                     System.out.println("rutAdminCorrecto " + rutAdmin);
 
-                    // validar mail administrador
-                    emailCorrecto = validarEmail.validateEmail(emailAdmin);
-                    //valida mail
-                    if (emailCorrecto == false) {
-                        request.setAttribute("msgErrorMail", "Error, Porfavor ingrese email correcto");
-                        request.setAttribute("edificioAgregar12", 12);
-                        System.out.println("error email");
-                        emailCorrecto = true;
-                    }
                     potenciaR = Integer.parseInt(potenciaReal);
                     depto = Integer.parseInt(cantDepartamentos);
                     casas = Integer.parseInt(cantCasas);
