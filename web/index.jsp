@@ -385,12 +385,12 @@ Author     : Natalia
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label for="ubicacion_medidores">Ubicacion de los medidores</label>
-                                                <input type="text" name="ubicacion_medidores"   class="form-control" required="true" value="<c:out value="${ubicacionMedidores}"/>"
+                                                <input type="text" name="ubicacion_medidores"   class="form-control"  value="<c:out value="${ubicacionMedidores}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
                                         </div> 
                                         <div class="form-group">
                                             <label for="potencia_real">Potencia (kW)</label>
-                                            <input type="text" name="potencia_real" maxlength="3" class="form-control" required="true" value="<c:out value="${potenciaReal}"/>"
+                                            <input type="text" name="potencia_real" maxlength="3" class="form-control"  value="<c:out value="${potenciaReal}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                        this.value = this.value.substring(1, this.value.length);"/>
                                         </div>
@@ -461,7 +461,7 @@ Author     : Natalia
                                                             <label>N° de Departamentos </label>
                                                         </td>
                                                         <td style="padding-left: 30px!important; width: 150px!important;">
-                                                            <input type="text" name="cant_departamentos" maxlength="3" required="true" class="form-control" value="<c:out value="${cantDepartamentos}"/>"
+                                                            <input type="text" name="cant_departamentos" maxlength="3"  class="form-control" value="<c:out value="${cantDepartamentos}"/>"
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"/>
                                                     </td>                                            
@@ -471,7 +471,7 @@ Author     : Natalia
                                                         <label>N° de Casas </label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
-                                                        <input type="text" name="cant_casas" maxlength="3" required="true" class="form-control" value="<c:out value="${cantCasas}"/>"
+                                                        <input type="text" name="cant_casas" maxlength="3"  class="form-control" value="<c:out value="${cantCasas}"/>"
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"/>
                                                     </td>                                            
@@ -481,7 +481,7 @@ Author     : Natalia
                                                         <label>N° de Locales comerciales</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
-                                                        <input type="text" name="cant_locales" maxlength="3" required="true" class="form-control" value="<c:out value="${cantLocales}"/>"
+                                                        <input type="text" name="cant_locales" maxlength="3"  class="form-control" value="<c:out value="${cantLocales}"/>"
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"/>
                                                     </td>                                            
@@ -506,7 +506,7 @@ Author     : Natalia
                                                             <label>N° de areas comunes </label>
                                                         </td>
                                                         <td style="padding-left: 30px!important;">
-                                                            <input type="text" name="cant_areas" maxlength="3" required="true" class="form-control" value="<c:out value="${cantAreas}"/>"
+                                                            <input type="text" name="cant_areas" maxlength="3" class="form-control" value="<c:out value="${cantAreas}"/>"
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"/>
                                                     </td>                                            
@@ -516,7 +516,7 @@ Author     : Natalia
                                                         <label>N° de lavanderias </label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
-                                                        <input type="text" name="cant_lavanderias" maxlength="3" required="true" class="form-control" value="<c:out value="${cantLavanderias}"/>"
+                                                        <input type="text" name="cant_lavanderias" maxlength="3"  class="form-control" value="<c:out value="${cantLavanderias}"/>"
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"/>
                                                     </td>                                            
@@ -526,7 +526,7 @@ Author     : Natalia
                                                         <label>N° de Pisos Inmueble</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
-                                                        <input type="text" name="cant_pisos" maxlength="3" required="true" class="form-control" value="<c:out value="${cantPisos}"/>"
+                                                        <input type="text" name="cant_pisos" maxlength="3" class="form-control" value="<c:out value="${cantPisos}"/>"
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"/>
                                                     </td>                                            
@@ -536,7 +536,7 @@ Author     : Natalia
                                                         <label>N° de Conductos Colectivos</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
-                                                        <input type="text" name="cant_conductos" maxlength="3" required="true" class="form-control" 
+                                                        <input type="text" name="cant_conductos" maxlength="3"  class="form-control" 
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"
                                                                value="<c:out value="${cantConductos}"/>"/>
@@ -547,7 +547,7 @@ Author     : Natalia
                                                         <label>N° de Calderas Centrales</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
-                                                        <input type="text" name="cant_calderas" maxlength="3" required="true" class="form-control" value="<c:out value="${cantCalderas}"/>"
+                                                        <input type="text" name="cant_calderas" maxlength="3"  class="form-control" value="<c:out value="${cantCalderas}"/>"
                                                                onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                                    this.value = this.value.substring(1, this.value.length);"/>
                                                     </td>                                            
