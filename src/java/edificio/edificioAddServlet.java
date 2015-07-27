@@ -226,7 +226,7 @@ public class edificioAddServlet extends HttpServlet {
 
                     }
                     if (tipoCliente.equals("edificio") || tipoCliente.equals("otros")) {
-                                                /**
+                        /**
                          * ************************
                          */
                         /*   Validar rut Admin     */
@@ -469,7 +469,6 @@ public class edificioAddServlet extends HttpServlet {
                                 }
                             }
                         }
-                        
 
                         /**
                          * ************************
@@ -852,33 +851,36 @@ public class edificioAddServlet extends HttpServlet {
                         /**
                          * *********************************
                          */
-                        if (num.CadenaIsNumeric(anoEdificio)) {
+                        try {
                             annioConvertido = Integer.parseInt(anoEdificio);
-                            if (annioConvertido < 1955) {
-                                System.out.println("entro a validar año");
-                                request.setAttribute("msgErrorAnnioFueraRango", "El año ingresado es menor que la primera norma existente 1955");
+                        } catch (Exception ex) {
+                            if (num.CadenaIsNumeric(anoEdificio)) {
+
+                                if (annioConvertido < 1955) {
+                                    System.out.println("entro a validar año");
+                                    request.setAttribute("msgErrorAnnioFueraRango", "El año ingresado es menor que la primera norma existente 1955");
+                                    request.setAttribute("edificioAgregar8", 8);
+                                    error = true;
+                                } else {
+                                    if (annioConvertido >= 1955 && annioConvertido <= 1990) {
+                                        normaAplicada = "DI3952";
+                                    }
+                                    if (annioConvertido >= 1991 && annioConvertido <= 1996) {
+                                        normaAplicada = "DS182";
+                                    }
+                                    if (annioConvertido >= 1997 && annioConvertido <= 2007) {
+                                        normaAplicada = "DS222";
+                                    }
+                                    if (annioConvertido > 2007) {
+                                        normaAplicada = "DS66";
+                                    }
+                                }
+
+                            } else {
                                 request.setAttribute("edificioAgregar8", 8);
                                 error = true;
-                            } else {
-                                if (annioConvertido >= 1955 && annioConvertido <= 1990) {
-                                    normaAplicada = "DI3952";
-                                }
-                                if (annioConvertido >= 1991 && annioConvertido <= 1996) {
-                                    normaAplicada = "DS182";
-                                }
-                                if (annioConvertido >= 1997 && annioConvertido <= 2007) {
-                                    normaAplicada = "DS222";
-                                }
-                                if (annioConvertido > 2007) {
-                                    normaAplicada = "DS66";
-                                }
                             }
-
-                        } else {
-                            request.setAttribute("edificioAgregar8", 8);
-                            error = true;
                         }
-
                         // validar mail administrador
                         emailCorrecto = validarEmail.validateEmail(emailAdmin);
                         //valida mail
@@ -914,7 +916,6 @@ public class edificioAddServlet extends HttpServlet {
                                 }
                             }
                         }
-                        
 
                     }
                     System.out.println("rutAdminCorrecto " + rutAdmin);
@@ -1101,7 +1102,7 @@ public class edificioAddServlet extends HttpServlet {
                 }
             } catch (Exception sessionException) {
                 /* enviar a la vista de login */
-                System.out.println("no ha iniciado session");
+                System.out.println("no ha iniciado session" + sessionException);
                 /*enviar al login*/
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
