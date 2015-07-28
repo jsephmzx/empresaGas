@@ -245,151 +245,160 @@ Author     : Natalia
                                     </c:if> 
                                 </div>
 
-                                <div id="content" style="display: none;">
+                                <div id="content" style="display: none;" class="col-sm-12" >
                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="nombre_ejecutivo" style="height: 10px!important;">Nombre Ejecutivo(a)</label>
-                                            <input type="text" name="nombre_ejecutivo"   class="form-control" required="true" value="<c:out value="${nombreEjecutivo}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                       this.value = this.value.substring(1, this.value.length);"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="tipo_construccion" style="height: 10px!important;">Tipo construcción</label>
-                                            <input type="text" name="tipo_construccion" class="form-control" required="true" value="<c:out value="${tipoConstruccion}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                       this.value = this.value.substring(1, this.value.length);"/>                                     
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nombre_edificio" style="height: 10px!important;">Nombre Edificio </label>
-                                            <input type="text" name="nombre_edificio"  class="form-control" required="true" value="<c:out value="${nombreEdificio}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                       this.value = this.value.substring(1, this.value.length);"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="direccion_edificio" style="height: 10px!important;">Dirección del Edificio</label>
-                                            <input type="text" name="direccion_edificio"  class="form-control" required="true" value="<c:out value="${direccionEdificio}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                       this.value = this.value.substring(1, this.value.length);"/>
-                                        </div>
-                                        <div>
-                                            <label form="ciige_anterior" style="height: 10px!important;">CIIG-e Anterior</label>
-                                            <input type="text" name="ciige_anterior" required="true" class="form-control" value="<c:out value="${ciigeAnterior}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                       this.value = this.value.substring(1, this.value.length);"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="ano_edificio"  style="height: 10px!important;">Año construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Debe ser mayor a 1954.</i></h6></label> </label>
-                                            <input type="text" name="ano_edificio"  maxlength="4" class="form-control" required="true" value="<c:out value="${anoEdificio}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                       this.value = this.value.substring(1, this.value.length);"/>
-                                        </div> 
-                                        <div class="form-group" >
-                                            <label for="rut_edificio"  style="height: 8px!important;" >R.U.T construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label >
-                                            <input type="text" name="rut_edificio" maxlength="10"  class="form-control" required="true"  value="<c:out value="${rutEdificio}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nombre_admin" style="height: 10px!important;">Nombre Administrador</label>
-                                            <input type="text" name="nombre_admin"  class="form-control" required="true" value="<c:out value="${nombreAdmin}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                       this.value = this.value.substring(1, this.value.length);"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="telefono_admin" style="height: 10px!important;">Teléfono Administrador</label>
-                                            <input type="text" name="telefono_admin" class="form-control"required="true" value="<c:out value="${telefonoAdmin}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                       this.value = this.value.substring(1, this.value.length);"/>                                     
-                                        </div>
+                                        <table style="width: 380px!important;">
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="nombre_ejecutivo" style="height: 10px!important;">Nombre Ejecutivo(a)</label>
+                                                        <input type="text" name="nombre_ejecutivo"   class="form-control" required="true" value="<c:out value="${nombreEjecutivo}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="tipo_construccion" style="height: 10px!important;">Tipo construcción</label>
+                                                        <input type="text" name="tipo_construccion" class="form-control" required="true" value="<c:out value="${tipoConstruccion}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>                                     
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="nombre_edificio" style="height: 10px!important;">Nombre Edificio </label>
+                                                        <input type="text" name="nombre_edificio"  class="form-control" required="true" value="<c:out value="${nombreEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="direccion_edificio" style="height: 10px!important;">Dirección del Edificio</label>
+                                                        <input type="text" name="direccion_edificio"  class="form-control" required="true" value="<c:out value="${direccionEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div>
+                                                        <label form="ciige_anterior" style="height: 10px!important;">CIIG-e Anterior</label>
+                                                        <input type="text" name="ciige_anterior" required="true" class="form-control" value="<c:out value="${ciigeAnterior}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="height: 10px!important;">Tipo instalación</label> 
+                                                        <select name="tipo_instalacion" class="porte" >
+                                                            <option value="1" <c:if test="${tipoInstalacion == 1}">selected</c:if>>ADMINISTRACIÓN PUBLICA Y DEFENSA - CASA PATRONAL</option>
+                                                            <option value="2" <c:if test="${tipoInstalacion == 2}">selected</c:if>>AGRICOLA</option>
+                                                            <option value="3" <c:if test="${tipoInstalacion == 3}">selected</c:if>>AGRICOLA POR ASIMILACION</option>
+                                                            <option value="4" <c:if test="${tipoInstalacion == 4}">selected</c:if>>BIENES COMUNES</option>
+                                                            <option value="5" <c:if test="${tipoInstalacion == 5}">selected</c:if>>BODEGA</option>
+                                                            <option value="6" <c:if test="${tipoInstalacion == 6}">selected</c:if>>COMERCIO</option>
+                                                            <option value="7" <c:if test="${tipoInstalacion == 7}">selected</c:if>>CULTO</option>
+                                                            <option value="8" <c:if test="${tipoInstalacion == 8}">selected</c:if>>DEPORTE Y RECREACIÓN</option>
+                                                            <option value="9" <c:if test="${tipoInstalacion == 9}">selected</c:if>>DESTINO NULO</option>
+                                                            <option value="10" <c:if test="${tipoInstalacion == 10}">selected</c:if>>EDUCACIÓN Y CULTURA</option>
+                                                            <option value="11" <c:if test="${tipoInstalacion == 11}">selected</c:if>>ESTACIONAMIENTO</option>
+                                                            <option value="12" <c:if test="${tipoInstalacion == 12}">selected</c:if>>FORESTAL</option>
+                                                            <option value="13" <c:if test="${tipoInstalacion == 13}">selected</c:if>>HABITACIONAL</option>
+                                                            <option value="14" <c:if test="${tipoInstalacion == 14}">selected</c:if>>HOTEL - MOTEL</option>
+                                                            <option value="15" <c:if test="${tipoInstalacion == 15}">selected</c:if>>INDUSTRIA</option>
+                                                            <option value="16" <c:if test="${tipoInstalacion == 16}">selected</c:if>>MINERIA</option>
+                                                            <option value="17" <c:if test="${tipoInstalacion == 17}">selected</c:if>>OFICINA</option>
+                                                            <option value="18" <c:if test="${tipoInstalacion == 18}">selected</c:if>>OTROS NO CONSIDERADOS</option>
+                                                            <option value="19" <c:if test="${tipoInstalacion == 19}">selected</c:if>>SALUD</option>
+                                                            <option value="20" <c:if test="${tipoInstalacion == 20}">selected</c:if>>SITIO ERIAZO</option>
+                                                            <option value="21" <c:if test="${tipoInstalacion == 21}">selected</c:if>>TRANSPORTE Y TELECOMUNICACIONES</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group" >
+                                                            <label style="height: 10px!important;" >Sello </label>
+                                                            <select name="sello_edificio" class="porte">
+                                                                <option value="amarillo"  <c:if test="${idEmpresa == 'amarillo'}">selected</c:if>> AMARILLO</option>
+                                                            <option value="rojo" <c:if test="${idEmpresa == 'rojo'}">selected</c:if>> ROJO</option>
+                                                            <option value="verde" <c:if test="${idEmpresa == 'verde'}">selected</c:if>> VERDE</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nombre_admin" style="height: 10px!important;">Nombre Administrador</label>
+                                                            <input type="text" name="nombre_admin"  class="form-control" required="true" value="<c:out value="${nombreAdmin}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="telefono_admin" style="height: 10px!important;">Teléfono Administrador</label>
+                                                        <input type="text" name="telefono_admin" class="form-control"required="true" value="<c:out value="${telefonoAdmin}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>                                     
+                                                    </div>
+                                                </td>                                            
+                                            </tr>
+                                        </table>
                                     </div>
-                                    <div class="col-lg-6">   
-                                        <div class="form-group">
-                                            <label for="telefono_edificio" style="height: 10px!important;">Teléfono Edificio</label>
-                                            <input type="text" name="telefono_edificio"   class="form-control" required="true" value="<c:out value="${telefonoEdificio}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
-                                        </div>   
-                                        <div class="form-group">
-                                            <label for="email_admin" style="height: 10px!important;">Correo Electrónico</label>
-                                            <input type="text" name="email_admin"  class="form-control" required="true" value="<c:out value="${emailAdmin}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label style="height: 10px!important;">Tipo instalación</label> 
-                                            <select name="tipo_instalacion" class="porte" >
-                                                <option value="1" <c:if test="${tipoInstalacion == 1}">selected</c:if>>ADMINISTRACIÓN PUBLICA Y DEFENSA - CASA PATRONAL</option>
-                                                <option value="2" <c:if test="${tipoInstalacion == 2}">selected</c:if>>AGRICOLA</option>
-                                                <option value="3" <c:if test="${tipoInstalacion == 3}">selected</c:if>>AGRICOLA POR ASIMILACION</option>
-                                                <option value="4" <c:if test="${tipoInstalacion == 4}">selected</c:if>>BIENES COMUNES</option>
-                                                <option value="5" <c:if test="${tipoInstalacion == 5}">selected</c:if>>BODEGA</option>
-                                                <option value="6" <c:if test="${tipoInstalacion == 6}">selected</c:if>>COMERCIO</option>
-                                                <option value="7" <c:if test="${tipoInstalacion == 7}">selected</c:if>>CULTO</option>
-                                                <option value="8" <c:if test="${tipoInstalacion == 8}">selected</c:if>>DEPORTE Y RECREACIÓN</option>
-                                                <option value="9" <c:if test="${tipoInstalacion == 9}">selected</c:if>>DESTINO NULO</option>
-                                                <option value="10" <c:if test="${tipoInstalacion == 10}">selected</c:if>>EDUCACIÓN Y CULTURA</option>
-                                                <option value="11" <c:if test="${tipoInstalacion == 11}">selected</c:if>>ESTACIONAMIENTO</option>
-                                                <option value="12" <c:if test="${tipoInstalacion == 12}">selected</c:if>>FORESTAL</option>
-                                                <option value="13" <c:if test="${tipoInstalacion == 13}">selected</c:if>>HABITACIONAL</option>
-                                                <option value="14" <c:if test="${tipoInstalacion == 14}">selected</c:if>>HOTEL - MOTEL</option>
-                                                <option value="15" <c:if test="${tipoInstalacion == 15}">selected</c:if>>INDUSTRIA</option>
-                                                <option value="16" <c:if test="${tipoInstalacion == 16}">selected</c:if>>MINERIA</option>
-                                                <option value="17" <c:if test="${tipoInstalacion == 17}">selected</c:if>>OFICINA</option>
-                                                <option value="18" <c:if test="${tipoInstalacion == 18}">selected</c:if>>OTROS NO CONSIDERADOS</option>
-                                                <option value="19" <c:if test="${tipoInstalacion == 19}">selected</c:if>>SALUD</option>
-                                                <option value="20" <c:if test="${tipoInstalacion == 20}">selected</c:if>>SITIO ERIAZO</option>
-                                                <option value="21" <c:if test="${tipoInstalacion == 21}">selected</c:if>>TRANSPORTE Y TELECOMUNICACIONES</option>
-                                                </select>
-                                            </div>                                               
-                                            <div class="form-group">
-                                                <label style="height: 10px!important;">Tipo de  Gas</label>
-                                                <select name="id_gas" class="porte">
-                                                    <option value="1"<c:if test="${idGas == 1}">selected</c:if>> NATURAL</option>
-                                                <option value="2"<c:if test="${idGas == 2}">selected</c:if>> LICUADO</option>                
-                                                </select>
-                                            </div> 
-                                            <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
-                                                <label style="height: 10px!important;" >Empresa Distribuidora de Gas</label>
-                                                <select name="id_empresa" class="porte">
-                                                    <option value="1"  <c:if test="${idEmpresa == 1}">selected</c:if>> GASVALPO</option>
-                                                <option value="2" <c:if test="${idEmpresa == 2}">selected</c:if>> LIPIGAS</option>
-                                                <option value="3" <c:if test="${idEmpresa == 3}">selected</c:if>> ABASTIBLE</option>
-                                                <option value="4" <c:if test="${idEmpresa == 4}">selected</c:if>> GASCO</option>
-                                                <option value="5" <c:if test="${idEmpresa == 5}">selected</c:if>> OTROS</option>                    
-                                                </select>
-                                            </div>
-                                            <br><br><br><br><br><br>
-                                            <div class="form-group" style="padding-top: 10px!important;">
-                                                <label for="rut_admin" style="height: 10px!important;">R.U.T Administrador o propietario <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label>
-                                                <input type="text" name="rut_admin" maxlength="10"  class="form-control" required="true" value="<c:out value="${rutAdmin}"/>"
-                                                   onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/> 
-                                        </div>
-                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
-                                            <label for="fecha_vencimiento">Fecha vencimiento</label>                                                                                                   
-                                            <input type="text" name="fecha_vencimiento"  id="f_date5"  class="form-control-fecha" value="<c:out value="${fechaVencimiento}"/>">                                              
-                                            <button id="f_btn5">...</button>                   
-                                        </div>
-                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
-                                            <label style="height: 10px!important;" >Sello </label>
-                                            <select name="sello_edificio" class="porte">
-                                                <option value="amarillo"  <c:if test="${idEmpresa == 'amarillo'}">selected</c:if>> AMARILLO</option>
-                                                <option value="rojo" <c:if test="${idEmpresa == 'rojo'}">selected</c:if>> ROJO</option>
-                                                <option value="verde" <c:if test="${idEmpresa == 'verde'}">selected</c:if>> VERDE</option>
+                                    <div class="col-lg-6">  
+                                        <table style="width: 380px!important;">
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group" >
+                                                        <label for="rut_edificio"  style="height: 10px!important;" >R.U.T construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label >
+                                                        <input type="text" name="rut_edificio" maxlength="10"  class="form-control" required="true"  value="<c:out value="${rutEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ano_edificio"  style="height: 10px!important;">Año construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Debe ser mayor a 1954.</i></h6></label> </label>
+                                                        <input type="text" name="ano_edificio"  maxlength="4" class="form-control" required="true" value="<c:out value="${anoEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>           
+                                                    <div class="form-group">
+                                                        <label for="telefono_edificio" style="height: 10px!important;">Teléfono Edificio</label>
+                                                        <input type="text" name="telefono_edificio"   class="form-control" required="true" value="<c:out value="${telefonoEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>   
+                                                    <div class="form-group">
+                                                        <label for="email_admin" style="height: 10px!important;">Correo Electrónico</label>
+                                                        <input type="text" name="email_admin"  class="form-control" required="true" value="<c:out value="${emailAdmin}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="height: 10px!important;">Tipo de  Gas</label>
+                                                        <select name="id_gas" class="porte">
+                                                            <option value="1"<c:if test="${idGas == 1}">selected</c:if>> NATURAL</option>
+                                                            <option value="2"<c:if test="${idGas == 2}">selected</c:if>> LICUADO</option>                
+                                                            </select>
+                                                        </div> 
+                                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
+                                                            <label style="height: 10px!important;" >Empresa Distribuidora de Gas</label>
+                                                            <select name="id_empresa" class="porte">
+                                                                <option value="1"  <c:if test="${idEmpresa == 1}">selected</c:if>> GASVALPO</option>
+                                                            <option value="2" <c:if test="${idEmpresa == 2}">selected</c:if>> LIPIGAS</option>
+                                                            <option value="3" <c:if test="${idEmpresa == 3}">selected</c:if>> ABASTIBLE</option>
+                                                            <option value="4" <c:if test="${idEmpresa == 4}">selected</c:if>> GASCO</option>
+                                                            <option value="5" <c:if test="${idEmpresa == 5}">selected</c:if>> OTROS</option>                    
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
+                                                            <label for="fecha_vencimiento" style="height: 10px!important;">Fecha vencimiento</label>                                                                                                   
+                                                            <input type="text" name="fecha_vencimiento"  id="f_date5"  class="form-control-fecha" value="<c:out value="${fechaVencimiento}"/>">                                              
+                                                        <button id="f_btn5">...</button>                   
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group">
+                                                        <label for="rut_admin" style="height: 10px!important;">R.U.T Administrador o propietario <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label>
+                                                        <input type="text" name="rut_admin" maxlength="10"  class="form-control" required="true" value="<c:out value="${rutAdmin}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/> 
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
 
-                                                </select>
-                                            </div>
-
-
-                                        </div>
                                     </div>
-
-                                    <div class="col-sm-12 agregar-edificio" id="edificio" style="display: none;"> 
-                                        <h4>EDIFICIO</h4>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label for="ubicacion_medidores">Ubicacion de los medidores</label>
-                                                <input type="text" name="ubicacion_medidores"   class="form-control"  value="<c:out value="${ubicacionMedidores}"/>"
+                                </div>
+                                <div class="col-sm-12 agregar-edificio" id="edificio" style="display: none;"> 
+                                    <h4>EDIFICIO</h4>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="ubicacion_medidores" style="height: 10px!important;">Ubicacion de los medidores</label>
+                                            <input type="text" name="ubicacion_medidores"   class="form-control"  value="<c:out value="${ubicacionMedidores}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
                                         </div> 
                                         <div class="form-group">
-                                            <label for="potencia_real">Potencia (kW)</label>
+                                            <label for="potencia_real" style="height: 10px!important;">Potencia (kW)</label>
                                             <input type="text" name="potencia_real" maxlength="3" class="form-control"  value="<c:out value="${potenciaReal}"/>"
                                                    onChange="javascript:while ('' + this.value.charAt(0) == ' ')
                                                                        this.value = this.value.substring(1, this.value.length);"/>
@@ -398,7 +407,7 @@ Author     : Natalia
                                             <table table-bordered table-striped table-condensed>
                                                 <tr style="">
                                                     <td>
-                                                        <label for="fecha_inspeccion">Fecha inspección</label>
+                                                        <label for="fecha_inspeccion" style="height: 10px!important;">Fecha inspección</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important; width: 200px!important;">
                                                         <input type="text" name="fecha_inspeccion" id="f_date1"  class="form-control-fecha"  value="<c:out value="${fechaInspeccion}"/> ">
@@ -408,7 +417,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label for="fecha_primera">Fecha 1° re-inspección</label>
+                                                        <label for="fecha_primera" style="height: 10px!important;">Fecha 1° re-inspección</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="fecha_primera" id="f_date2" class="form-control-fecha"  value="<c:out value="${fechaPrimera}"/>">
@@ -418,7 +427,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label for="fecha_segunda">Fecha 2° re-inspección</label>
+                                                        <label for="fecha_segunda" style="height: 10px!important;">Fecha 2° re-inspección</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="fecha_segunda" id="f_date3"   class="form-control-fecha"  value="<c:out value="${fechaSegunda}"/>">
@@ -428,7 +437,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label for="fecha_cierre">Fecha cierre</label>
+                                                        <label for="fecha_cierre" style="height: 10px!important;">Fecha cierre</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="fecha_cierre"  id="f_date4"  class="form-control-fecha" value="<c:out value="${fechaCierre}"/>">                                          
@@ -441,7 +450,7 @@ Author     : Natalia
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>T de prueba,Despiche,otro(Cocina)</label>
+                                            <label style="height: 10px!important;">T de prueba,Despiche,otro(Cocina)</label>
                                             <div class="padding-radio">  
                                                 <div class="radio">                             
                                                     <input  type="radio" name="despiche" value="T_de prueba" <c:if test="${despiche == 'T_de prueba'}">checked</c:if>>T- de prueba 
@@ -458,7 +467,7 @@ Author     : Natalia
                                                 <table table-bordered table-striped table-condensed>
                                                     <tr>
                                                         <td>
-                                                            <label>N° de Departamentos </label>
+                                                            <label style="height: 10px!important;">N° de Departamentos </label>
                                                         </td>
                                                         <td style="padding-left: 30px!important; width: 150px!important;">
                                                             <input type="text" name="cant_departamentos" maxlength="3"  class="form-control" value="<c:out value="${cantDepartamentos}"/>"
@@ -468,7 +477,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label>N° de Casas </label>
+                                                        <label style="height: 10px!important;">N° de Casas </label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="cant_casas" maxlength="3"  class="form-control" value="<c:out value="${cantCasas}"/>"
@@ -478,7 +487,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label>N° de Locales comerciales</label>
+                                                        <label style="height: 10px!important;">N° de Locales comerciales</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="cant_locales" maxlength="3"  class="form-control" value="<c:out value="${cantLocales}"/>"
@@ -503,7 +512,7 @@ Author     : Natalia
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <label>N° de areas comunes </label>
+                                                            <label style="height: 10px!important;">N° de areas comunes </label>
                                                         </td>
                                                         <td style="padding-left: 30px!important;">
                                                             <input type="text" name="cant_areas" maxlength="3" class="form-control" value="<c:out value="${cantAreas}"/>"
@@ -513,7 +522,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label>N° de lavanderias </label>
+                                                        <label style="height: 10px!important;">N° de lavanderias </label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="cant_lavanderias" maxlength="3"  class="form-control" value="<c:out value="${cantLavanderias}"/>"
@@ -523,7 +532,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label>N° de Pisos Inmueble</label>
+                                                        <label style="height: 10px!important;">N° de Pisos Inmueble</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="cant_pisos" maxlength="3" class="form-control" value="<c:out value="${cantPisos}"/>"
@@ -533,7 +542,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label>N° de Conductos Colectivos</label>
+                                                        <label style="height: 10px!important;">N° de Conductos Colectivos</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="cant_conductos" maxlength="3"  class="form-control" 
@@ -544,7 +553,7 @@ Author     : Natalia
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <label>N° de Calderas Centrales</label>
+                                                        <label style="height: 10px!important;">N° de Calderas Centrales</label>
                                                     </td>
                                                     <td style="padding-left: 30px!important;">
                                                         <input type="text" name="cant_calderas" maxlength="3"  class="form-control" value="<c:out value="${cantCalderas}"/>"
@@ -591,18 +600,18 @@ Author     : Natalia
     <script src="js/bootstrap.js"></script>   
     <script type="text/javascript">//<![CDATA[
 
-                                                                               var cal = Calendar.setup({
-                                                                               onSelect: function (cal) {
-                                                                               cal.hide()
-                                                                               },
-                                                                                       showTime: true
-                                                                               });
-                                                                               cal.manageFields("f_btn1", "f_date1", "%Y-%m-%d %I:%M %p");
-                                                                               cal.manageFields("f_btn2", "f_date2", "%Y-%m-%d %I:%M %p");
-                                                                               cal.manageFields("f_btn3", "f_date3", "%Y-%m-%d %I:%M %p");
-                                                                               cal.manageFields("f_btn4", "f_date4", "%Y-%m-%d %I:%M %p");
-                                                                               cal.manageFields("f_btn5", "f_date5", "%Y-%m-%d %I:%M %p");
-                                                                               //]]></script>
+                                                                           var cal = Calendar.setup({
+                                                                           onSelect: function (cal) {
+                                                                           cal.hide()
+                                                                           },
+                                                                                   showTime: true
+                                                                           });
+                                                                           cal.manageFields("f_btn1", "f_date1", "%Y-%m-%d %I:%M %p");
+                                                                           cal.manageFields("f_btn2", "f_date2", "%Y-%m-%d %I:%M %p");
+                                                                           cal.manageFields("f_btn3", "f_date3", "%Y-%m-%d %I:%M %p");
+                                                                           cal.manageFields("f_btn4", "f_date4", "%Y-%m-%d %I:%M %p");
+                                                                           cal.manageFields("f_btn5", "f_date5", "%Y-%m-%d %I:%M %p");
+                                                                           //]]></script>
     <script>
                 $("#menu-toggle").click(function (e) {
         e.preventDefault();
