@@ -309,9 +309,9 @@ Author     : Natalia
                                                         <div class="form-group" >
                                                             <label style="height: 10px!important;" >Sello </label>
                                                             <select name="sello_edificio" class="porte">
-                                                                <option value="amarillo"  <c:if test="${idEmpresa == 'amarillo'}">selected</c:if>> AMARILLO</option>
-                                                            <option value="rojo" <c:if test="${idEmpresa == 'rojo'}">selected</c:if>> ROJO</option>
-                                                            <option value="verde" <c:if test="${idEmpresa == 'verde'}">selected</c:if>> VERDE</option>
+                                                                <option value="amarillo"  <c:if test="${selloEdificio == 'amarillo'}">selected</c:if>> AMARILLO</option>
+                                                            <option value="rojo" <c:if test="${selloEdificio == 'rojo'}">selected</c:if>> ROJO</option>
+                                                            <option value="verde" <c:if test="${selloEdificio == 'verde'}">selected</c:if>> VERDE</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group">

@@ -218,121 +218,147 @@
                             </div>
                             <form action="edificioChangeServlet" method="post" role="form">
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="nombre_ejecutivo" style="height: 10px!important;">Nombre Ejecutivo(a)</label>
-                                        <input type="text" name="nombre_ejecutivo"   class="form-control" required="true" value="<c:out value="${ed.nombreEjecutivo}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                        <table style="width: 380px!important;">
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="nombre_ejecutivo" style="height: 10px!important;">Nombre Ejecutivo(a)</label>
+                                                        <input type="text" name="nombre_ejecutivo"   class="form-control" required="true" value="<c:out value="${ed.nombreEjecutivo}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="tipo_construccion" style="height: 10px!important;">Tipo construcción</label>
+                                                        <input type="text" name="tipo_construccion" class="form-control" required="true" value="<c:out value="${deed.tipoConstruccion}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>                                     
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="nombre_edificio" style="height: 10px!important;">Nombre Edificio </label>
+                                                        <input type="text" name="nombre_edificio"  class="form-control" required="true" value="<c:out value="${ed.nombreEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="direccion_edificio" style="height: 10px!important;">Dirección del Edificio</label>
+                                                        <input type="text" name="direccion_edificio"  class="form-control" required="true" value="<c:out value="${ed.direccionEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div>
+                                                        <label form="ciige_anterior" style="height: 10px!important;">CIIG-e Anterior</label>
+                                                        <input type="text" name="ciige_anterior" required="true" class="form-control" value="<c:out value="${deed.ciigeAnterior}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="height: 10px!important;">Tipo instalación</label> 
+                                                        <select name="tipo_instalacion" class="porte" >
+                                                            <option value="1" <c:if test="${deed.tipoInstalacion == 1}">selected</c:if>>ADMINISTRACIÓN PUBLICA Y DEFENSA - CASA PATRONAL</option>
+                                                            <option value="2" <c:if test="${deed.tipoInstalacion == 2}">selected</c:if>>AGRICOLA</option>
+                                                            <option value="3" <c:if test="${deed.tipoInstalacion == 3}">selected</c:if>>AGRICOLA POR ASIMILACION</option>
+                                                            <option value="4" <c:if test="${deed.tipoInstalacion == 4}">selected</c:if>>BIENES COMUNES</option>
+                                                            <option value="5" <c:if test="${deed.tipoInstalacion == 5}">selected</c:if>>BODEGA</option>
+                                                            <option value="6" <c:if test="${deed.tipoInstalacion == 6}">selected</c:if>>COMERCIO</option>
+                                                            <option value="7" <c:if test="${deed.tipoInstalacion == 7}">selected</c:if>>CULTO</option>
+                                                            <option value="8" <c:if test="${deed.tipoInstalacion == 8}">selected</c:if>>DEPORTE Y RECREACIÓN</option>
+                                                            <option value="9" <c:if test="${deed.tipoInstalacion == 9}">selected</c:if>>DESTINO NULO</option>
+                                                            <option value="10" <c:if test="${deed.tipoInstalacion == 10}">selected</c:if>>EDUCACIÓN Y CULTURA</option>
+                                                            <option value="11" <c:if test="${deed.tipoInstalacion == 11}">selected</c:if>>ESTACIONAMIENTO</option>
+                                                            <option value="12" <c:if test="${deed.tipoInstalacion == 12}">selected</c:if>>FORESTAL</option>
+                                                            <option value="13" <c:if test="${deed.tipoInstalacion == 13}">selected</c:if>>HABITACIONAL</option>
+                                                            <option value="14" <c:if test="${deed.tipoInstalacion == 14}">selected</c:if>>HOTEL - MOTEL</option>
+                                                            <option value="15" <c:if test="${deed.tipoInstalacion == 15}">selected</c:if>>INDUSTRIA</option>
+                                                            <option value="16" <c:if test="${deed.tipoInstalacion == 16}">selected</c:if>>MINERIA</option>
+                                                            <option value="17" <c:if test="${deed.tipoInstalacion == 17}">selected</c:if>>OFICINA</option>
+                                                            <option value="18" <c:if test="${deed.tipoInstalacion == 18}">selected</c:if>>OTROS NO CONSIDERADOS</option>
+                                                            <option value="19" <c:if test="${deed.tipoInstalacion == 19}">selected</c:if>>SALUD</option>
+                                                            <option value="20" <c:if test="${deed.tipoInstalacion == 20}">selected</c:if>>SITIO ERIAZO</option>
+                                                            <option value="21" <c:if test="${deed.tipoInstalacion == 21}">selected</c:if>>TRANSPORTE Y TELECOMUNICACIONES</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group" >
+                                                            <label style="height: 10px!important;" >Sello </label>
+                                                            <select name="sello_edificio" class="porte">
+                                                                <option value="amarillo"  <c:if test="${ed.selloEdificio == 'amarillo'}">selected</c:if>> AMARILLO</option>
+                                                            <option value="rojo" <c:if test="${ed.selloEdificio == 'rojo'}">selected</c:if>> ROJO</option>
+                                                            <option value="verde" <c:if test="${ed.selloEdificio == 'verde'}">selected</c:if>> VERDE</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="nombre_admin" style="height: 10px!important;">Nombre Administrador</label>
+                                                            <input type="text" name="nombre_admin"  class="form-control" required="true" value="<c:out value="${ad.nombreAdmin}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="telefono_admin" style="height: 10px!important;">Teléfono Administrador</label>
+                                                        <input type="text" name="telefono_admin" class="form-control"required="true" value="<c:out value="${ad.telefonoAdmin}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>                                     
+                                                    </div>
+                                                </td>                                            
+                                            </tr>
+                                        </table>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="tipo_construccion" style="height: 10px!important;">Tipo construcción</label>
-                                        <input type="text" name="tipo_construccion" class="form-control" required="true" value="<c:out value="${deed.tipoConstruccion}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>                                     
+                                    <div class="col-lg-6">  
+                                        <table style="width: 380px!important;">
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group" >
+                                                        <label for="rut_edificio"  style="height: 10px!important;" >R.U.T construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label >
+                                                        <input type="text" name="rut_edificio" maxlength="10"  class="form-control" required="true"  value="<c:out value="${ed.rutEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ano_edificio"  style="height: 10px!important;">Año construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Debe ser mayor a 1954.</i></h6></label> </label>
+                                                        <input type="text" name="ano_edificio"  maxlength="4" class="form-control" required="true" value="<c:out value="${ed.anoEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
+                                                                                   this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>           
+                                                    <div class="form-group">
+                                                        <label for="telefono_edificio" style="height: 10px!important;">Teléfono Edificio</label>
+                                                        <input type="text" name="telefono_edificio"   class="form-control" required="true" value="<c:out value="${ed.telefonoEdificio}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>   
+                                                    <div class="form-group">
+                                                        <label for="email_admin" style="height: 10px!important;">Correo Electrónico</label>
+                                                        <input type="text" name="email_admin"  class="form-control" required="true" value="<c:out value="${ad.emailAdmin}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label style="height: 10px!important;">Tipo de  Gas</label>
+                                                        <select name="id_gas" class="porte">
+                                                            <option value="1"<c:if test="${ed.idGas == 1}">selected</c:if>> NATURAL</option>
+                                                            <option value="2"<c:if test="${ed.idGas == 2}">selected</c:if>> LICUADO</option>                
+                                                            </select>
+                                                        </div> 
+                                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
+                                                            <label style="height: 10px!important;" >Empresa Distribuidora de Gas</label>
+                                                            <select name="id_empresa" class="porte">
+                                                                <option value="1"  <c:if test="${idEmpresa == 1}">selected</c:if>> GASVALPO</option>
+                                                            <option value="2" <c:if test="${ed.idEmpresa == 2}">selected</c:if>> LIPIGAS</option>
+                                                            <option value="3" <c:if test="${ed.idEmpresa == 3}">selected</c:if>> ABASTIBLE</option>
+                                                            <option value="4" <c:if test="${ed.idEmpresa == 4}">selected</c:if>> GASCO</option>
+                                                            <option value="5" <c:if test="${ed.idEmpresa == 5}">selected</c:if>> OTROS</option>                    
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
+                                                            <label for="fecha_vencimiento" style="height: 10px!important;">Fecha vencimiento</label>                                                                                                   
+                                                            <input type="text" name="fecha_vencimiento"  id="f_date5"  class="form-control-fecha" value="<c:out value="${ed.fechaVencimiento}"/>">                                              
+                                                        <button id="f_btn5">...</button>                   
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group">
+                                                        <label for="rut_admin" style="height: 10px!important;">R.U.T Administrador o propietario <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label>
+                                                        <input type="text" name="rut_admin" maxlength="10"  class="form-control" required="true" value="<c:out value="${ad.rutAdmin}"/>"
+                                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/> 
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nombre_edificio" style="height: 10px!important;">Nombre Edificio </label>
-                                        <input type="text" name="nombre_edificio"  class="form-control" required="true" value="<c:out value="${ed.nombreEdificio}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="direccion_edificio" style="height: 10px!important;">Dirección del Edificio</label>
-                                        <input type="text" name="direccion_edificio"  class="form-control" required="true" value="<c:out value="${ed.direccionEdificio}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
-                                    </div>
-                                    <div>
-                                        <label form="ciige_anterior" style="height: 10px!important;">CIIG-e Anterior</label>
-                                        <input type="text" name="ciige_anterior" required="true" class="form-control" value="<c:out value="${deed.ciigeAnterior}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ano_edificio"  style="height: 10px!important;">Año construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Debe ser mayor a 1954.</i></h6></label> </label>
-                                        <input type="text" name="ano_edificio"  maxlength="4" class="form-control" required="true" value="<c:out value="${ed.anoEdificio}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
-                                    </div> 
-                                    <div class="form-group" >
-                                        <label for="rut_edificio"  style="height: 8px!important;" >R.U.T construcción <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label >
-                                        <input type="text" name="rut_edificio" maxlength="10"  class="form-control" required="true"  value="<c:out value="${ed.rutEdificio}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="nombre_admin" style="height: 10px!important;">Nombre Administrador</label>
-                                        <input type="text" name="nombre_admin"  class="form-control" required="true" value="<c:out value="${ad.nombreAdmin}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="telefono_admin" style="height: 10px!important;">Teléfono Administrador</label>
-                                        <input type="text" name="telefono_admin" class="form-control"required="true" value="<c:out value="${ad.telefonoAdmin}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')
-                                                                   this.value = this.value.substring(1, this.value.length);"/>                                     
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">   
-                                    <div class="form-group">
-                                        <label for="telefono_edificio" style="height: 10px!important;">Teléfono Edificio</label>
-                                        <input type="text" name="telefono_edificio"   class="form-control" required="true" value="<c:out value="${ed.telefonoEdificio}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
-                                    </div>   
-                                    <div class="form-group">
-                                        <label for="email_admin" style="height: 10px!important;">Correo Electrónico</label>
-                                        <input type="text" name="email_admin"  class="form-control" required="true" value="<c:out value="${ad.emailAdmin}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label style="height: 10px!important;">Tipo instalación</label> 
-                                        <select name="tipo_instalacion" class="porte" >
-                                            <option value="1" <c:if test="${deed.tipoInstalacion == 1}">selected</c:if>>ADMINISTRACIÓN PUBLICA Y DEFENSA - CASA PATRONAL</option>
-                                            <option value="2" <c:if test="${deed.tipoInstalacion == 2}">selected</c:if>>AGRICOLA</option>
-                                            <option value="3" <c:if test="${deed.tipoInstalacion == 3}">selected</c:if>>AGRICOLA POR ASIMILACION</option>
-                                            <option value="4" <c:if test="${deed.tipoInstalacion == 4}">selected</c:if>>BIENES COMUNES</option>
-                                            <option value="5" <c:if test="${deed.tipoInstalacion == 5}">selected</c:if>>BODEGA</option>
-                                            <option value="6" <c:if test="${deed.tipoInstalacion == 6}">selected</c:if>>COMERCIO</option>
-                                            <option value="7" <c:if test="${deed.tipoInstalacion == 7}">selected</c:if>>CULTO</option>
-                                            <option value="8" <c:if test="${deed.tipoInstalacion == 8}">selected</c:if>>DEPORTE Y RECREACIÓN</option>
-                                            <option value="9" <c:if test="${deed.tipoInstalacion == 9}">selected</c:if>>DESTINO NULO</option>
-                                            <option value="10" <c:if test="${deed.tipoInstalacion == 10}">selected</c:if>>EDUCACIÓN Y CULTURA</option>
-                                            <option value="11" <c:if test="${deed.tipoInstalacion == 11}">selected</c:if>>ESTACIONAMIENTO</option>
-                                            <option value="12" <c:if test="${deed.tipoInstalacion == 12}">selected</c:if>>FORESTAL</option>
-                                            <option value="13" <c:if test="${deed.tipoInstalacion == 13}">selected</c:if>>HABITACIONAL</option>
-                                            <option value="14" <c:if test="${deed.tipoInstalacion == 14}">selected</c:if>>HOTEL - MOTEL</option>
-                                            <option value="15" <c:if test="${deed.tipoInstalacion == 15}">selected</c:if>>INDUSTRIA</option>
-                                            <option value="16" <c:if test="${deed.tipoInstalacion == 16}">selected</c:if>>MINERIA</option>
-                                            <option value="17" <c:if test="${deed.tipoInstalacion == 17}">selected</c:if>>OFICINA</option>
-                                            <option value="18" <c:if test="${deed.tipoInstalacion == 18}">selected</c:if>>OTROS NO CONSIDERADOS</option>
-                                            <option value="19" <c:if test="${deed.tipoInstalacion == 19}">selected</c:if>>SALUD</option>
-                                            <option value="20" <c:if test="${deed.tipoInstalacion == 20}">selected</c:if>>SITIO ERIAZO</option>
-                                            <option value="21" <c:if test="${deed.tipoInstalacion == 21}">selected</c:if>>TRANSPORTE Y TELECOMUNICACIONES</option>
-                                            </select>
-                                        </div>                                               
-                                        <div class="form-group">
-                                            <label style="height: 10px!important;">Tipo de  Gas</label>
-                                            <select name="id_gas" class="porte">
-                                                <option value="1"<c:if test="${ed.idGas == 1}">selected</c:if>> NATURAL</option>
-                                            <option value="2"<c:if test="${ed.idGas == 2}">selected</c:if>> LICUADO</option>                
-                                            </select>
-                                        </div> 
-                                        <div class="form-group" style="margin-bottom: 0px!important;margin-top: 0px!important;">
-                                            <label style="height: 10px!important;" >Empresa Distribuidora de Gas</label>
-                                            <select name="id_empresa" class="porte">
-                                                <option value="1"  <c:if test="${ed.idEmpresa == 1}">selected</c:if>> GASVALPO</option>
-                                            <option value="2" <c:if test="${ed.idEmpresa == 2}">selected</c:if>> LIPIGAS</option>
-                                            <option value="3" <c:if test="${ed.idEmpresa == 3}">selected</c:if>> ABASTIBLE</option>
-                                            <option value="4" <c:if test="${ed.idEmpresa == 4}">selected</c:if>> GASCO</option>
-                                            <option value="5" <c:if test="${ed.idEmpresa == 5}">selected</c:if>> OTROS</option>                    
-                                            </select>
-                                        </div>
-                                        <br><br><br><br><br><br>
-                                        <div class="form-group" style="padding-top: 10px!important;">
-                                            <label for="rut_admin" style="height: 10px!important;">R.U.T Administrador o propietario <label style="text-decoration-color: #aaa !important;"><h6><i>* Formato 11111111-1.</i></h6></label></label>
-                                            <input type="text" name="rut_admin" maxlength="10"  class="form-control" required="true" value="<c:out value="${ad.rutAdmin}"/>"
-                                               onChange="javascript:while ('' + this.value.charAt(0) == ' ')this.value = this.value.substring(1, this.value.length);"/> 
-                                    </div>
-                                </div>
                                 <div class="col-sm-12 agregar-edificio"> 
                                     <h4>EDIFICIO</h4>
                                     <div class="col-lg-6">
