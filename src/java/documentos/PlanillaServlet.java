@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
@@ -57,6 +58,8 @@ public class PlanillaServlet extends HttpServlet {
             PdfWriter.getInstance(document, response.getOutputStream());
             Font fuenteNegrita = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD);
             Font fuenteNormal = new Font(Font.FontFamily.TIMES_ROMAN, 9, Font.NORMAL);
+            Font fuenteEPiePagina = new Font(Font.FontFamily.TIMES_ROMAN, 6, Font.BOLD); 
+            Font fuentePiePagina = new Font (Font.FontFamily.TIMES_ROMAN, 8, Font.BOLD);
 
             // step 3
             document.open();
@@ -72,6 +75,7 @@ public class PlanillaServlet extends HttpServlet {
             tablaEncabezado.addCell(logo);
 
             tablaContenido.setSpacingBefore(15);
+            tablaContenido.setSpacingAfter(20);
             tablaContenido.addCell(new Paragraph("VENDEDORA", fuenteNormal));
             tablaContenido.addCell(new Paragraph(""));
 
@@ -132,18 +136,16 @@ public class PlanillaServlet extends HttpServlet {
             tablaContenido.addCell(new Paragraph("CANTIDAD DE CALDERAS CENTRALES" , fuenteNormal));
             tablaContenido.addCell(new Paragraph(""));
             
-            tablaContenido.addCell(new Paragraph("HORARIO DE INGRESO AL EDIFICIO" , fuenteNormal));
-            tablaContenido.addCell(new Paragraph(""));
-            
-            tablaContenido.addCell(new Paragraph("HORARIO DE SALIDA DEL EDIFICIO " , fuenteNormal));
-            tablaContenido.addCell(new Paragraph(""));
-            
             
             document.add(tablaEncabezado);
-
             document.add(tablaContenido);
-
-            // step 5
+            Paragraph textoIng = new Paragraph("IngeníeriaRSLimitada", fuenteEPiePagina);
+            textoIng.setAlignment(Element.ALIGN_CENTER);
+            
+            Paragraph textPie = new Paragraph("Calle Montaña 754 Oficina 37-A Viña Del Mar / ingenieria.sr@gmail.com - Fono 032-2697175 / 92564059", fuentePiePagina);
+            textPie.setAlignment(Element.ALIGN_CENTER);
+            document.add(textoIng);
+            document.add(textPie);
             document.close();
         } catch (DocumentException de) {
             throw new IOException(de.getMessage());
