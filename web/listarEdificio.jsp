@@ -124,6 +124,7 @@
                                     <td style="width: 100px!important;text-align: center!important;">Informacion Cliente</td>
                                     <c:if test="${noadmin == 0}"> <td style="width: 80px!important;text-align: center!important;">Eliminar Cliente</td></c:if>
                                     <td style="width: 80px!important;text-align: center!important;">Conductos</td>
+                                    <td style="width: 80px!important;text-align: center!important;">Planilla</td>
                                 </tr>
 
 
@@ -145,7 +146,7 @@
                                         <c:if test="${listas.existenciaConductos != 'n'}">
                                            <td><input type="submit" class="btn btn-danger btn-md" value="Conductos"  formaction="conductoMainServlet?id_edificio=<c:out value="${listas.idEdificio}"></c:out>;"><font size="1"></td>
                                         </c:if>        
-                                             
+                                           <td><input type="submit" class="btn btn-danger" value="Planilla" formaction="/Proyectoempresa/PlanillaServlet?id=<c:out value="${listas.idEdificio}"/>"></td>     
                                     </tr>
                                         </form>
                                 </c:forEach>
