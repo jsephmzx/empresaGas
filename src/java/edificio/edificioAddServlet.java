@@ -929,11 +929,15 @@ public class edificioAddServlet extends HttpServlet {
                                 }
                             }
                         }
+                        
 
                     }
                     System.out.println("rutAdminCorrecto " + rutAdmin);
 
                     if (!error) {
+                        if(conducto == 0){
+                            existencia = "n";
+                        }
                         edificio ed = new edificio();
                         administrador ad = new administrador();
                         fecha fe = new fecha();

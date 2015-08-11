@@ -46,7 +46,7 @@ public class conductoAddServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         try {
             conexion = ds.getConnection();
-
+   
             System.out.println("entro a conductoAddServlet");
             int idEdificio = 0;
             idEdificio = (Integer) session.getAttribute("idEdificio");

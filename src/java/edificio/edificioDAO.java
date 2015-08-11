@@ -198,7 +198,7 @@ public class edificioDAO implements Serializable {
                 reg.setCantPisos(result.getInt("cant_pisos"));
                 reg.setPotenciaReal(result.getInt("potencia_real"));
                 reg.setPotenciaEstimada(result.getInt("potencia_estimada"));
-                reg.setIdEdificio(result.getInt("id_usuario"));
+                reg.setIdUsuario(result.getInt("id_usuario"));
                 reg.setTipoCliente(result.getString("tipo_cliente"));
                 reg.setExistenciaConductos(result.getString("existencia_conductos"));
                 reg.setFechaVencimiento(result.getString("fecha_vencimiento"));
