@@ -36,6 +36,7 @@ import javax.sql.DataSource;
 import javax.swing.JOptionPane;
 import usuario.usuario;
 import usuario.usuarioDAO;
+import java.util.Calendar;
 
 /**
  *
@@ -72,6 +73,7 @@ public class edificioChangeServlet extends HttpServlet {
             /**
              * ************************
              */
+            Calendar fechaMod = Calendar.getInstance();
             // Conexion edificio
             edificioDAO edDAO = new edificioDAO();
             edDAO.setConexion(conexion);
@@ -146,6 +148,9 @@ public class edificioChangeServlet extends HttpServlet {
                     int potenciaR = 0;
                     int potenciaA = 0;
                     String existencia = "s";
+                    String ano = Integer.toString(fechaMod.get(Calendar.YEAR));
+                    String mes = Integer.toString(fechaMod.get(Calendar.MONTH));
+                    String dia = Integer.toString(fechaMod.get(Calendar.DAY_OF_MONTH));
                     /**
                      * ************************
                      */
@@ -249,7 +254,8 @@ public class edificioChangeServlet extends HttpServlet {
                     administrador ad = new administrador();
                     fecha fe = new fecha();
                     detalleEdificio deed = new detalleEdificio();
-                         
+                    System.out.println("fecha modificacion"+ano+mes+dia);
+
                     /**
                      * ************************
                      */
@@ -1238,7 +1244,7 @@ public class edificioChangeServlet extends HttpServlet {
                     }
 
                     if (!error) {
-                        ;
+                        System.out.println("fecha modificacion" + fechaMod);
                         /**
                          * ************************
                          */
@@ -1306,7 +1312,7 @@ public class edificioChangeServlet extends HttpServlet {
                         /**
                          * ************************
                          */
-                        
+
                         nombreEjecutivo = null;
                         tipoConstruccion = null;
                         nombreEdificio = null;
