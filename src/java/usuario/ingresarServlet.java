@@ -57,11 +57,7 @@ public class ingresarServlet extends HttpServlet {
             String pass = request.getParameter("contrasena");
             System.out.println("nombre "+nombreUsuario);
             System.out.println("contraseña "+pass);
-            Calendar fechaMod = Calendar.getInstance();
-            String ano = Integer.toString(fechaMod.get(Calendar.YEAR));
-            String mes = Integer.toString(fechaMod.get(Calendar.MONTH));
-            String dia = Integer.toString(fechaMod.get(Calendar.DAY_OF_MONTH));
-            System.out.println("fecha modificacion"+ano+mes+dia);
+
             //variables
             usuario usuario = new usuario();
             boolean error = false;
