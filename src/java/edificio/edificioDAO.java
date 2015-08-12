@@ -39,7 +39,7 @@ public class edificioDAO implements Serializable {
 
         try {
 
-            String sql = "insert into edificio (id_edificio,id_gas,id_empresa,nombre_ejecutivo,rut_edificio,nombre_edificio,ano_edificio,direccion_edificio,telefono_edificio,sello_edificio,norma_aplicada,cant_departamentos,cant_casas,cant_locales,cant_areas,cant_lavanderias,cant_conductos,cant_calderas,cant_pisos,potencia_real,potencia_estimada,id_usuario,tipo_cliente,existencia_conductos,fecha_vencimiento,gas_local) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into edificio (id_edificio,id_gas,id_empresa,nombre_ejecutivo,rut_edificio,nombre_edificio,ano_edificio,direccion_edificio,telefono_edificio,sello_edificio,norma_aplicada,cant_departamentos,cant_casas,cant_locales,cant_areas,cant_lavanderias,cant_conductos,cant_calderas,cant_pisos,potencia_real,potencia_estimada,id_usuario,tipo_cliente,existencia_conductos,fecha_vencimiento,gas_local,fechaMod) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             sentence = conexion.prepareStatement(sql);
 
@@ -69,6 +69,7 @@ public class edificioDAO implements Serializable {
             sentence.setString(24, reg.getExistenciaConductos());
             sentence.setString(25, reg.getFechaVencimiento());
             sentence.setString(26, reg.getGasLocal());
+            sentence.setString(27, reg.getFechaMod());
 
             sentence.executeUpdate();
 
@@ -132,6 +133,7 @@ public class edificioDAO implements Serializable {
                 reg.setExistenciaConductos(result.getString("existencia_conductos"));
                 reg.setFechaVencimiento(result.getString("fecha_vencimiento"));
                 reg.setGasLocal(result.getString("gas_local"));
+                reg.setFechaMod(result.getString("fechaMod"));
                 list.add(reg);
                
             }
@@ -203,7 +205,7 @@ public class edificioDAO implements Serializable {
                 reg.setExistenciaConductos(result.getString("existencia_conductos"));
                 reg.setFechaVencimiento(result.getString("fecha_vencimiento"));
                 reg.setGasLocal(result.getString("gas_local"));
-                
+                reg.setFechaMod(result.getString("fechaMod"));
             }
 
         } catch (MySQLSyntaxErrorException ex) {
@@ -269,6 +271,7 @@ public class edificioDAO implements Serializable {
                 reg.setExistenciaConductos(result.getString("existencia_conductos"));
                 reg.setFechaVencimiento(result.getString("fecha_vencimiento"));
                 reg.setGasLocal(result.getString("gas_local"));
+                reg.setFechaMod(result.getString("fechaMod"));
 
             }
         } catch (MySQLSyntaxErrorException ex) {
@@ -444,7 +447,7 @@ public class edificioDAO implements Serializable {
         PreparedStatement sentence = null;
 
         try {
-            String sql = "update edificio set id_gas=?,id_empresa = ?,nombre_ejecutivo=?,rut_edificio=?,nombre_edificio=?,ano_edificio=?,direccion_edificio=?,telefono_edificio=?,sello_edificio=?,norma_aplicada=?,cant_departamentos=?,cant_locales=?,cant_casas=?,cant_lavanderias=?,cant_areas=?,cant_conductos=?,cant_calderas=?,cant_pisos=?,potencia_real=?,potencia_estimada=?, id_usuario=?, tipo_cliente =?, existencia_conductos =?, fecha_vencimiento=?,gas_local=? where id_edificio=?";
+            String sql = "update edificio set id_gas=?,id_empresa = ?,nombre_ejecutivo=?,rut_edificio=?,nombre_edificio=?,ano_edificio=?,direccion_edificio=?,telefono_edificio=?,sello_edificio=?,norma_aplicada=?,cant_departamentos=?,cant_locales=?,cant_casas=?,cant_lavanderias=?,cant_areas=?,cant_conductos=?,cant_calderas=?,cant_pisos=?,potencia_real=?,potencia_estimada=?, id_usuario=?, tipo_cliente =?, existencia_conductos =?, fecha_vencimiento=?,gas_local=?,fechaMod=? where id_edificio=?";
             System.out.println("en update edificio");
             sentence = conexion.prepareStatement(sql);
 
@@ -474,6 +477,7 @@ public class edificioDAO implements Serializable {
             sentence.setString(24, edificio.getFechaVencimiento());
             sentence.setInt(25, edificio.getIdEdificio());
             sentence.setString(26, edificio.getGasLocal());
+            sentence.setString(27, edificio.getFechaMod());
             sentence.executeUpdate();
             System.out.println("despues de ejecutar update");
         } catch (MySQLSyntaxErrorException ex) {

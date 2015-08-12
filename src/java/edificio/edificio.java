@@ -39,6 +39,7 @@ public class edificio implements Serializable{
  public String tipoCliente;
  public String existenciaConductos;
  public String fechaVencimiento;
+ public String FechaMod;
  
     public edificio() {
     }
@@ -249,6 +250,14 @@ public class edificio implements Serializable{
 
     public void setFechaVencimiento(String fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public String getFechaMod() {
+        return FechaMod;
+    }
+
+    public void setFechaMod(String FechaMod) {
+        this.FechaMod = FechaMod;
     }
     
     
