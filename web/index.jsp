@@ -119,7 +119,7 @@ Author     : Natalia
 
                         <form action="edificioAddServlet" method="post" role="form">
 
-                            <div class="col-lg-12 agregar-admin-vendedor"  > 
+                            <div class="col-lg-12 agregar-edificio"  > 
                                 <h4>ADMINISTRADOR</h4>
                                 <div class="form-group">
                                     <div class="padding-radio">  

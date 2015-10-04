@@ -217,6 +217,7 @@ public class edificioAddServlet extends HttpServlet {
                     /**
                      * ************************
                      */
+                  
                     System.out.println("tipo cliente contiene " + tipoCliente);
                     if (tipoCliente == null) {
                         request.setAttribute("OpcionNoSelecionadaTipoInst", "no se selecciono ninguna de las opciones disponibles");
@@ -933,7 +934,18 @@ public class edificioAddServlet extends HttpServlet {
 
                     }
                     System.out.println("rutAdminCorrecto " + rutAdmin);
-
+                    System.out.println("nombre ejecutivo"+ nombreEjecutivo);
+                    System.out.println("Tipo construccion"+ tipoConstruccion);System.out.println("nombre ed"+ nombreEdificio);
+                    System.out.println("tipo inst"+tipoInst);System.out.println("tipo gas"+tipoGas);
+                    System.out.println("empresa gas"+ empresaGas);System.out.println("ciige"+ ciigeAnterior);
+                    System.out.println("direccion"+ direccionEdificio);System.out.println("nombre adm"+ nombreAdmin);
+                    System.out.println("telefono adm"+ telefonoAdmin);System.out.println("Año"+annioConvertido);
+                    System.out.println("norma aplicada"+normaAplicada);System.out.println("rut ed"+ rutEdificio);
+                    System.out.println("telefono ed"+telefonoEdificio);System.out.println("rut admin"+rutAdmin);
+                    System.out.println("usuario online"+idUsuOnline);System.out.println("email admin"+ emailAdmin);
+                    System.out.println("gas local"+gasLocal);System.out.println("existe conducto"+ existencia);
+                    System.out.println("sello ed"+selloEdificio);System.out.println("fechaVencimineto"+ fechaVencimiento);
+                    
                     if (!error) {
                         if(conducto == 0){
                             existencia = "n";
@@ -988,6 +1000,20 @@ public class edificioAddServlet extends HttpServlet {
 
                         edDAO.insert(ed);
                         /*Obtener id de edificio  detalle*/
+System.out.println("ubicacion medidor"+ ubicacionMedidores);System.out.println("fecha ins"+fechaInspeccion);
+System.out.println("fecha 1"+fechaPrimera);System.out.println("fecha 2"+fechaSegunda);
+System.out.println("fecha fin"+fechaCierre);System.out.println("potencia app"+potenciaE);
+System.out.println("despiche"+despiche);System.out.println("potencia real"+ potenciaR);
+System.out.println("cant depto"+depto);System.out.println("cant casas"+casas);
+System.out.println("cant areas"+areas);System.out.println("cant"+lavanderias);
+System.out.println("cant locales"+locales);System.out.println("cant pisos"+piso);
+System.out.println("cant conducto"+conducto);System.out.println("cant caldeta"+caldera);
+System.out.println("tipo cliente"+tipoCliente);
+
+
+
+
+
 
                         int idEdificio = edDAO.getLastId();
                         System.out.println("id edificio :" + idEdificio);

@@ -105,7 +105,7 @@
 
 
 
-                        <div class="col-lg-12 agregar-admin-vendedor"  > 
+                        <div class="col-lg-12 agregar-edificio"  > 
                             <h4>ADMINISTRADOR</h4>
                             <div class="form-group">
                                 <c:if test="${edificioAgregar1 == 1}">
